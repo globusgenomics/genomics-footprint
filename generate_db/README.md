@@ -20,11 +20,11 @@ else if (database == "skin_hint_20") {
 ```
 - Prepare your footprint files in your local directory
 
-- Run the database creation shell script in [/master/skin_20](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/master/skin_20)
+- Run the database creation shell script in [master/skin_20](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/master/skin_20)
 ```
 ./create_dbs_test.sh
 ```
-- Run the master scripts in [/master/skin_20](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/master/skin_20)
+- Run the master scripts in [master/skin_20](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/master/skin_20)
 ```
 nohup R -f hint_1.R &
 nohup R -f wellington_1.R &
