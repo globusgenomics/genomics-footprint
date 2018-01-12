@@ -70,10 +70,9 @@ aws s3 cp ./skin_wellington_20.dump s3://bdds-public/index_dbs/
 aws s3 cp ./skin_hint_20.dump s3://bdds-public/index_dbs/
 ```
 
-- Here is the snapshot of the database created in bddsrds.globusgenomics.org:
-```
-PGPASSWORD=bdds_postgres_rds_pass*word psql -l --host=bddsrds.globusgenomics.org --port=5432 --username=galaxy
+- Here is the snapshot of some of the database created in bddsrds.globusgenomics.org:
 
+```
 List of databases
 Name                  |  Owner   | Encoding |   Collate   |    Ctype    |   Access privileges
 ----------------------------------------+----------+----------+-------------+-------------+-----------------------
@@ -92,7 +91,6 @@ adrenal_gland_wellington_16            | galaxy   | UTF8     | en_US.UTF-8 | en_
 adrenal_gland_wellington_20            | galaxy   | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =Tc/galaxy           +
 |          |          |             |             | galaxy=CTc/galaxy    +
 |          |          |             |             | trena=c/galaxy
-bdds                                   | galaxy   | UTF8     | en_US.UTF-8 | en_US.UTF-8 |
 blood_vessel_hint_16                   | galaxy   | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =Tc/galaxy           +
 |          |          |             |             | galaxy=CTc/galaxy    +
 |          |          |             |             | trena=c/galaxy
@@ -122,4 +120,26 @@ brain_hint                             | galaxy   | UTF8     | en_US.UTF-8 | en_
 |          |          |             |             | trena=c/galaxy
 brain_hint_16                          | galaxy   | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =Tc/galaxy           +
 |          |          |             |             | galaxy=CTc/galaxy    +
+|          |          |             |             | trena=c/galaxy
+brain_hint_20                          | galaxy   | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =Tc/galaxy           +
+|          |          |             |             | galaxy=CTc/galaxy    +
+|          |          |             |             | trena=c/galaxy
+brain_wellington_16                    | galaxy   | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =Tc/galaxy           +
+|          |          |             |             | galaxy=CTc/galaxy    +
+|          |          |             |             | trena=c/galaxy
+brain_wellington_20                    | galaxy   | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =Tc/galaxy           +
+|          |          |             |             | galaxy=CTc/galaxy    +
+|          |          |             |             | trena=c/galaxy
+bronchus_hint_16                       | galaxy   | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =Tc/galaxy           +
+|          |          |             |             | galaxy=CTc/galaxy    +
+|          |          |             |             | trena=c/galaxy
+bronchus_hint_20                       | galaxy   | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =Tc/galaxy           +
+|          |          |             |             | galaxy=CTc/galaxy    +
+|          |          |             |             | trena=c/galaxy
+bronchus_wellington_16                 | galaxy   | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =Tc/galaxy           +
+|          |          |             |             | galaxy=CTc/galaxy    +
+|          |          |             |             | trena=c/galaxy
+bronchus_wellington_20                 | galaxy   | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =Tc/galaxy           +
+|          |          |             |             | galaxy=CTc/galaxy    +
+|          |          |             |             | trena=c/galaxy                   
 ```
