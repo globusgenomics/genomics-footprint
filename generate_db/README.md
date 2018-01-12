@@ -1,9 +1,11 @@
-The *generate_db* directory includes the processing code to intersect hint or wellington footprints ouptut with the FIMO database and put the results in a database.
+# Database creation
+
+The *generate_db* directory includes the processing code to intersect [hint](http://www.regulatory-genomics.org/hint/introduction/) or [wellington](https://github.com/jpiper/pyDNase)] footprints ouptut with the FIMO database and put the results in a database.
 
 We build the footprints database in [Amazon RDS](https://aws.amazon.com/rds/).
 
-The workflow is as follows using [skin_20](https://github.com/PriceLab/BDDS/blob/master/footprints/testdb/skin_20) example:
-- Add a new databases to [src/dbFunctions.R](https://github.com/PriceLab/BDDS/blob/master/footprints/testdb/src/dbFunctions.R)
+The workflow is as follows using [skin_20](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/testdb/skin_20) example:
+- Add a new databases to [src/dbFunctions.R](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/testdb/src/dbFunctions.R)
 - Prepare your footprint files
 - Run the database creation shell script
 ```
