@@ -1,12 +1,25 @@
 # Database creation
 
-The *generate_db* directory includes the processing code to intersect [hint](http://www.regulatory-genomics.org/hint/introduction/) or [wellington](https://github.com/jpiper/pyDNase)] footprints ouptut with the FIMO database and put the results in a database.
+This directory includes the processing code to intersect [hint](http://www.regulatory-genomics.org/hint/introduction/) or [wellington](https://github.com/jpiper/pyDNase) footprints ouptut with the FIMO database and put the results in a database.
 
 We build the footprints database in [Amazon RDS](https://aws.amazon.com/rds/).
 
-The workflow is as follows using [skin_20](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/testdb/skin_20) example:
-- Add a new databases to [src/dbFunctions.R](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/testdb/src/dbFunctions.R)
-- Prepare your footprint files
+Using the example  [skin_20](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/skin_20), the workflow is as follows :
+- Add a new databases to [src/dbFunctions.R](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/src/dbFunctions.R)
+```
+else if (database == "skin_wellington_20") {
+    user = "trena"
+    password = "trena"
+    dbname = "skin_wellington_20"
+    host = "bdds-rds.globusgenomics.org"}
+else if (database == "skin_hint_20") {
+    user = "trena"
+    password = "trena"
+    dbname = "skin_hint_20"
+    host = "bdds-rds.globusgenomics.org"}
+```
+- Prepare your footprint files to your local directory
+
 - Run the database creation shell script
 ```
 ./create_dbs_test.sh
@@ -55,4 +68,58 @@ pg_dump -Fc -h bddsrds.globusgenomics.org -U trena skin_hint_20 > ./skin_hint_20
 
 aws s3 cp ./skin_wellington_20.dump s3://bdds-public/index_dbs/
 aws s3 cp ./skin_hint_20.dump s3://bdds-public/index_dbs/
+```
+
+- Here is the snapshot of the database created in bddsrds.globusgenomics.org:
+```
+PGPASSWORD=bdds_postgres_rds_pass*word psql -l --host=bddsrds.globusgenomics.org --port=5432 --username=galaxy
+
+List of databases
+Name                  |  Owner   | Encoding |   Collate   |    Ctype    |   Access privileges
+----------------------------------------+----------+----------+-------------+-------------+-----------------------
+2017_07_27_fimo                        | galaxy   | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =Tc/galaxy           +
+|          |          |             |             | galaxy=CTc/galaxy    +
+|          |          |             |             | trena=c/galaxy
+adrenal_gland_hint_16                  | galaxy   | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =Tc/galaxy           +
+|          |          |             |             | galaxy=CTc/galaxy    +
+|          |          |             |             | trena=c/galaxy
+adrenal_gland_hint_20                  | galaxy   | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =Tc/galaxy           +
+|          |          |             |             | galaxy=CTc/galaxy    +
+|          |          |             |             | trena=c/galaxy
+adrenal_gland_wellington_16            | galaxy   | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =Tc/galaxy           +
+|          |          |             |             | galaxy=CTc/galaxy    +
+|          |          |             |             | trena=c/galaxy
+adrenal_gland_wellington_20            | galaxy   | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =Tc/galaxy           +
+|          |          |             |             | galaxy=CTc/galaxy    +
+|          |          |             |             | trena=c/galaxy
+bdds                                   | galaxy   | UTF8     | en_US.UTF-8 | en_US.UTF-8 |
+blood_vessel_hint_16                   | galaxy   | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =Tc/galaxy           +
+|          |          |             |             | galaxy=CTc/galaxy    +
+|          |          |             |             | trena=c/galaxy
+blood_vessel_hint_20                   | galaxy   | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =Tc/galaxy           +
+|          |          |             |             | galaxy=CTc/galaxy    +
+|          |          |             |             | trena=c/galaxy
+blood_vessel_wellington_16             | galaxy   | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =Tc/galaxy           +
+|          |          |             |             | galaxy=CTc/galaxy    +
+|          |          |             |             | trena=c/galaxy
+blood_vessel_wellington_20             | galaxy   | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =Tc/galaxy           +
+|          |          |             |             | galaxy=CTc/galaxy    +
+|          |          |             |             | trena=c/galaxy
+bone_element_hint_16                   | galaxy   | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =Tc/galaxy           +
+|          |          |             |             | galaxy=CTc/galaxy    +
+|          |          |             |             | trena=c/galaxy
+bone_element_hint_20                   | galaxy   | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =Tc/galaxy           +
+|          |          |             |             | galaxy=CTc/galaxy    +
+|          |          |             |             | trena=c/galaxy
+bone_element_wellington_16             | galaxy   | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =Tc/galaxy           +
+|          |          |             |             | galaxy=CTc/galaxy    +
+|          |          |             |             | trena=c/galaxy
+bone_element_wellington_20             | galaxy   | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =Tc/galaxy           +
+|          |          |             |             | galaxy=CTc/galaxy    +
+|          |          |             |             | trena=c/galaxy
+brain_hint                             | galaxy   | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =Tc/galaxy           +
+|          |          |             |             | galaxy=CTc/galaxy    +
+|          |          |             |             | trena=c/galaxy
+brain_hint_16                          | galaxy   | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =Tc/galaxy           +
+|          |          |             |             | galaxy=CTc/galaxy    +
 ```
