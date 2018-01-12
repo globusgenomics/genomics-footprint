@@ -1,4 +1,4 @@
-# Database creation
+# Generate Database
 
 This directory includes the processing code to intersect [hint](http://www.regulatory-genomics.org/hint/introduction/) or [wellington](https://github.com/jpiper/pyDNase) footprints ouptut with the FIMO database and put the results in a database.
 
