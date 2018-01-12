@@ -1,1 +1,2 @@
-# genomics-footprint
+# Database creation
+- *generate_db*

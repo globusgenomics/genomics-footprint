@@ -1,0 +1,7 @@
+\connect eye_wellington_20;
+create index regions_index on regions (chrom, start, endpos);
+create index hits_index on hits (loc);
+
+\connect eye_hint_20
+create index regions_index on regions (chrom, start, endpos);
+create index hits_index on hits (loc);

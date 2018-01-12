@@ -1,0 +1,1022 @@
+CREATE DATABASE
+GRANT
+CREATE DATABASE
+GRANT
+You are now connected to database "urinary_bladder_wellington_20" as user "trena".
+CREATE TABLE
+GRANT
+CREATE TABLE
+GRANT
+You are now connected to database "urinary_bladder_hint_20" as user "trena".
+CREATE TABLE
+GRANT
+CREATE TABLE
+GRANT
+
+R version 3.4.1 (2017-06-30) -- "Single Candle"
+Copyright (C) 2017 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> # users can either step through this file, or call this file with 
+> # r -f example.R
+> 
+> # THIS ASSUMES THAT THE TESTHINT DATABASE EXISTS. The recipe for building that
+> # database is in ../dbInitialization/createHintTest.sql
+> 
+> # THIS EXAMPLE USES THE BRAIN HINT OUTPUT MADE BY RUNNING make hint at /scratch/data/footprints
+> 
+> print(date())
+[1] "Fri Aug 11 09:11:21 2017"
+> #-------------------------------------------------------------------------------
+> # set path to hint output 
+> data.path <- "/ssd/mrichard/data/footprints/urinary_bladder_hint_20"
+> #-------------------------------------------------------------------------------
+> # establish database connections:
+> 
+> if(!exists("db.hint"))
++     db.hint <- "urinary_bladder_hint_20_localhost"
+> 
+> if(!exists("db.fimo"))
++     db.fimo <- "fimo_localhost"
+> #-------------------------------------------------------------------------------
+> # Source the libraries
+> source("../src/dependencies.R")
+Loading required package: stats4
+Loading required package: BiocGenerics
+Loading required package: parallel
+
+Attaching package: ‘BiocGenerics’
+
+The following objects are masked from ‘package:parallel’:
+
+    clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,
+    clusterExport, clusterMap, parApply, parCapply, parLapply,
+    parLapplyLB, parRapply, parSapply, parSapplyLB
+
+The following objects are masked from ‘package:stats’:
+
+    IQR, mad, sd, var, xtabs
+
+The following objects are masked from ‘package:base’:
+
+    anyDuplicated, append, as.data.frame, cbind, colMeans, colnames,
+    colSums, do.call, duplicated, eval, evalq, Filter, Find, get, grep,
+    grepl, intersect, is.unsorted, lapply, lengths, Map, mapply, match,
+    mget, order, paste, pmax, pmax.int, pmin, pmin.int, Position, rank,
+    rbind, Reduce, rowMeans, rownames, rowSums, sapply, setdiff, sort,
+    table, tapply, union, unique, unsplit, which, which.max, which.min
+
+Loading required package: S4Vectors
+
+Attaching package: ‘S4Vectors’
+
+The following object is masked from ‘package:base’:
+
+    expand.grid
+
+Loading required package: IRanges
+Loading required package: GenomeInfoDb
+Loading required package: DBI
+> source("../src/dbFunctions.R")
+> source("../src/tableParsing.R")
+> source("../src/tests.R")
+> source("../src/main_Bioc.R")
+> 
+> if(!interactive()){    
++     chromosomes <- paste0("chr",1:10)
++     
++     # Create parallel structure here    
++     library(BiocParallel)    
++     register(MulticoreParam(workers = 10, stop.on.error = FALSE, log = TRUE), default = TRUE)
++ 
++     # Run on all 24 possible chromosomes at once
++     result <- bptry(bplapply(chromosomes,fillAllSamplesByChromosome,
++              dbConnection = db.hint,             
++              fimo = db.fimo,             
++              minid = "urinary_bladder_hint_20.minid",             
++              dbUser = "trena",             
++              dbTable = "urinary_bladder_hint_20",             
++              sourcePath = data.path,             
++              isTest = FALSE,             
++              method = "HINT"))    
++ }
+
+R version 3.4.1 (2017-06-30) -- "Single Candle"
+Copyright (C) 2017 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> # users can either step through this file, or call this file with 
+> # r -f example.R
+> 
+> # THIS ASSUMES THAT THE TESTHINT DATABASE EXISTS. The recipe for building that
+> # database is in ../dbInitialization/createHintTest.sql
+> 
+> # THIS EXAMPLE USES THE BRAIN HINT OUTPUT MADE BY RUNNING make hint at /scratch/data/footprints
+> 
+> print(date())
+[1] "Fri Aug 11 09:11:26 2017"
+> #-------------------------------------------------------------------------------
+> # set path to hint output 
+> data.path <- "/ssd/mrichard/data/footprints/urinary_bladder_wellington_20"
+> #-------------------------------------------------------------------------------
+> # establish database connections:
+> 
+> if(!exists("db.wellington"))
++     db.wellington <- "urinary_bladder_wellington_20_localhost"
+> 
+> if(!exists("db.fimo"))
++     db.fimo <- "fimo_localhost"
+> #-------------------------------------------------------------------------------
+> # Source the libraries
+> source("../src/dependencies.R")
+Loading required package: stats4
+Loading required package: BiocGenerics
+Loading required package: parallel
+
+Attaching package: ‘BiocGenerics’
+
+The following objects are masked from ‘package:parallel’:
+
+    clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,
+    clusterExport, clusterMap, parApply, parCapply, parLapply,
+    parLapplyLB, parRapply, parSapply, parSapplyLB
+
+The following objects are masked from ‘package:stats’:
+
+    IQR, mad, sd, var, xtabs
+
+The following objects are masked from ‘package:base’:
+
+    anyDuplicated, append, as.data.frame, cbind, colMeans, colnames,
+    colSums, do.call, duplicated, eval, evalq, Filter, Find, get, grep,
+    grepl, intersect, is.unsorted, lapply, lengths, Map, mapply, match,
+    mget, order, paste, pmax, pmax.int, pmin, pmin.int, Position, rank,
+    rbind, Reduce, rowMeans, rownames, rowSums, sapply, setdiff, sort,
+    table, tapply, union, unique, unsplit, which, which.max, which.min
+
+Loading required package: S4Vectors
+
+Attaching package: ‘S4Vectors’
+
+The following object is masked from ‘package:base’:
+
+    expand.grid
+
+Loading required package: IRanges
+Loading required package: GenomeInfoDb
+Loading required package: DBI
+> source("../src/dbFunctions.R")
+> source("../src/tableParsing.R")
+> source("../src/tests.R")
+> source("../src/main_Bioc.R")
+> 
+> if(!interactive()){    
++     chromosomes <- paste0("chr",1:10)
++     
++     # Create parallel structure here
++     library(BiocParallel)
++     register(MulticoreParam(workers = 10, stop.on.error = FALSE, log = TRUE), default = TRUE)
++ 
++     # Run on all 24 possible chromosomes at once
++     result <- bptry(bplapply(chromosomes, fillAllSamplesByChromosome,
++              dbConnection = db.wellington,
++              fimo = db.fimo,
++              minid = "urinary_bladder_wellington_20.minid",
++              dbUser = "trena",
++              dbTable = "urinary_bladder_wellington_20",
++              sourcePath = data.path,
++              isTest = FALSE,
++              method = "WELLINGTON"))
++ }
+> 
+> print(bpok(result))
+             message original_error_class 
+                TRUE                 TRUE 
+> print("Database fill complete")
+[1] "Database fill complete"
+> print(date())
+[1] "Fri Aug 11 09:24:42 2017"
+> 
+> 
+> print(bpok(result))
+             message original_error_class 
+                TRUE                 TRUE 
+> print("Database fill complete")
+[1] "Database fill complete"
+> print(date())
+[1] "Fri Aug 11 09:28:05 2017"
+> 
+
+R version 3.4.1 (2017-06-30) -- "Single Candle"
+Copyright (C) 2017 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> # users can either step through this file, or call this file with 
+> # r -f example.R
+> 
+> # THIS ASSUMES THAT THE TESTHINT DATABASE EXISTS. The recipe for building that
+> # database is in ../dbInitialization/createHintTest.sql
+> 
+> # THIS EXAMPLE USES THE BRAIN HINT OUTPUT MADE BY RUNNING make hint at /scratch/data/footprints
+> 
+> print(date())
+[1] "Fri Aug 11 12:18:55 2017"
+> #-------------------------------------------------------------------------------
+> # set path to hint output 
+> data.path <- "/ssd/mrichard/data/footprints/urinary_bladder_hint_20"
+> #-------------------------------------------------------------------------------
+> # establish database connections:
+> 
+> if(!exists("db.hint"))
++     db.hint <- "urinary_bladder_hint_20_localhost"
+> 
+> if(!exists("db.fimo"))
++     db.fimo <- "fimo_localhost"
+> #-------------------------------------------------------------------------------
+> # Source the libraries
+> source("../src/dependencies.R")
+Loading required package: stats4
+Loading required package: BiocGenerics
+Loading required package: parallel
+
+Attaching package: ‘BiocGenerics’
+
+The following objects are masked from ‘package:parallel’:
+
+    clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,
+    clusterExport, clusterMap, parApply, parCapply, parLapply,
+    parLapplyLB, parRapply, parSapply, parSapplyLB
+
+The following objects are masked from ‘package:stats’:
+
+    IQR, mad, sd, var, xtabs
+
+The following objects are masked from ‘package:base’:
+
+    anyDuplicated, append, as.data.frame, cbind, colMeans, colnames,
+    colSums, do.call, duplicated, eval, evalq, Filter, Find, get, grep,
+    grepl, intersect, is.unsorted, lapply, lengths, Map, mapply, match,
+    mget, order, paste, pmax, pmax.int, pmin, pmin.int, Position, rank,
+    rbind, Reduce, rowMeans, rownames, rowSums, sapply, setdiff, sort,
+    table, tapply, union, unique, unsplit, which, which.max, which.min
+
+Loading required package: S4Vectors
+
+Attaching package: ‘S4Vectors’
+
+The following object is masked from ‘package:base’:
+
+    expand.grid
+
+Loading required package: IRanges
+Loading required package: GenomeInfoDb
+Loading required package: DBI
+
+R version 3.4.1 (2017-06-30) -- "Single Candle"
+Copyright (C) 2017 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> source("../src/dbFunctions.R")
+> source("../src/tableParsing.R")
+> source("../src/tests.R")
+> source("../src/main_Bioc.R")
+> 
+> if(!interactive()){    
++     chromosomes <- paste0("chr",c(11:22,"X","Y","MT"))
++     
++     # Create parallel structure here    
++     library(BiocParallel)    
++     register(MulticoreParam(workers = 15, stop.on.error = FALSE, log = TRUE), default = TRUE)
++ 
++     # Run on all 24 possible chromosomes at once
++     result <- bptry(bplapply(chromosomes,fillAllSamplesByChromosome,
++              dbConnection = db.hint,             
++              fimo = db.fimo,             
++              minid = "urinary_bladder_hint_20.minid",             
++              dbUser = "trena",             
++              dbTable = "urinary_bladder_hint_20",             
++              sourcePath = data.path,             
++              isTest = FALSE,             
++              method = "HINT"))    
++ }
+> # users can either step through this file, or call this file with 
+> # r -f example.R
+> 
+> # THIS ASSUMES THAT THE TESTHINT DATABASE EXISTS. The recipe for building that
+> # database is in ../dbInitialization/createHintTest.sql
+> 
+> # THIS EXAMPLE USES THE BRAIN HINT OUTPUT MADE BY RUNNING make hint at /scratch/data/footprints
+> 
+> print(date())
+[1] "Fri Aug 11 12:18:58 2017"
+> #-------------------------------------------------------------------------------
+> # set path to hint output 
+> data.path <- "/ssd/mrichard/data/footprints/urinary_bladder_wellington_20"
+> #-------------------------------------------------------------------------------
+> # establish database connections:
+> 
+> if(!exists("db.wellington"))
++     db.wellington <- "urinary_bladder_wellington_20_localhost"
+> 
+> if(!exists("db.fimo"))
++     db.fimo <- "fimo_localhost"
+> #-------------------------------------------------------------------------------
+> # Source the libraries
+> source("../src/dependencies.R")
+Loading required package: stats4
+Loading required package: BiocGenerics
+Loading required package: parallel
+
+Attaching package: ‘BiocGenerics’
+
+The following objects are masked from ‘package:parallel’:
+
+    clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,
+    clusterExport, clusterMap, parApply, parCapply, parLapply,
+    parLapplyLB, parRapply, parSapply, parSapplyLB
+
+The following objects are masked from ‘package:stats’:
+
+    IQR, mad, sd, var, xtabs
+
+The following objects are masked from ‘package:base’:
+
+    anyDuplicated, append, as.data.frame, cbind, colMeans, colnames,
+    colSums, do.call, duplicated, eval, evalq, Filter, Find, get, grep,
+    grepl, intersect, is.unsorted, lapply, lengths, Map, mapply, match,
+    mget, order, paste, pmax, pmax.int, pmin, pmin.int, Position, rank,
+    rbind, Reduce, rowMeans, rownames, rowSums, sapply, setdiff, sort,
+    table, tapply, union, unique, unsplit, which, which.max, which.min
+
+Loading required package: S4Vectors
+
+Attaching package: ‘S4Vectors’
+
+The following object is masked from ‘package:base’:
+
+    expand.grid
+
+Loading required package: IRanges
+Loading required package: GenomeInfoDb
+Loading required package: DBI
+> source("../src/dbFunctions.R")
+> source("../src/tableParsing.R")
+> source("../src/tests.R")
+> source("../src/main_Bioc.R")
+> 
+> if(!interactive()){    
++     chromosomes <- paste0("chr",c(11:22,"X","Y","MT"))
++     
++     # Create parallel structure here
++     library(BiocParallel)
++     register(MulticoreParam(workers = 15, stop.on.error = FALSE, log = TRUE), default = TRUE)
++ 
++     # Run on all 24 possible chromosomes at once
++     result <- bptry(bplapply(chromosomes, fillAllSamplesByChromosome,
++              dbConnection = db.wellington,
++              fimo = db.fimo,
++              minid = "urinary_bladder_wellington_20.minid",
++              dbUser = "trena",
++              dbTable = "urinary_bladder_wellington_20",
++              sourcePath = data.path,
++              isTest = FALSE,
++              method = "WELLINGTON"))
++ }
+############### LOG OUTPUT ###############
+Task: 15
+Node: 15
+Timestamp: 2017-08-11 12:19:09
+Success: TRUE
+Task duration:
+   user  system elapsed 
+  6.524   0.216   6.738 
+Memory used:
+          used (Mb) gc trigger  (Mb) max used (Mb)
+Ncells 1645647 87.9    2637877 140.9  1850613 98.9
+Vcells 1726302 13.2    3142662  24.0  2552062 19.5
+Log messages:
+stderr and stdout:
+[1] ---- ENCSR813CKU (chrMT) (1/1)
+[1] "Data table read. Merging with Fimo..."
+[1] No rows matching chrMT
+############### LOG OUTPUT ###############
+Task: 15
+Node: 15
+Timestamp: 2017-08-11 12:19:21
+Success: TRUE
+Task duration:
+   user  system elapsed 
+ 19.872   0.444  20.317 
+Memory used:
+          used (Mb) gc trigger  (Mb) max used (Mb)
+Ncells 1645650 87.9    2637877 140.9  1850621 98.9
+Vcells 1726298 13.2    3142662  24.0  2552061 19.5
+Log messages:
+stderr and stdout:
+[1] ---- ENCSR813CKU (chrMT) (1/1)
+[1] "Data table read. Merging with Fimo..."
+[1] No rows matching chrMT
+############### LOG OUTPUT ###############
+Task: 14
+Node: 14
+Timestamp: 2017-08-11 12:21:15
+Success: TRUE
+Task duration:
+   user  system elapsed 
+ 69.384   7.444 131.119 
+Memory used:
+          used (Mb) gc trigger  (Mb) max used (Mb)
+Ncells 1646633 88.0    2637877 140.9  1850613 98.9
+Vcells 1728819 13.2    3142662  24.0  2552062 19.5
+Log messages:
+stderr and stdout:
+[1] ---- ENCSR813CKU (chrY) (1/1)
+[1] "Data table read. Merging with Fimo..."
+[1] "Merged. Now splitting table to regions and hits..."
+[1] filling 22646 regions, 32699 hits for ENCSR813CKU
+[1] 2788506 hits in 1942522 regions
+############### LOG OUTPUT ###############
+Task: 14
+Node: 14
+Timestamp: 2017-08-11 12:21:19
+Success: TRUE
+Task duration:
+   user  system elapsed 
+ 83.548   8.432 136.681 
+Memory used:
+          used (Mb) gc trigger  (Mb) max used (Mb)
+Ncells 1646636 88.0    2637877 140.9  1850621 98.9
+Vcells 1728815 13.2    3142662  24.0  2552061 19.5
+Log messages:
+stderr and stdout:
+[1] ---- ENCSR813CKU (chrY) (1/1)
+[1] "Data table read. Merging with Fimo..."
+[1] "Merged. Now splitting table to regions and hits..."
+[1] filling 35995 regions, 56180 hits for ENCSR813CKU
+[1] 8533025 hits in 5250118 regions
+############### LOG OUTPUT ###############
+Task: 12
+Node: 12
+Timestamp: 2017-08-11 12:25:20
+Success: TRUE
+Task duration:
+   user  system elapsed 
+142.348  51.960 374.073 
+Memory used:
+          used (Mb) gc trigger  (Mb) max used (Mb)
+Ncells 1646634 88.0    2637877 140.9  1850613 98.9
+Vcells 1728820 13.2    3142662  24.0  2552062 19.5
+Log messages:
+stderr and stdout:
+[1] ---- ENCSR813CKU (chr22) (1/1)
+[1] "Data table read. Merging with Fimo..."
+[1] "Merged. Now splitting table to regions and hits..."
+[1] filling 127667 regions, 184165 hits for ENCSR813CKU
+[1] 2972671 hits in 2070189 regions
+############### LOG OUTPUT ###############
+Task: 12
+Node: 12
+Timestamp: 2017-08-11 12:25:52
+Success: TRUE
+Task duration:
+   user  system elapsed 
+161.056  53.376 407.296 
+Memory used:
+          used (Mb) gc trigger  (Mb) max used (Mb)
+Ncells 1646637 88.0    2637877 140.9  1850621 98.9
+Vcells 1728816 13.2    3142662  24.0  2552061 19.5
+Log messages:
+stderr and stdout:
+[1] ---- ENCSR813CKU (chr22) (1/1)
+[1] "Data table read. Merging with Fimo..."
+[1] "Merged. Now splitting table to regions and hits..."
+[1] filling 302458 regions, 502907 hits for ENCSR813CKU
+[1] 9035932 hits in 5552576 regions
+############### LOG OUTPUT ###############
+Task: 11
+Node: 11
+Timestamp: 2017-08-11 12:26:11
+Success: TRUE
+Task duration:
+   user  system elapsed 
+155.792  31.384 426.621 
+Memory used:
+          used (Mb) gc trigger  (Mb) max used (Mb)
+Ncells 1646638 88.0    2637877 140.9  1850621 98.9
+Vcells 1728817 13.2    3142662  24.0  2552061 19.5
+Log messages:
+stderr and stdout:
+[1] ---- ENCSR813CKU (chr21) (1/1)
+[1] "Data table read. Merging with Fimo..."
+[1] "Merged. Now splitting table to regions and hits..."
+[1] filling 212410 regions, 346651 hits for ENCSR813CKU
+[1] 9382583 hits in 5764986 regions
+############### LOG OUTPUT ###############
+Task: 11
+Node: 11
+Timestamp: 2017-08-11 12:26:32
+Success: TRUE
+Task duration:
+   user  system elapsed 
+140.436  47.464 447.023 
+Memory used:
+          used (Mb) gc trigger  (Mb) max used (Mb)
+Ncells 1646635 88.0    2637877 140.9  1850613 98.9
+Vcells 1728821 13.2    3142662  24.0  2552062 19.5
+Log messages:
+stderr and stdout:
+[1] ---- ENCSR813CKU (chr21) (1/1)
+[1] "Data table read. Merging with Fimo..."
+[1] "Merged. Now splitting table to regions and hits..."
+[1] filling 87680 regions, 125952 hits for ENCSR813CKU
+[1] 3098623 hits in 2157869 regions
+############### LOG OUTPUT ###############
+Task: 10
+Node: 10
+Timestamp: 2017-08-11 12:27:05
+Success: TRUE
+Task duration:
+   user  system elapsed 
+202.496  59.080 477.374 
+Memory used:
+          used (Mb) gc trigger  (Mb) max used (Mb)
+Ncells 1646636 88.0    2637877 140.9  1850613 98.9
+Vcells 1728822 13.2    3142662  24.0  2552062 19.5
+Log messages:
+stderr and stdout:
+[1] ---- ENCSR813CKU (chr20) (1/1)
+[1] "Data table read. Merging with Fimo..."
+[1] "Merged. Now splitting table to regions and hits..."
+[1] filling 157570 regions, 226563 hits for ENCSR813CKU
+[1] 3325186 hits in 2315439 regions
+############### LOG OUTPUT ###############
+Task: 10
+Node: 10
+Timestamp: 2017-08-11 12:30:04
+Success: TRUE
+Task duration:
+   user  system elapsed 
+222.840  70.828 639.431 
+Memory used:
+          used (Mb) gc trigger  (Mb) max used (Mb)
+Ncells 1646639 88.0    2637877 140.9  1850621 98.9
+Vcells 1728818 13.2    3142662  24.0  2552061 19.5
+Log messages:
+stderr and stdout:
+[1] ---- ENCSR813CKU (chr20) (1/1)
+[1] "Data table read. Merging with Fimo..."
+[1] "Merged. Now splitting table to regions and hits..."
+[1] filling 396660 regions, 650219 hits for ENCSR813CKU
+[1] 10032802 hits in 6161646 regions
+############### LOG OUTPUT ###############
+Task: 8
+Node: 8
+Timestamp: 2017-08-11 12:32:40
+Success: TRUE
+Task duration:
+   user  system elapsed 
+282.012  80.000 807.781 
+Memory used:
+          used (Mb) gc trigger  (Mb) max used (Mb)
+Ncells 1646640 88.0    2637877 140.9  1850621 98.9
+Vcells 1728819 13.2    3142662  24.0  2552061 19.5
+Log messages:
+stderr and stdout:
+[1] ---- ENCSR813CKU (chr18) (1/1)
+[1] "Data table read. Merging with Fimo..."
+[1] "Merged. Now splitting table to regions and hits..."
+[1] filling 309544 regions, 493723 hits for ENCSR813CKU
+[1] 10526525 hits in 6471190 regions
+############### LOG OUTPUT ###############
+Task: 8
+Node: 8
+Timestamp: 2017-08-11 12:36:07
+Success: TRUE
+Task duration:
+    user   system  elapsed 
+ 272.060  122.668 1017.463 
+Memory used:
+          used (Mb) gc trigger  (Mb) max used (Mb)
+Ncells 1646637 88.0    2637877 140.9  1850613 98.9
+Vcells 1728823 13.2    3142662  24.0  2552062 19.5
+Log messages:
+stderr and stdout:
+[1] ---- ENCSR813CKU (chr18) (1/1)
+[1] "Data table read. Merging with Fimo..."
+[1] "Merged. Now splitting table to regions and hits..."
+[1] filling 121524 regions, 172747 hits for ENCSR813CKU
+[1] 3497933 hits in 2436963 regions
+############### LOG OUTPUT ###############
+Task: 9
+Node: 9
+Timestamp: 2017-08-11 12:37:02
+Success: TRUE
+Task duration:
+    user   system  elapsed 
+ 263.548  133.128 1073.947 
+Memory used:
+          used (Mb) gc trigger  (Mb) max used (Mb)
+Ncells 1646638 88.0    2637877 140.9  1850613 98.9
+Vcells 1728824 13.2    3142662  24.0  2552062 19.5
+Log messages:
+stderr and stdout:
+[1] ---- ENCSR813CKU (chr19) (1/1)
+[1] "Data table read. Merging with Fimo..."
+[1] "Merged. Now splitting table to regions and hits..."
+[1] filling 244428 regions, 352333 hits for ENCSR813CKU
+[1] 3850266 hits in 2681391 regions
+############### LOG OUTPUT ###############
+Task: 9
+Node: 9
+Timestamp: 2017-08-11 12:37:39
+Success: TRUE
+Task duration:
+    user   system  elapsed 
+ 280.256  123.364 1098.150 
+Memory used:
+          used (Mb) gc trigger  (Mb) max used (Mb)
+Ncells 1646641 88.0    2637877 140.9  1850621 98.9
+Vcells 1728820 13.2    3142662  24.0  2552061 19.5
+Log messages:
+stderr and stdout:
+[1] ---- ENCSR813CKU (chr19) (1/1)
+[1] "Data table read. Merging with Fimo..."
+[1] "Merged. Now splitting table to regions and hits..."
+[1] filling 624376 regions, 1070248 hits for ENCSR813CKU
+[1] 11596773 hits in 7095566 regions
+############### LOG OUTPUT ###############
+Task: 5
+Node: 5
+Timestamp: 2017-08-11 12:54:07
+Success: TRUE
+Task duration:
+    user   system  elapsed 
+ 330.744  166.528 2092.366 
+Memory used:
+          used (Mb) gc trigger  (Mb) max used (Mb)
+Ncells 1646642 88.0    2637877 140.9  1850621 98.9
+Vcells 1728821 13.2    3142662  24.0  2552061 19.5
+Log messages:
+stderr and stdout:
+[1] ---- ENCSR813CKU (chr15) (1/1)
+[1] "Data table read. Merging with Fimo..."
+[1] "Merged. Now splitting table to regions and hits..."
+[1] filling 468115 regions, 763563 hits for ENCSR813CKU
+[1] 12360336 hits in 7563681 regions
+############### LOG OUTPUT ###############
+Task: 7
+Node: 7
+Timestamp: 2017-08-11 12:55:00
+Success: TRUE
+Task duration:
+    user   system  elapsed 
+ 328.472  163.816 2143.505 
+Memory used:
+          used (Mb) gc trigger  (Mb) max used (Mb)
+Ncells 1646639 88.0    2637877 140.9  1850613 98.9
+Vcells 1728825 13.2    3142662  24.0  2552062 19.5
+Log messages:
+stderr and stdout:
+[1] ---- ENCSR813CKU (chr17) (1/1)
+[1] "Data table read. Merging with Fimo..."
+[1] "Merged. Now splitting table to regions and hits..."
+[1] filling 289892 regions, 416120 hits for ENCSR813CKU
+[1] 4266386 hits in 2971283 regions
+############### LOG OUTPUT ###############
+Task: 6
+Node: 6
+Timestamp: 2017-08-11 12:55:14
+Success: TRUE
+Task duration:
+    user   system  elapsed 
+ 345.384  165.616 2163.863 
+Memory used:
+          used (Mb) gc trigger  (Mb) max used (Mb)
+Ncells 1646643 88.0    2637877 140.9  1850621 98.9
+Vcells 1728822 13.2    3142662  24.0  2552061 19.5
+Log messages:
+stderr and stdout:
+[1] ---- ENCSR813CKU (chr16) (1/1)
+[1] "Data table read. Merging with Fimo..."
+[1] "Merged. Now splitting table to regions and hits..."
+[1] filling 520568 regions, 869261 hits for ENCSR813CKU
+[1] 13229597 hits in 8084249 regions
+############### LOG OUTPUT ###############
+Task: 3
+Node: 3
+Timestamp: 2017-08-11 12:55:56
+Success: TRUE
+Task duration:
+    user   system  elapsed 
+ 360.040  181.356 2204.423 
+Memory used:
+          used (Mb) gc trigger  (Mb) max used (Mb)
+Ncells 1646644 88.0    2637877 140.9  1850621 98.9
+Vcells 1728823 13.2    3142662  24.0  2552061 19.5
+Log messages:
+stderr and stdout:
+[1] ---- ENCSR813CKU (chr13) (1/1)
+[1] "Data table read. Merging with Fimo..."
+[1] "Merged. Now splitting table to regions and hits..."
+[1] filling 346112 regions, 557536 hits for ENCSR813CKU
+[1] 13787133 hits in 8430361 regions
+############### LOG OUTPUT ###############
+Task: 4
+Node: 4
+Timestamp: 2017-08-11 12:56:46
+Success: TRUE
+Task duration:
+    user   system  elapsed 
+ 342.796  200.076 2251.844 
+Memory used:
+          used (Mb) gc trigger  (Mb) max used (Mb)
+Ncells 1646640 88.0    2637877 140.9  1850613 98.9
+Vcells 1728826 13.2    3142662  24.0  2552062 19.5
+Log messages:
+stderr and stdout:
+[1] ---- ENCSR813CKU (chr14) (1/1)
+[1] "Data table read. Merging with Fimo..."
+[1] "Merged. Now splitting table to regions and hits..."
+[1] filling 178941 regions, 256719 hits for ENCSR813CKU
+[1] 4523105 hits in 3150224 regions
+############### LOG OUTPUT ###############
+Task: 5
+Node: 5
+Timestamp: 2017-08-11 12:57:04
+Success: TRUE
+Task duration:
+    user   system  elapsed 
+ 322.276  201.212 2272.427 
+Memory used:
+          used (Mb) gc trigger  (Mb) max used (Mb)
+Ncells 1646641 88.0    2637877 140.9  1850613 98.9
+Vcells 1728827 13.2    3142662  24.0  2552062 19.5
+Log messages:
+stderr and stdout:
+[1] ---- ENCSR813CKU (chr15) (1/1)
+[1] "Data table read. Merging with Fimo..."
+[1] "Merged. Now splitting table to regions and hits..."
+[1] filling 183297 regions, 262332 hits for ENCSR813CKU
+[1] 4785437 hits in 3333521 regions
+############### LOG OUTPUT ###############
+Task: 3
+Node: 3
+Timestamp: 2017-08-11 12:57:26
+Success: TRUE
+Task duration:
+    user   system  elapsed 
+ 348.256  194.164 2292.425 
+Memory used:
+          used (Mb) gc trigger  (Mb) max used (Mb)
+Ncells 1646642 88.0    2637877 140.9  1850613 98.9
+Vcells 1728828 13.2    3142662  24.0  2552062 19.5
+Log messages:
+stderr and stdout:
+[1] ---- ENCSR813CKU (chr13) (1/1)
+[1] "Data table read. Merging with Fimo..."
+[1] "Merged. Now splitting table to regions and hits..."
+[1] filling 128297 regions, 184354 hits for ENCSR813CKU
+[1] 4969791 hits in 3665793 regions
+############### LOG OUTPUT ###############
+Task: 6
+Node: 6
+Timestamp: 2017-08-11 12:57:28
+Success: TRUE
+Task duration:
+    user   system  elapsed 
+ 333.848  197.120 2292.644 
+Memory used:
+          used (Mb) gc trigger  (Mb) max used (Mb)
+Ncells 1646643 88.0    2637877 140.9  1850613 98.9
+Vcells 1728829 13.2    3142662  24.0  2552062 19.5
+Log messages:
+stderr and stdout:
+[1] ---- ENCSR813CKU (chr16) (1/1)
+[1] "Data table read. Merging with Fimo..."
+[1] "Merged. Now splitting table to regions and hits..."
+[1] filling 203975 regions, 295199 hits for ENCSR813CKU
+[1] 5264990 hits in 3665793 regions
+############### LOG OUTPUT ###############
+Task: 4
+Node: 4
+Timestamp: 2017-08-11 12:58:07
+Success: TRUE
+Task duration:
+    user   system  elapsed 
+ 363.968  199.428 2338.258 
+Memory used:
+          used (Mb) gc trigger  (Mb) max used (Mb)
+Ncells 1646645 88.0    2637877 140.9  1850621 98.9
+Vcells 1728824 13.2    3142662  24.0  2552061 19.5
+Log messages:
+stderr and stdout:
+[1] ---- ENCSR813CKU (chr14) (1/1)
+[1] "Data table read. Merging with Fimo..."
+[1] "Merged. Now splitting table to regions and hits..."
+[1] filling 460847 regions, 751179 hits for ENCSR813CKU
+[1] 14538312 hits in 9614004 regions
+############### LOG OUTPUT ###############
+Task: 7
+Node: 7
+Timestamp: 2017-08-11 12:58:12
+Success: TRUE
+Task duration:
+    user   system  elapsed 
+ 368.284  200.844 2342.445 
+Memory used:
+          used (Mb) gc trigger  (Mb) max used (Mb)
+Ncells 1646646 88.0    2637877 140.9  1850621 98.9
+Vcells 1728825 13.2    3142662  24.0  2552061 19.5
+Log messages:
+stderr and stdout:
+[1] ---- ENCSR813CKU (chr17) (1/1)
+[1] "Data table read. Merging with Fimo..."
+[1] "Merged. Now splitting table to regions and hits..."
+[1] filling 722796 regions, 1197364 hits for ENCSR813CKU
+[1] 15735676 hits in 9614004 regions
+############### LOG OUTPUT ###############
+Task: 1
+Node: 1
+Timestamp: 2017-08-11 13:08:24
+Success: TRUE
+Task duration:
+    user   system  elapsed 
+ 451.928  206.880 2948.713 
+Memory used:
+          used (Mb) gc trigger  (Mb) max used (Mb)
+Ncells 1646644 88.0    2637877 140.9  1850613 98.9
+Vcells 1728830 13.2    3142662  24.0  2552062 19.5
+Log messages:
+stderr and stdout:
+[1] ---- ENCSR813CKU (chr11) (1/1)
+[1] "Data table read. Merging with Fimo..."
+[1] "Merged. Now splitting table to regions and hits..."
+[1] filling 299915 regions, 432493 hits for ENCSR813CKU
+[1] 5697483 hits in 3965708 regions
+############### LOG OUTPUT ###############
+Task: 2
+Node: 2
+Timestamp: 2017-08-11 13:09:37
+Success: TRUE
+Task duration:
+    user   system  elapsed 
+ 498.400  238.596 3020.500 
+Memory used:
+          used (Mb) gc trigger  (Mb) max used (Mb)
+Ncells 1646647 88.0    2637877 140.9  1850621 98.9
+Vcells 1728826 13.2    3142662  24.0  2552061 19.5
+Log messages:
+stderr and stdout:
+[1] ---- ENCSR813CKU (chr12) (1/1)
+[1] "Data table read. Merging with Fimo..."
+[1] "Merged. Now splitting table to regions and hits..."
+[1] filling 715314 regions, 1171633 hits for ENCSR813CKU
+[1] 16907309 hits in 10329318 regions
+############### LOG OUTPUT ###############
+Task: 2
+Node: 2
+Timestamp: 2017-08-11 13:10:29
+Success: TRUE
+Task duration:
+    user   system  elapsed 
+ 442.936  266.148 3079.074 
+Memory used:
+          used (Mb) gc trigger  (Mb) max used (Mb)
+Ncells 1646645 88.0    2637877 140.9  1850613 98.9
+Vcells 1728831 13.2    3142662  24.0  2552062 19.5
+Log messages:
+stderr and stdout:
+[1] ---- ENCSR813CKU (chr12) (1/1)
+[1] "Data table read. Merging with Fimo..."
+[1] "Merged. Now splitting table to regions and hits..."
+[1] filling 278590 regions, 399470 hits for ENCSR813CKU
+[1] 6096953 hits in 4244298 regions
+############### LOG OUTPUT ###############
+Task: 1
+Node: 1
+Timestamp: 2017-08-11 13:11:20
+Success: TRUE
+Task duration:
+    user   system  elapsed 
+ 524.168  270.584 3127.956 
+Memory used:
+          used (Mb) gc trigger  (Mb) max used (Mb)
+Ncells 1646648 88.0    2637877 140.9  1850621 98.9
+Vcells 1728827 13.2    3142662  24.0  2552061 19.5
+Log messages:
+stderr and stdout:
+[1] ---- ENCSR813CKU (chr11) (1/1)
+[1] "Data table read. Merging with Fimo..."
+[1] "Merged. Now splitting table to regions and hits..."
+[1] filling 769970 regions, 1269357 hits for ENCSR813CKU
+[1] 18176666 hits in 11099288 regions
+############### LOG OUTPUT ###############
+Task: 13
+Node: 13
+Timestamp: 2017-08-11 13:12:39
+Success: TRUE
+Task duration:
+    user   system  elapsed 
+ 531.936  387.992 3209.293 
+Memory used:
+          used (Mb) gc trigger  (Mb) max used (Mb)
+Ncells 1646646 88.0    2637877 140.9  1850613 98.9
+Vcells 1728832 13.2    3142662  24.0  2552062 19.5
+Log messages:
+stderr and stdout:
+[1] ---- ENCSR813CKU (chrX) (1/1)
+[1] "Data table read. Merging with Fimo..."
+[1] "Merged. Now splitting table to regions and hits..."
+[1] filling 118742 regions, 170968 hits for ENCSR813CKU
+[1] 6267921 hits in 4363040 regions
+> 
+> print(bpok(result))
+ [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE
+> print("Database fill complete")
+[1] "Database fill complete"
+> print(date())
+[1] "Fri Aug 11 13:12:39 2017"
+> 
+############### LOG OUTPUT ###############
+Task: 13
+Node: 13
+Timestamp: 2017-08-11 13:13:11
+Success: TRUE
+Task duration:
+    user   system  elapsed 
+ 549.996  358.500 3240.452 
+Memory used:
+          used (Mb) gc trigger  (Mb) max used (Mb)
+Ncells 1646649 88.0    2637877 140.9  1850621 98.9
+Vcells 1728828 13.2    3142662  24.0  2552061 19.5
+Log messages:
+stderr and stdout:
+[1] ---- ENCSR813CKU (chrX) (1/1)
+[1] "Data table read. Merging with Fimo..."
+[1] "Merged. Now splitting table to regions and hits..."
+[1] filling 324701 regions, 530383 hits for ENCSR813CKU
+[1] 18707049 hits in 11423989 regions
+> 
+> print(bpok(result))
+ [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE
+> print("Database fill complete")
+[1] "Database fill complete"
+> print(date())
+[1] "Fri Aug 11 13:13:11 2017"
+> 
