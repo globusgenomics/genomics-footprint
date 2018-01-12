@@ -18,13 +18,13 @@ else if (database == "skin_hint_20") {
     dbname = "skin_hint_20"
     host = "bdds-rds.globusgenomics.org"}
 ```
-- Prepare your footprint files to your local directory
+- Prepare your footprint files in your local directory
 
-- Run the database creation shell script
+- Run the database creation shell script in [skin_20](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/skin_20)
 ```
 ./create_dbs_test.sh
 ```
-- Run the master scripts
+- Run the master scripts in [skin_20](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/skin_20)
 ```
 nohup R -f hint_1.R &
 nohup R -f wellington_1.R &
@@ -70,7 +70,7 @@ aws s3 cp ./skin_wellington_20.dump s3://bdds-public/index_dbs/
 aws s3 cp ./skin_hint_20.dump s3://bdds-public/index_dbs/
 ```
 
-- Here is the snapshot of some of the database created in bddsrds.globusgenomics.org:
+- Here is the snapshot of some of the database we created in bddsrds.globusgenomics.org:
 
 ```
 List of databases
