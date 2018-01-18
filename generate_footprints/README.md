@@ -7,14 +7,14 @@ Each step of the process will be laid out such that any user logged on to the sy
 
 ## Table of Contents
 
-- [Screenshot of Workflow](#Screenshot-of-Workflow)
+- [Screenshot of Workflow](#screenshot-of-workflow)
 - [Test MINID](#Test-MINID)
 - [Process steps](#Process-steps)
-    - [Log on to BDDS Globus Genomics](#Log-on-to-BDDS-Globus-Genomics)
-    - [Generate API Key](#Generate-API-Key)
-    - [Import published workflows](#Import-publised-workflows)
-    - [Execute analysis](#Execute-analysis)
-    - [View results](#View-results)
+    - [Log on to BDDS Globus Genomics](#log-on-to-bdds-globus-genomics)
+    - [Generate API Key](#generate-api-key)
+    - [Import published workflows](#import-publised-workflows)
+    - [Execute analysis](#execute-analysis)
+    - [View results](#view-results)
 
 ## Screenshot of Workflow
 
