@@ -34,9 +34,29 @@ Follow along each step to launch the footprint generation master workflow.
 
 ### Log on to BDDS Globus Genomics
 
-Users will need to log on to https://bdds.globusgenomics.org. Only users with access to the instance will be allowed to submit jobs. If you do not have a user id, you will need to create one by reaching out to support@globus.org 
+Users will need to log on to https://bdds.globusgenomics.org. Only users with access to the instance will be allowed to submit jobs. If you do not have a user id, you will need to create one by reaching out to support@globus.org with a subject line: "Request to add user to https://bdds.globusgenomics.org".
 
 ### Generate API Key
+
+Once logged in, if this is the first time you are logging in or submitting the Footprints workflow and have not generated an API key before, you will need to create one now. If you already have an API key for the https://bdds.globusgenomics.org, then you can skip this step.
+
+ 1) Click on the "User" menu item in the top of the page:
+ 
+ ![Screenshot](user_menu.png)
+ 
+ 2) Click on the "Preferences" sub-menu item:
+ 
+ ![Screenshot](preferences_submenu.png)
+ 
+ 3) Select the "Manage API key" item in the next page:
+ 
+ ![Screenshot](manage_api_key.png)
+ 
+ 4) If you do not have an API key, "None" will be shown in your landing page. You can click the "Create new key" button and one will be generated and shown to you in the screen.
+ 
+ ![Screenshot](generate_api_key.png)
+ 
+ 5) You can go back to the main page at: https://bdds.globusgenomics.org
 
 ### Import published workflows
 
