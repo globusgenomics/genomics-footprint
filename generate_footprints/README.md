@@ -76,7 +76,7 @@ For each workflow in the list above, follow these steps to import to your enviro
  1) Click on the workflow's link (above i.e. "Footprints MASTER Workflow")
  2) Select the "Import workflow" icon (green + icon)
  
- ![Screenshot](import_workflow.png)
+ ![Screenshot](import_workflows.png)
 
 ### Execute analysis
 
