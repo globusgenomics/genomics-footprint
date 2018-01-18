@@ -80,6 +80,21 @@ For each workflow in the list above, follow these steps to import to your enviro
 
 ### Execute analysis
 
-If you have previously completed the above required steps, you should be able to execute the analysis. The analysis can take a few hours to download the data for the MINID, perform alignment and generate footprints for each of the patients and its replicates of the tissue type.
+If you have completed the above required steps, you should be able to execute the analysis. The analysis can take a few hours to download the data for the MINID, perform alignment and generate footprints for each of the patients and its replicates of the tissue type.
 
+ 1) Go to your [workflow environment page](https://bdds.globusgenomics.org/workflow)
+ 2) You should see at least 4 workflows which you have imported:
+ 
+ ![Screenshot](list_of_workflows.png)
+ 
+ 3) Select "Run" option for the workflow "imported: Footprints MASTER Workflow"
+ 
+ ![Screenshot](master_workflow_run_option.png)
+ 
+ 4) Click on the "Run workflow" option. The MINID has been entered for you.
+ 
+ ![Screenshot](master_workflow_execute.png)
+ 
+That is all you need to do. You should now see a series of jobs appear in your history panel. These jobs are getting queued up and will start running as soon as resources become available. Once the items in the history become green, your data will have been generated.
+ 
 ### View results
