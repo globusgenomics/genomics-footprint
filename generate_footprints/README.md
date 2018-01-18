@@ -12,7 +12,7 @@ Each step of the process will be laid out such that any user logged on to the sy
 - [Process steps](#Process-steps)
     - [Log on to BDDS Globus Genomics](#log-on-to-bdds-globus-genomics)
     - [Generate API Key](#generate-api-key)
-    - [Import published workflows](#import-publised-workflows)
+    - [Import published workflows](#import-published-workflows)
     - [Execute analysis](#execute-analysis)
     - [View results](#view-results)
 
