@@ -60,6 +60,26 @@ Once logged in, if this is the first time you are logging in or submitting the F
 
 ### Import published workflows
 
+Next you will need to import all needed workflows into your environment. If you have previously imported these workflows, you do not need to import them again. 
+
+NOTE - If you modify any of the workflows or rename the workflows you import, there is a strong possibility that your submission will not work. If you would like to modify a workflow and generate a new set of workflows with different tools or parameters, please contact us at support@globus.org.
+ 
+You will need import each of the following workflows:
+ 
+ * [Footprints MASTER Workflow](https://bdds.globusgenomics.org/u/arodri1215/w/trena-master-workflow)
+ * [SNAP_BAG_MASTER_v.1.1.0](https://bdds.globusgenomics.org/u/arodri1215/w/copy-of-snapbagmasterv100)
+ * [DNAse-footprints-singlesample-bamInput_wellington_hint]( https://bdds.globusgenomics.org/u/arodri1215/w/imported-dnase-footprints-singlesample-baminputwellingtonhint)
+ * [snap_from_bag](https://bdds.globusgenomics.org/u/arodri1215/w/snapfrombag)
+
+For each workflow in the list above, follow these steps to import to your environment:
+
+ 1) Click on the workflow's link (above i.e. "Footprints MASTER Workflow")
+ 2) Select the "Import workflow" icon (green + icon)
+ 
+ ![Screenshot](import_workflow.png)
+
 ### Execute analysis
+
+If you have previously completed the above required steps, you should be able to execute the analysis. The analysis can take a few hours to download the data for the MINID, perform alignment and generate footprints for each of the patients and its replicates of the tissue type.
 
 ### View results
