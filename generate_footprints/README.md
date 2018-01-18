@@ -18,15 +18,23 @@ Each step of the process will be laid out such that any user logged on to the sy
 
 ## Screenshot of Workflow
 
-The workflow consists of one master workflow which manages the sub-workflows. The input to the master workflow is the MINID for the tissue type you wish to generate footprints for. The MINIDs represent a BDbag for the tissue type which contains the DNAse data from the ENCODE database. These MINIDs and BDbags have been previously generated. The red box in the master workflow submits in parallel the alignment sub-workflow for each patient in the tissue type. Each patient may contain 1 to many replicates, thus, each replicate must be individually aligned (gray box). Once the replicates for a patient are aligned, they are merged to a single alignment file representing a patient. When all merged patient alignemnt files are completed (red box) an alignemnts BDbag is generated and used as input to generate the footprints (green box).
+The workflow consists of one master workflow which manages the sub-workflows. The input to the master workflow is the MINID for the tissue type you wish to generate footprints for. The MINIDs represent a BDbag for the tissue type which contains the DNAse data from the ENCODE database. These MINIDs and BDbags have been previously generated. The red box in the master workflow submits in parallel the alignment sub-workflow for each patient in the tissue type. Each patient may contain 1 to many replicates, thus, each replicate must be individually aligned and sorted (gray box). Once the replicates for a patient are aligned, they are merged to a single alignment file representing a patient. When all merged patient alignemnt files are completed (red box) an alignemnts BDbag is generated and used as input to generate the footprints (green box).
 
 ![Screenshot](Figure5c.png)
 
 ## Test MIND
 
+We provide a MINID for the Urinary bladder tissue type. Although this tissue type is small, footprint search and generation process may take several hours. The MINID for urinary bladder is: ark:/57799/b9nd50
+
+![Screenshot](bdds_minid_urinary_bladder.png)
+
 ## Process steps
 
+Follow along each step to launch the footprint generation master workflow.
+
 ### Log on to BDDS Globus Genomics
+
+Users will need to log on to https://bdds.globusgenomics.org. Only users with access to the instance will be allowed to submit jobs. If you do not have a user id, you will need to create one by reaching out to support@globus.org 
 
 ### Generate API Key
 
