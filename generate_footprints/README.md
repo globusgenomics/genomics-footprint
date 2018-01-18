@@ -14,7 +14,7 @@ Each step of the process will be laid out such that any user logged on to the sy
     - [Generate API Key](#generate-api-key)
     - [Import published workflows](#import-published-workflows)
     - [Execute analysis](#execute-analysis)
-    - [View results](#view-results)
+    - [Results](#results)
 
 ## Screenshot of Workflow
 
@@ -97,4 +97,8 @@ If you have completed the above required steps, you should be able to execute th
  
 That is all you need to do. You should now see a series of jobs appear in your history panel. These jobs are getting queued up and will start running as soon as resources become available. Once the items in the history become green, your data will have been generated.
  
-### View results
+### Results
+
+The output for the master workflow is a BDbag for the tissue type used as input. The output contains the footprints generated in the workflow. The BDbag and MINID for the sample submitted in this README file can be located at: ark:/57799/b9h38s
+
+![Screenshot](bdds_minid_urinary_bladder_footprints.png)
