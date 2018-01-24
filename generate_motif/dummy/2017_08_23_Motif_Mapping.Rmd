@@ -1,0 +1,583 @@
+---
+title: "2017_08_23 Motif Mapping"
+author: "Matt Richards"
+date: "8/23/2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introduction
+
+We've now got a family of databases using the FIMO from July 27 (2017_07_27_fimo) and we want to actually use them with trena, among other tools. In order to do so, we need to actually create a mapping between them. This is tricky because we have to not only map TFs to motifs, but then map those motifs to other motifs; in other words, because we've used TOMTOM to find "redundant" motifs, our "non-redundant" set must not only map to their own TFs but also the TFs of the redundant motifs. Though we've done this previously in `TF_Motif_Mapping.Rmd`, we only did it for JASPAR-HOCOMOCO; now we also have UniPROBE and SwissRegulon to consider. So the basic problem is we need to take into account our entire mapping of redundancies, such that our non-redundant set is mapped to all the redundant motifs. 
+
+Complicating this matter is the fact that we also have a previous mapping from our "German Truck" table; so once we've determined our own mapping, we much also necessarily incorporate the mappings from this table. 
+
+A final complication: the motif IDs in a .MEME file are more lengthy than the ordinary IDs; thus, the information we'll be pulling for the motif IDs will have to be mapped to the IDs used in the FIMO database. Thus, this will be our final task. To summarize, we will:
+
+1. Create a table with a comprehensive mapping of ALL non-redundant motifs from JASPAR/HOCOMOCO/UniPROBE/SwissRegulon to ALL redundant motifs from the same database.This will be known as "Table.1"
+2. Using Table.1 as a guide, create a comprehensive mapping of ALL the non-redundant motifs to ALL the TFs. This will only involve the 1:1 mappings in MotifDb at this stage, thus it will initially have the same length as the entire list of redundant motifs from all 4 DBs. The final product will filter out duplicates; this result will be known as "Table.2"
+3. Starting with Table.2, add on the information from Seth's table to make a unified table and remove duplicates; this will give us "Table.3"
+4. Using Paul's MEME-file writer as a guide, create a comprehensive mapping between our non-redundant motif IDs and their "full" motif names as used in FIMO. We won't save this intermediate mapping, but we'll combine it with "Table.3" to create our final product, "Motif.TF.Map"
+
+**An additional consideration: we would benefit from adding ENSEMBL gene IDs to our mapping at some point; these are already in Seth's table, so we will simply need to add them for our own**
+
+## Constructing Table.1
+
+For the first part, we'll need to read in our TOMTOM mappings. We have 5 relevant mappings:
+
+1. HOCOMOCO to JASPAR, human
+2. HOCOMOCO to JASPAR, mouse
+3. UniPROBE to JASPAR/HOCOMOCO
+4. SwissRegulon to JASPAR/HOCOMOCO
+5. SwissRegulon to UniPROBE
+
+Let's read all of those in:
+
+```{r message = FALSE, warning=FALSE}
+library(dplyr)
+name.vec <- c("Query.ID", "Target.ID", "Optimal.offset", "Pvalue","Evalue","Qvalue","Overlap","Query.consensus","Target.consensus","Orientation")
+
+# All of HOCOMOCO to JASPAR
+human.hoco <- read.table(file = "./TOMTOM/hocomoco_jaspar_human/tomtom.txt", stringsAsFactors = FALSE)
+mouse.hoco <- read.table(file = "./TOMTOM/hocomoco_jaspar_mouse/tomtom.txt", stringsAsFactors = FALSE)
+all.hoco <- rbind(human.hoco,mouse.hoco)
+names(all.hoco) <- name.vec
+
+# UniPROBE to JASPAR/HOCOMOCO and SwissRegulon to JASPAR/HOCOMOCO
+uniprobe <- read.table(file = "./TOMTOM/uniprot_compare/tomtom.txt", stringsAsFactors = FALSE)
+swissreg <- read.table(file = "./TOMTOM/swiss_regulon_compare/tomtom.txt", stringsAsFactors = FALSE)
+names(uniprobe) <- name.vec
+names(swissreg) <- name.vec
+
+# SwissRegulon to UniPROBE
+swiss.v.uniprobe <- read.table(file = "./TOMTOM/swiss_vs_uniprobe/tomtom.txt", stringsAsFactors = FALSE)
+names(swiss.v.uniprobe) <- name.vec
+```
+
+Each mapping is simply the query ID, target ID, P-value, and a bunch of other information. We know we've used a cutoff of -log(P) > 7 for motifs that are considered redundant, so on the one hand, we could just screen through all 5 of these in one big family....that would lead to the following workflow:
+
+1. Bind all the rows into 1 data frame
+2. Screen out only the correct log(P) values
+3. Find any UniPROBE IDs mapped TO by SwissRegulon and that map TO JASPAR/HOCOMOCO and consolidate them
+
+The 3rd step here is the deterrant; essentially, we'd have a case like this:
+
+```{r}
+df <- data_frame(Query = c("JH-A","JH-C","UP-D"),
+                 Target = c("JH-B","UP-D","SR-E"))
+df
+```
+
+So in this case, "D" represents our UniPROBE motif. It's not part of the non-redundant set; it maps to "JH-C", so really we want to have "JH-C" mapped to "UP-D" AND "JH-C" mapped to "SR-E". So we'd have to do something involving a split/filter/join...it's a mess, really. 
+
+Instead, I propose that we put together Jaspar/HOCOMOCO and both SR and UP with the Jaspar/HOCOMOCO; there is no chance then of having the SwissRegulon dual mapping. This will result in a list where EVERY target is a non-redundant Jaspar/HOCOMOCO motif. This is guaranteed because:
+
+* We got the list of final Jaspar/HOCOMOCO motifs from TOMTOM, so we know how many are in there
+* We only used this final list for the SR/UP comparisons
+
+Once we've got this list, we can basically add on the additional SR motifs that map to JASPAR; all we have to do is use the first data frame as a "lookup" table and, for each UP motif, switch it to its Jaspar/HOCOMOCO equivalent if necessary. 
+
+### Step 1: Combine and filter the 4 TOMTOM files
+
+We'll do this with `bind_rows` and some more dplyr:
+
+```{r}
+
+list(all.hoco, uniprobe, swissreg) %>%
+  bind_rows() %>%
+  select(Query.ID, Target.ID, Pvalue) %>%
+  mutate(logP = -1*log10(Pvalue)) %>% 
+  filter(logP >= 7.3) -> first.4.tomtom
+
+head(first.4.tomtom)
+```
+
+It would be nice to check whether this is what we're expecting; we know from our previous documents that in comparing to our non-redundant set, there should be the following number of motifs that are redundant:
+
+* 417 from HOCOMOCO
+* 218 from UniPROBE
+* 558 from SwissRegulon
+
+That's 1193 total redundant motifs. So given that we've got 4500+ motifs in the Query set, how many of them are unique?
+
+```{r}
+length(unique(first.4.tomtom$Query.ID))
+```
+
+## Step 2: Incorporate the SR->UP Mapping
+
+Excellent, so this amounts to our intermediate dataset; now we need to consider that held out piece, mapping SwissRegulon to UniPROBE. This should lead to 215 unique SwissRegulon motifs from UniPROBE. Let's make sure it does:
+
+```{r}
+swiss.repeats <- swiss.v.uniprobe %>% 
+  select(Query.ID, Target.ID, Pvalue) %>%
+  mutate(logP = -1*log10(Pvalue)) %>% filter(logP >= 7.3)
+
+length(unique(swiss.repeats$Query.ID))
+```
+
+Looks good, so this means we've basically got 2 tables, the first being something like this:
+
+```{r}
+df1 <- data_frame(Query = c("H-A","H-B","UP-A","UP-B","SR-A","SR-B"),
+                 Target = c("J-A","J-B","J-B","J-C","J-D","J-C"))
+df1
+```
+
+So everything essentially maps to JASPAR, which is a placeholder for a member of our "golden" set. Now we also have a second table that's something like this:
+
+```{r}
+df2 <- data_frame(Query = c("SR-A","SR-C","SR-D"),
+                  Target = c("UP-A","UP-B","UP-D"))
+df2
+```
+
+In this case we have 2 distinct situations: (1) An SR motif we've seen before, but mapped in a new way; (2) An SR motif we haven't seen before, mapped to a redundant UP motif; (3) An SR motif we haven't seen before, mapped to a non-redundant UP motif. We need to capture all of these, so the final effect should be this:
+
+```{r}
+df3 <- data_frame(Query = c("H-A","H-B","UP-A","UP-B","SR-A","SR-B", "SR-A","SR-C","SR-D"),
+                 Target = c("J-A","J-B","J-B","J-C","J-D","J-C","J-B","J-C","UP-D"))
+df3
+```
+
+Note that the 1st and 2nd cases are essentially the same; in (1), we go `SR-A` -> `UP-A` -> `J-B` and in (2), we go `SR-C` -> `UP-B` -> `J-C`. The fact that we've seen `SR-A` before doesn't really make a difference. The 3rd case is trickier, but I think it's just a join. So, to recreate the table, here's my solution:
+
+```{r}
+# Create a "True Mapping" to JD
+true.map <- df2 %>% 
+  inner_join(df1, by = c("Target" = "Query")) %>% # Add the J-ones where they appear for UP ones, filtering only those with "true" J-ones
+  select(Query, Target = Target.y) # Grab just the SR Queries and the J-D
+true.map
+
+# Create a "New Mapping" by pulling out things w/o JD relationships and adding the "true.map"
+new.map <- df2 %>% 
+  anti_join(df1, by = c("Target" = "Query"))
+
+# Finally, add the "new.map" to the original to make a "full.map"
+full.map <- df1 %>% bind_rows(list(true.map,new.map))
+full.map
+```
+
+In words, I did the following:
+
+* Using an inner join, screen only those SR-UP mappings with a "true" JH target and add that target
+* Using a select, return just the SR Query and the JH target for those "true" mappings
+* Using an anti-join, filter the remaining SR-UP mappings that don't have a "true" JH target
+* Add the resulting DFs to the original
+
+I believe this strategy should work out, so let's employ it on the actual data set
+
+```{r}
+# First, pull out just query and target for each data set
+swiss.repeats <- swiss.repeats %>% select(Query.ID,Target.ID)
+first.4.tomtom <- first.4.tomtom %>% select(Query.ID,Target.ID)
+
+# Create a "True Mapping" to JD
+true.map <- swiss.repeats %>% 
+  inner_join(first.4.tomtom, by = c("Target.ID" = "Query.ID")) %>% # Add the J-ones where they appear for UP ones, filtering only those with "true" J-ones
+  select(Query.ID, Target.ID = Target.ID.y) # Grab just the SR Queries and the J-D
+#true.map
+
+# Create a "New Mapping" by pulling out things w/o JD relationships and adding the "true.map"
+new.map <- swiss.repeats %>% 
+  anti_join(first.4.tomtom, by = c("Target.ID" = "Query.ID"))
+
+# Finally, add the "new.map" to the original to make a "full.map"
+full.map <- first.4.tomtom %>% bind_rows(list(true.map,new.map))
+nrow(full.map)
+```
+
+Looking at the full map, we see that there are over 13,000 entries, even though we only started with about 4600 in our first dataset and 1600 in our second dataset. So what the heck is going on? 
+
+Well, our `true.map` variable has about 9000 rows; to be clear, this is because there's a lot of mappings between SR and UP. Consider the top motif in the list:
+
+```{r}
+swiss.repeats$Query.ID[1]
+```
+
+How many times does this motif occur in the mapping to UniPROBE?
+
+```{r}
+swiss.repeats %>% filter(Query.ID == "NA-SwissRegulon-ALX3.SwissRegulon") %>% nrow()
+```
+
+So that's 56 different UniPROBE motifs for that one SwissRegulon motif; let's pull the first of those mappings and ask the question of how many JASPAR/HOCOMOCO motifs that might map to the particular UniPROBE motif:
+
+```{r}
+first.4.tomtom %>% filter(Query.ID == swiss.repeats$Target.ID[1]) %>% nrow()
+```
+
+Alright, so here we see the issue; SwissRegulon maps to UniPROBE, which maps to JASPAR/HOCOMOCO, but none of that is 1:1:1. Instead, we end up with something like this, where we effectively end up with hundreds rows that correspond to the SAME SwissRegulon motif:
+
+```{r}
+full.map %>% filter(Query.ID == "NA-SwissRegulon-ALX3.SwissRegulon") %>% nrow()
+```
+
+Of course, not every UniPROBE motif corresponds to 10 JASPAR/HOCOMOCO motifs, so it's lower than 560, but still, it's a lot. Fortunately, there's LOTS of redundancy:
+
+```{r}
+full.map %>% 
+  filter(Query.ID == "NA-SwissRegulon-ALX3.SwissRegulon") %>% 
+  group_by(Target.ID) %>% 
+  summarise(Duplicates = n()) %>%
+  nrow()
+```
+
+For all of that fooling around, it looks like there's really only 22 motifs we're mapping our SwissRegulon motif to. So what happens when we remove duplicates from our full map? What does our 13,000 dataset reduce to?
+
+```{r}
+unique.map <- full.map[!duplicated(full.map),]
+nrow(unique.map)
+```
+
+So it's half the size it was; this makes more sense. For the record, we can also get the sizes of the unique rows from the other databases, first the one of the 4 combined:
+```{r}
+first.4.tomtom[!duplicated(first.4.tomtom),] %>% nrow()
+```
+
+And then the SR-UP one:
+
+```{r}
+swiss.repeats[!duplicated(swiss.repeats),] %>% nrow()
+```
+
+As they should, these match the sizes of the data frames themselves. A final question: why do we end up with fewer rows in the `unique.map` than the sum of these 2? Well, let's consider:
+
+* Most of the SwissRegulon motifs that match UniPROBE motifs have a "true" mapping to HOCOMOCO/JASPAR
+* These "true" mappings can result, as we saw, in a reduction of the actual number of mappings; for instance, our 1 SR motif mapped to 56 UniPROBE motifs, but only 22 "true" motifs
+* Furthermore, some of the "true" mappings might end up adding nothing because we could already theoretically have the relationship. For instance, SR-A might map to JH-A in the initial mapping, but maps to UP-B that maps to JH-A in the second mapping. So we're not adding anything there
+
+
+So all in all, this makes sense. Thus, let's save this as our "Table.1"
+
+```{r}
+Table.1 <- unique.map
+```
+
+## Mapping Table.1 to TFs
+
+Here is our stated goal for this part:
+
+2. Using Table.1 as a guide, create a comprehensive mapping of ALL the non-redundant motifs to ALL the TFs. This will only involve the 1:1 mappings in MotifDb at this stage, thus it will initially have the same length as the entire list of redundant motifs from all 4 DBs. The final product will filter out duplicates; this result will be known as "Table.2"
+
+So essentially, we need to map all of our "non-redundant" motifs to their TFs, including the ones for the "redundant" motifs. We'll need to load up MotifDb at this point; but wait! We know that MotifDb has a different set of Motif IDs that we need to change in order to do our mapping. So we need to first consider our 4th step:
+
+4. Using Paul's MEME-file writer as a guide, create a comprehensive mapping between our non-redundant motif IDs and their "full" motif names as used in FIMO. We won't save this intermediate mapping, but we'll combine it with "Table.3" to create our final product, "Motif.TF.Map"
+
+Alright, so let's load it up:
+
+```{r}
+library(MotifDb)
+```
+
+First things first, we should grab our entire list of motifs that we could add; it's important to recall that this includes not only the human and mouse motifs from JASPAR, but also other vertebrates. Thus, here's the set of calls to get ALL the motifs, including redundant ones:
+
+```{r}
+# Grab all jaspar and HOCOMOCOv10 for Human/Mouse
+human.mouse.motifs <- subset(MotifDb, dataSource %in% c("HOCOMOCOv10","jaspar2016"))
+human.mouse.motifs <- subset(human.mouse.motifs, organism %in% c("Hsapiens","Mmusculus"))
+
+# Grab all jaspare for other vertebrates:
+vertebrates <- c("Ggallus","Nsp.","Ocuniculus","Rnorvegicus","Rrattus","Vertebrata", "Xlaevis")
+vert.motifs <- subset(query(MotifDb, "jaspar2016"), organism %in% vertebrates)
+
+# Grab all UP and SR motifs
+all.uniprobe <- query(MotifDb, "uniprobe")
+all.swiss <- query(MotifDb, "swissregulon")
+
+```
+
+From previous documents (and from some quick queries), we know the motifs break down as follows:
+
+* 607 human/mouse from JASPAR
+* 1066 human/mouse from HOCOMOCO
+* 24 other vertebrates from JASPAR
+* 380 from UniPROBE
+* 684 from SwissRegulon
+Adding these up, the final list should have 2761:
+
+```{r}
+all.motifs <- c(human.mouse.motifs,
+                vert.motifs,
+                all.uniprobe,
+                all.swiss)
+
+length(all.motifs)
+```
+
+Indeed, that's what we get; now obviously, we're also going to screen some of these out, but we first need another mapping. This time, it needs to make the IDs LONGER. So let's do what Paul does in his MEME-formatting code: just grab the names of the matrices. And while we're at it, let's grab the TFs too. Finally, we'll also grab the name of each database, so we have something of a "database of origin" for each TF mapping. 
+
+```{r}
+motif.id.map <- data_frame(Long.ID = names(all.motifs),
+                           Short.ID = values(all.motifs)$providerId,
+                           TF = values(all.motifs)$geneSymbol,
+                           Origin = values(all.motifs)$dataSource)
+head(motif.id.map)
+```
+
+We can also, at this point, pull out the total number of TFs mapped to by our motifs:
+
+```{r}
+length(unique(motif.id.map$TF))
+```
+
+So as we can see, there are 2761 unique motifs mapping to 1349 unique TFs. This is actually really convenient; thanks Paul! We'll do one more thing here, which is to count the number of distinct motifs for each 
+
+### Name Conversion for SwissRegulon
+
+Since the initial run of this document (08/23/2017), the SwissRegulon names have been updated such that organism is now "Hsapiens" instead of "NA". As demonstrated here:
+
+```{r}
+motif.id.map %>% filter(grepl("SwissRegulon",Long.ID)) %>% head() -> test.set
+test.set
+```
+
+This is going to cause problems because the TOMTOM files and the already-constructed databases themselves have "NA" as the species. It's not feasible to update those, so instead we're going to change the "Long.ID" column back to "NA". First we'll demonstrate that this works on the test set:
+
+```{r}
+gsub("^Hsapiens-SwissRegulon", "NA-SwissRegulon", test.set$Long.ID)
+```
+
+This is exactly what we want; let's convert the Long.ID column and continue with the analysis as planned
+
+```{r}
+motif.id.map$Long.ID <- gsub("^Hsapiens-SwissRegulon", "NA-SwissRegulon", motif.id.map$Long.ID)
+```
+
+### Back to our regularly-scheduled workflow
+
+Our task now is essentially down to figuring out the correct join. If we do it right, we should be able to get our Table.2, which is what we want. On a sidenote, this essentially matches "asset.7" from the previous Mapping document, with the `unique.map` matching "asset.8". So we can just take the same join from there and add a select command to get what we want:
+
+```{r}
+prelim.mapping <- left_join(unique.map,motif.id.map, by = c("Query.ID" = "Long.ID")) %>%
+  select("Motif" = "Target.ID",TF, Origin)
+
+head(prelim.mapping); tail(prelim.mapping)
+```
+
+Now we have to consider that we haven't yet added the TFs for the non-redundant motifs, so let's grab those as well. First, we'll grab the short IDs of the things that are redundant, then we'll use those as a screen for the motifs. We SHOULD get a total of 1530 motifs in the end:
+
+```{r}
+## Get the short IDs to test on
+motif.id.map %>% 
+  semi_join(unique.map, by = c("Long.ID" = "Query.ID")) %>% 
+  select(Short.ID) -> short.ID
+
+nonredundant.motifs <- subset(all.motifs, !(providerId %in% short.ID$Short.ID))
+length(nonredundant.motifs)
+```
+
+We got exactly what we were expecting, so we should grab the long IDs (names) and TFs for these, add them to our other mapping, and we'll have our 2nd table. Note that, once again, we have to substitute the "NA" for the SwissRegulon ones:
+
+```{r}
+data_frame(Motif = names(nonredundant.motifs),
+           TF = values(nonredundant.motifs)$geneSymbol,
+           Origin = values(nonredundant.motifs)$dataSource) %>%
+  bind_rows(prelim.mapping) -> dups.mapping
+
+dups.mapping$Motif <- gsub("^Hsapiens-SwissRegulon", "NA-SwissRegulon", dups.mapping$Motif)
+nrow(dups.mapping)
+```
+
+We've called this `dups.mapping` for an obvious reason: there's likely to be duplicates. So we'll screen those out to finish:
+
+```{r}
+Table.2 <- dups.mapping[!duplicated(dups.mapping),]
+nrow(Table.2); head(Table.2); tail(Table.2)
+```
+It's got about 6300 rows, which seems fine. If we want to, we can do some exploration of the motifs and their counts a bit later. 
+
+## Final Task: Add Seth's Mapping
+
+Here was the original final task:
+
+3. Starting with Table.2, add on the information from Seth's table to make a unified table and remove duplicates; this will give us "Table.3"
+
+Of course, that didn't consider that we'd have already made the 4th table, now known as `motif.id.map`, so we'll just use this as our ending point. We'll begin by loading the table from the `trena` package:
+
+```{r}
+seth.table <- read.table(system.file(package="trena", "extdata", "motifGenes.tsv"), sep = "\t", header=TRUE, stringsAsFactors = FALSE)
+head(seth.table)
+```
+
+For now, we'll ignore the `tf.ensg` column. And while we're at it, let's rename the columns and call this the `german.truck`, plus add the "TFClass" origin to it:
+
+```{r}
+german.truck <- seth.table %>% select("Short.ID" = "motif","TF" = "tf.gene") %>% mutate(Origin = "TFClass")
+head(german.truck)
+```
+Now here's a problem: the "Short.ID" column here still isn't perfect:
+
+```{r}
+length(intersect(german.truck$Short.ID,motif.id.map$Short.ID))
+```
+
+Indeed, we get only the JASPAR IDs here; however, that's a significant portion of the mapping. Consider that the mapping is 9017 rows:
+
+```{r}
+nrow(filter(german.truck, Short.ID %in% motif.id.map$Short.ID))
+```
+
+We've captured nearly all of them; so what are the motifs we aren't hitting on?
+
+```{r}
+setdiff(german.truck$Short.ID,motif.id.map$Short.ID)
+```
+
+That's 2 JASPAR veretbrates we know we're missing, plus a whole bunch of motifs that have a TF plus some gobblety-gook. And finally, there's some UniPROBE motifs. The first 2 groups are kind of lost to us now, but we can probably save the ~20 UniPROBE ID ones:
+
+```{r}
+german.truck$Short.ID <- gsub(".*(UP\\d{5}).*","\\1",german.truck$Short.ID)
+length(setdiff(german.truck$Short.ID,motif.id.map$Short.ID))
+```
+Awesome, so we'll do an inner join on these to add the pertinent long IDs, then compile everything to make our final table. First, adding our long IDs:
+
+```{r}
+motifs.to.add <- german.truck %>% inner_join(motif.id.map, by = "Short.ID")
+head(motifs.to.add)
+```
+Interestingly, as everything looks to line up, there are subtle differences. Anyway, we'll finish up by adding our columns to the "Table.2" object and get our final thing.
+
+```{r}
+
+trimmed.motifs <- motifs.to.add %>% select("Motif" = "Long.ID", "TF" = "TF.x", "Origin" = "Origin.x")
+
+Table.2 %>% dplyr::union(trimmed.motifs) -> Motif.TF.Map
+head(Motif.TF.Map); tail(Motif.TF.Map); nrow(Motif.TF.Map)
+```
+
+After looking at this set of motifs, I noticed there are 6 motifs that don't match our non-redundant set:
+
+```{r}
+extra.motifs <- setdiff(motifs.to.add$Long.ID, Table.2$Motif)
+extra.motifs
+```
+
+Basically, we added TFs for all our motifs, mapping our redundant ones along the way, but now we're again trying to map to the redundant motifs. How many records does this account for?
+
+```{r}
+Motif.TF.Map %>% filter(Motif %in% extra.motifs)
+```
+
+So there's literally just 6 rows here; let's use our mapping to change them to the correct names.
+
+```{r}
+Motif.TF.Map %>% filter(Motif %in% extra.motifs) %>% 
+  inner_join(Table.1, by = c("Motif" = "Query.ID")) %>%
+  select("Motif"  = "Target.ID", TF) %>% 
+  mutate(Origin = "TFClass") -> corrected.extras
+
+dim(corrected.extras)
+corrected.extras
+```
+
+We get 24 rows instead of 6 simply because the UniPROBE IDs tend to map to multiple things; that's quite alright. Let's pull out those rows from the initial mapping; that should give only 15795 rows. Then we'll add our 24 and we should get 15819. And finally, we should see only 1530 unique motifs, not 1536:
+
+```{r}
+# Take out the 6 bad rows
+Motif.TF.Map %>% filter(!(Motif %in% extra.motifs)) -> Motif.TF.Map
+nrow(Motif.TF.Map)
+
+# Add in the 24 good rows
+Motif.TF.Map %>% dplyr::union(corrected.extras) -> Motif.TF.Map
+nrow(Motif.TF.Map)
+
+length(unique(Motif.TF.Map$Motif))
+```
+
+Now then, back to evaluating. By using the `union`, we already screened out duplicates, but let's make sure anyway:
+
+```{r}
+sum(duplicated(Motif.TF.Map))
+```
+
+Note that as a final touch, we can summarize how many mappings and TFs came from each source:
+
+```{r}
+Motif.TF.Map %>% select(TF, Origin) %>%
+  group_by(Origin) %>% 
+  summarize(Total.Mappings = n(),
+            Unique.TFs = n_distinct(TF))
+```
+
+In general, we could say we're done at this point. However, now there's a new source of duplicates: we may very well have duplicated motif-TF mappings with multiple origins. Rather than having multiple records for these (and there are at least a couple hundred), might it be better to push them together using a semi-colon for separation? 
+
+We'd want something like this:
+
+```{r}
+df <- data_frame(Motif = c("A","A","B"), 
+                 TF = c("1","1","2"),
+                 Origin = c("a","b","a"))
+```
+
+Transformed to something like this:
+
+```{r}
+data_frame(Motif = c("A","B"), 
+           TF = c("1","2"),
+           Origin = c("a;b","a"))
+```
+
+Using the `nest` command from `tidyr` should accomplish this
+
+```{r message = FALSE, warning = FALSE}
+library(tidyr)
+
+# Create a list variable (a list of data frames) with nest
+df %>% nest(Origin) -> df.w.dfs
+
+# Use an sapply to change the column with a collapse
+f <- function(x){x$Origin %>% paste0(collapse = ";")}
+
+df.w.dfs$Origin <- sapply(df.w.dfs$data, f)
+df.w.dfs$data <- NULL
+
+df.w.dfs
+```
+
+We'll apply this workflow to change our dataframe:
+
+```{r}
+Motif.TF.Map %>% arrange(Origin) %>% # Note: the "arrange"" is to make sure we collapse alphabetically
+  nest(Origin) -> Motif.TF.Map.Collapsed
+
+Motif.TF.Map.Collapsed$Origin <- sapply(Motif.TF.Map.Collapsed$data, f)
+Motif.TF.Map.Collapsed$data <- NULL
+
+head(Motif.TF.Map.Collapsed)
+```
+
+To check on this, let's re-do our computations from above to see the origins:
+
+```{r}
+Motif.TF.Map.Collapsed
+```
+
+Also, let's quickly just check and make sure we're back to 13242 in terms of our unique mappings themselves:
+
+```{r}
+nrow(Motif.TF.Map.Collapsed)
+```
+
+So we're done! And our mapping is expanded! The last thing to do: let's make sure we preserve the original mapping (call this Motif.TF.Map) and save our 2 new files (the expanded version will be Motif.TF.Map.Expanded).
+
+```{r}
+Motif.TF.Map.Expanded <- Motif.TF.Map
+Motif.TF.Map <- Motif.TF.Map.Collapsed %>% select(Motif, TF) %>% arrange(Motif, TF) 
+```
+
+
+## Final Tasks: Saving and Writing
+
+Before doing anything else, let's save our mappings:
+
+```{r}
+saveRDS(Motif.TF.Map, "./2017_08_23_Motif_TF_Map.RDS")
+saveRDS(Motif.TF.Map.Expanded, "./2017_10_26_Motif_TF_Map_Expanded.RDS")
+saveRDS(Motif.TF.Map.Collapsed, "./2017_10_26_Motif_TF_Map_Collapsed.RDS")
+```
+
+Our next step will be to re-write the hg38 table
