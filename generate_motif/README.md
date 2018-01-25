@@ -1,20 +1,35 @@
-# Generate transcription factor bidning motif
+# Generate of the transcription factor binding motif catalog
 
-**The TF binding motif psql dump is available at:**   
+**Final catalog as a psql dump is available at:**   
 
        `./fimo_psql_dump/2017_07_27_fimo`
 
-- To create a new TF motif file, please follow the instruction below:
+Generation of the FIMO database can be broken down into three primary steps:
+       1) Identifying and collecting motif catalogs from varous sources
+       2) Running Tomtom to identify a core set of non-redundant motifs across the input sources
+       3) Running FIMO to identify the genomic location of all motifs
 
-    - This directory contains several versions of Motifs, both in [MotifDb](https://bioconductor.org/packages/release/bioc/html/MotifDb.html) lists (in `.RDS` format) and in [JASPAR](http://jaspar.genereg.net/downloads/)-formatted files (in `.txt` format).
+- Identifying and collecting motif catalogs from varous sources:
 
-- Background about Motif files:
+    - [MotifDb] is an R package that is a clearing house for multiple motif databases (https://bioconductor.org/packages/release/bioc/html/MotifDb.html) lists (in `.RDS` format) and in [JASPAR](http://jaspar.genereg.net/downloads/)-formatted files (in `.txt` format).
+     - Motifs from JASPAR2016, HOCOMOCOv10, UniPROBE and SwissRegulon were taken from MotifDb
 
-    - `./output/2017_07_27_all_fimo_motifs` - this motif includes Everything in the FIMO database, the motifs from JASPAR 2016, HOCOMOCOv10, UniPROBE, and SwissRegulon.
+- Running Tomtom to identify a core set of non-redundant motifs across the input sources
+     - Code for running Tomtom can be found here:
+       (https://github.com/PriceLab/BDDS/tree/master/trenadb/fimo/TOMTOM)
+     - Output for Tomtom, containing all non-redundant motifs can be found here:
+     `./output/2017_07_27_all_fimo_motifs` 
 
+- This was done for PIQ as you had already run the frist 519. *Not sure it's needed here*
     - `./output/2017_07_27_non_jaspar_vert.txt` - This is a smaller set of motifs that excludes the 519 motifs appearing in the JASPAR Vertebrates. This file represents what must be added to the smaller dataset to achieve the full FIMO dataset
 
+- I'm not clear what this is
     - `./output/2017_08_21_fimo_plus_vert.txt` - Essentially, this is the union of the 2 aforementioned datasets. It has all the FIMO motifs in our 2017_07_27 database version, plus 2 extra motifs found in the JASPAR Vertebrates dataset.
+    
+ - Running FIMO to identify the genomic location of all motifs
+       - `fimo --text --oc . --no-qvalue ./meme/your_file.meme ../chromosomes/1.fa > ./01_your_file_fimo.txt`
+
+
 
 ## Instructions on how to create and update FIMO
 
