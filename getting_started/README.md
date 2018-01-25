@@ -2,7 +2,7 @@
 
 [Notebook (HTML)](http://htmlpreview.github.io/?https://github.com/globusgenomics/genomics-footprint/blob/master/getting_started/notebook/getting_started.html) | [R Markdown (Rmd)](notebook/getting_started.Rmd)
 
-- List of BDDS footprint Databases
+### List of BDDS footprint Databases
 
 <table class='gmisc_table' style='border-collapse: collapse; margin-top: 1em; margin-bottom: 1em;' >
 <thead>
