@@ -1,6 +1,6 @@
-# DNAse footprinting workflow, transcription factor motifs, and footprint database generation
+# Transcription factor binding site atlas: A case study in reproducible big data science
 
-This directory contains workflows and scripts used to generate footprints, database, and candidate TFBS.
+This directory contains workflows and scripts used to generate DNase footprint, TF binding motif, and database.
 
 - [generate_footprints](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_footprints) - This generate_footprints provide an instruction for how to run the DNAse footprinting workflow and include a demo snapshot.
 
