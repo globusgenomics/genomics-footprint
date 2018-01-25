@@ -1,6 +1,6 @@
 # R Markdown Notebook for access to footprint databases
 
-[Notebook (HTML)](http://htmlpreview.github.io/?https://github.com/globusgenomics/genomics-footprint/blob/master/getting_started/notebook/getting_started.html)
+To get started, please take a look at this [Notebook (HTML)](http://htmlpreview.github.io/?https://github.com/globusgenomics/genomics-footprint/blob/master/getting_started/notebook/getting_started.html)
 
 ### List of BDDS footprint Databases
 
