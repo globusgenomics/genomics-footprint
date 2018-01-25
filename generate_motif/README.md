@@ -4,17 +4,17 @@
 
        `./fimo_psql_dump/2017_07_27_fimo`
 
-## To create a new TF motif file, please follow the instruction below:
+- To create a new TF motif file, please follow the instruction below:
 
-   - This directory contains several versions of Motifs, both in [MotifDb](https://bioconductor.org/packages/release/bioc/html/MotifDb.html) lists (in `.RDS` format) and in [JASPAR](http://jaspar.genereg.net/downloads/)-formatted files (in `.txt` format).
+    - This directory contains several versions of Motifs, both in [MotifDb](https://bioconductor.org/packages/release/bioc/html/MotifDb.html) lists (in `.RDS` format) and in [JASPAR](http://jaspar.genereg.net/downloads/)-formatted files (in `.txt` format).
 
-## Background about Motif files:
+- Background about Motif files:
 
-   - `./output/2017_07_27_all_fimo_motifs` - this motif includes Everything in the FIMO database, the motifs from JASPAR 2016, HOCOMOCOv10, UniPROBE, and SwissRegulon.
+    - `./output/2017_07_27_all_fimo_motifs` - this motif includes Everything in the FIMO database, the motifs from JASPAR 2016, HOCOMOCOv10, UniPROBE, and SwissRegulon.
 
-   - `./output/2017_07_27_non_jaspar_vert.txt` - This is a smaller set of motifs that excludes the 519 motifs appearing in the JASPAR Vertebrates. This file represents what must be added to the smaller dataset to achieve the full FIMO dataset
+    - `./output/2017_07_27_non_jaspar_vert.txt` - This is a smaller set of motifs that excludes the 519 motifs appearing in the JASPAR Vertebrates. This file represents what must be added to the smaller dataset to achieve the full FIMO dataset
 
-   - `./output/2017_08_21_fimo_plus_vert.txt` - Essentially, this is the union of the 2 aforementioned datasets. It has all the FIMO motifs in our 2017_07_27 database version, plus 2 extra motifs found in the JASPAR Vertebrates dataset.
+    - `./output/2017_08_21_fimo_plus_vert.txt` - Essentially, this is the union of the 2 aforementioned datasets. It has all the FIMO motifs in our 2017_07_27 database version, plus 2 extra motifs found in the JASPAR Vertebrates dataset.
 
 ## Instructions on how to create and update FIMO
 
