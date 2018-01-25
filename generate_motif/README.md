@@ -1,6 +1,6 @@
 # Generate transcription factor bidning motif
 
-    **The TF binding motif psql dump is available at:**   
+**The TF binding motif psql dump is available at:**   
 
        `./fimo_psql_dump/2017_07_27_fimo`
 
