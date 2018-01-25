@@ -1,7 +1,6 @@
 ---
 title: "TF_Motif_Mapping"
 author: "Matt Richards"
-date: "6/26/2017"
 output: html_document
 ---
 
@@ -19,11 +18,11 @@ At this point, we have a couple of really useful assets:
 
 So if we're looking at this more systematically, it's something like:
 
-Motifs $\rightarrow$ Databases $\rightarrow$ TReNA 
+Motifs $\rightarrow$ Databases $\rightarrow$ TReNA
 
-But what are these arrows in reality; or, rephrased, what tools or concepts connect our assets together? The first arrow is chronicled in the BDDS repository as a couple of workflows that take in motifs and footprints, then output our databases. The first workflow, chronicled [here](https://github.com/PriceLab/BDDS/tree/master/trena/fimo), takes motifs and uses the FIMO method of the [MEME suite]() to create a "FIMO" database of all motifs found in the human genome. The second workflow, chronicled [here](https://github.com/PriceLab/BDDS/tree/master/footprints/testdb), takes the "FIMO" database plus some tissue-specific footprints and uses them to create a tissue-, method-, and seed-specific database. As an example of this second workflow, we may have a set of footprints for brain tissue the we created using the HINT method for seed 20. Our method would intersect these footprints with FIMO to create a database called "brain_hint_20". 
+But what are these arrows in reality; or, rephrased, what tools or concepts connect our assets together? The first arrow is chronicled in the BDDS repository as a couple of workflows that take in motifs and footprints, then output our databases. The first workflow, chronicled [here](https://github.com/PriceLab/BDDS/tree/master/trena/fimo), takes motifs and uses the FIMO method of the [MEME suite]() to create a "FIMO" database of all motifs found in the human genome. The second workflow, chronicled [here](https://github.com/PriceLab/BDDS/tree/master/footprints/testdb), takes the "FIMO" database plus some tissue-specific footprints and uses them to create a tissue-, method-, and seed-specific database. As an example of this second workflow, we may have a set of footprints for brain tissue the we created using the HINT method for seed 20. Our method would intersect these footprints with FIMO to create a database called "brain_hint_20".
 
-All of this is well and good, but now we move to the second "arrow" of our paradigm; that is, how do we go from databases to TReNA? TReNA deals not with motifs, but with transcription factors (TFs), and our databases essentially put footprints in the context of motifs. What we need is a good motif-TF mapping, and at the moment we don't have one. But the intention of this document is to arrive at a definitive mapping by the end. 
+All of this is well and good, but now we move to the second "arrow" of our paradigm; that is, how do we go from databases to TReNA? TReNA deals not with motifs, but with transcription factors (TFs), and our databases essentially put footprints in the context of motifs. What we need is a good motif-TF mapping, and at the moment we don't have one. But the intention of this document is to arrive at a definitive mapping by the end.
 
 ## Inspecting Existing Info
 
@@ -36,7 +35,7 @@ We don't have a definitive mapping yet, otherwise we wouldn't be undergoing this
 5. TOMTOM files that compare HOCOMOCO motifs with Jaspar to find motifs that align
 6. The full set of human/mouse motifs in both Jaspar and HOCOMOCO from MotifDb
 
-All of these are potentially important; asset #1 is the full dataset we want to be able to map to/from, so that's obviously important. The trick is that the motifs in this list aren't really the only set of motifs we care about because we ran TOMTOM (assets #4-5) to reduce redundancy in the full list of motifs (asset #6). So although we ultimately want to map just the motifs from asset #1, we want to do so in a way that accounts for all motifs in asset #6, and the record of how we do this is found in assets #4-5. It may be that these 4 assets (or maybe just 3 of them) will prove sufficient for our purposes, but we also have asset #2, which specifically gives TF names for motifs. And of course, we could go a level higher to asset #3 and check the source material for MotifDb if need be; however, it's pretty unlikely we'll need to do this. 
+All of these are potentially important; asset #1 is the full dataset we want to be able to map to/from, so that's obviously important. The trick is that the motifs in this list aren't really the only set of motifs we care about because we ran TOMTOM (assets #4-5) to reduce redundancy in the full list of motifs (asset #6). So although we ultimately want to map just the motifs from asset #1, we want to do so in a way that accounts for all motifs in asset #6, and the record of how we do this is found in assets #4-5. It may be that these 4 assets (or maybe just 3 of them) will prove sufficient for our purposes, but we also have asset #2, which specifically gives TF names for motifs. And of course, we could go a level higher to asset #3 and check the source material for MotifDb if need be; however, it's pretty unlikely we'll need to do this.
 
 Based upon this quick little overview of different data bits and pieces, here's (another enumerated) plan:
 
@@ -78,13 +77,13 @@ dim(all.hoco)
 This matches what we had in asset #4; we'll go a step further and trim off everything but what we need (motifs and Pvalue), plus add a logP value to match our other analysis
 
 ```{r}
-all.hoco <- all.hoco %>% 
+all.hoco <- all.hoco %>%
   select(Query.ID, Target.ID, Pvalue) %>%
   mutate(logP = -1*log10(Pvalue))
 head(all.hoco)
 ```
 
-Looks good; now then, we want to follow the process from asset #4 to get our list of final motifs. This means screening out anything with a logP value below 7.3. We'll also change the Query.ID and Target.ID columns to characters, just for convenience later: 
+Looks good; now then, we want to follow the process from asset #4 to get our list of final motifs. This means screening out anything with a logP value below 7.3. We'll also change the Query.ID and Target.ID columns to characters, just for convenience later:
 
 ```{r}
 above.p <- all.hoco %>% filter(logP >= 7.3)
@@ -108,7 +107,7 @@ Looks great, so let's review what we have before taking the next steps:
 3. Asset #5: The TOMTOM record that matches motifs together (in the above.p variable)
 4. Asset #1: Our list of final FIMO motifs (in the fimo.motifs variable)
 
-Now we'll put these together to get our final list. 
+Now we'll put these together to get our final list.
 
 ## Steps 5-7: Map assets to create final list
 
@@ -166,7 +165,7 @@ This actually gives us exactly what we wanted, so we're done with this step and 
 
 7. Using our two new assets (#7-8), create a mapping of all "parent" motifs to all TFs
 
-This is a bit trickier; the first thing we'll do is a left join that maps all our "Query" motifs to their transcription factors. 
+This is a bit trickier; the first thing we'll do is a left join that maps all our "Query" motifs to their transcription factors.
 
 ```{r message = FALSE}
 prelim.mapping <- left_join(asset.8,asset.7, by = c("Query.ID" = "motifs"))
@@ -199,18 +198,18 @@ Let's look at how the motifs and TFs map:
 
 ```{r message = FALSE}
 library(ggplot2)
-final.mapping %>% 
-  group_by(motifs) %>% 
-  summarize(TFs = n()) %>% 
-  arrange(desc(TFs)) %>% 
+final.mapping %>%
+  group_by(motifs) %>%
+  summarize(TFs = n()) %>%
+  arrange(desc(TFs)) %>%
   ggplot(aes(x=TFs)) + geom_histogram(bins = 12)
 ```
 
 ```{r}
-final.mapping %>% 
-  group_by(TFs) %>% 
-  summarize(motifs = n()) %>% 
-  arrange(desc(motifs)) %>% 
+final.mapping %>%
+  group_by(TFs) %>%
+  summarize(motifs = n()) %>%
+  arrange(desc(motifs)) %>%
   ggplot(aes(x=motifs)) + geom_histogram(bins = 17)
 ```
 
@@ -229,22 +228,22 @@ length(unique(seth.table$motif))
 So what we essentially have here are 2 very different mappings. Our previous mapping covered fewer motifs and TFs, but was very well connected, with some motifs being connected to dozens of different TFs and visa versa. Our new mapping covers many more motifs, more than twice as many, but the mapping is dominated by 1-1 connections, with only a vast minority of motifs exceeding a handful of TFs. We can see this by looking at the plots of Seth's table
 
 ```{r}
-seth.table %>% 
-  group_by(motif) %>% 
-  summarize(Num.Genes = n()) %>% 
-  arrange(desc(Num.Genes)) %>% 
+seth.table %>%
+  group_by(motif) %>%
+  summarize(Num.Genes = n()) %>%
+  arrange(desc(Num.Genes)) %>%
   ggplot(aes(x=Num.Genes)) + geom_histogram(bins = 50)
 ```
 
 ```{r}
-seth.table %>% 
-  group_by(tf.gene) %>% 
-  summarize(motif = n()) %>% 
-  arrange(desc(motif)) %>% 
+seth.table %>%
+  group_by(tf.gene) %>%
+  summarize(motif = n()) %>%
+  arrange(desc(motif)) %>%
   ggplot(aes(x=motif)) + geom_histogram(bins = 50)
 ```
 
-Of particular concern is whether we're missing any major things from Seth's data table; what are the things missing from our table but present in his (for motifs)? 
+Of particular concern is whether we're missing any major things from Seth's data table; what are the things missing from our table but present in his (for motifs)?
 
 ```{r}
 missing <- setdiff(seth.table$motif,final.mapping$motifs)
@@ -383,7 +382,7 @@ So it seems we can do a handful of things:
 1. Ignore extra motifs; we'll still cover 247 of the 329 TFs, even if we add nothing
 2. Add the 24 JASPAR motifs from vertebrates plus "NA", giving 58 more motifs than we had before, but only 4 more TFs to leave 78 more (note, we could add just the 24, which would give us 2 more TFs too)
 3. Add the aforementioned JASPAR motifs, plus all the other 67 motifs from Jolma/Uniprot/other that Seth had, but nothing else
-4. Add the JASPAR motifs and then find resources with other motifs that include the other 67, but have a logical method for picking them. 
+4. Add the JASPAR motifs and then find resources with other motifs that include the other 67, but have a logical method for picking them.
 
 Just as a sample, if we don't add anything past more JASPAR motifs, here's the list of TFs (78) that we'll miss, in alphabetical order:
 
@@ -402,10 +401,10 @@ Also of interest: here are the non-Jaspar motifs we'd add (the 67):
 ```{r}
 non.jaspar
 ```
-So...what now? We need some way to deal with these missing motifs. To that end, we'll continue this in another document, `swiss_uniprobe_compare.Rmd`. For that document, we'll go ahead and save our `final.mapping` variable. 
+So...what now? We need some way to deal with these missing motifs. To that end, we'll continue this in another document, `swiss_uniprobe_compare.Rmd`. For that document, we'll go ahead and save our `final.mapping` variable.
 
 ```{r}
 saveRDS(final.mapping,"./jaspar_hocomoco_mapping.RDS")
 ```
 
-So ends our initial mapping document. We've got a first mapping, but we need to add a good 82 TFs, most of which will come from other databases. 
+So ends our initial mapping document. We've got a first mapping, but we need to add a good 82 TFs, most of which will come from other databases.
