@@ -1,10 +1,10 @@
 # Generate transcription factor bidning motif
 
-* TF binding motif file, 2017_07_27_fimo, is available at  s3://bdds-public/fimo/2017_07_27_fimo. Please do the following for downloading:
+## TF binding motif file, 2017_07_27_fimo, is available at  s3://bdds-public/fimo/2017_07_27_fimo. Please do the following for downloading:
 
-``aws s3 cp s3://bdds-public/fimo/2017_07_27_fimo . ``
+`aws s3 cp s3://bdds-public/fimo/2017_07_27_fimo .`
 
-* If you need to create your own TF motif, please follow the instruction below.
+## If you need to create your own TF motif, please follow the instruction below.
 
 - This directory contains several versions of Motifs, both in [MotifDb](https://bioconductor.org/packages/release/bioc/html/MotifDb.html) lists (in `.RDS` format) and in [JASPAR](http://jaspar.genereg.net/downloads/)-formatted files (in `.txt` format).
 
