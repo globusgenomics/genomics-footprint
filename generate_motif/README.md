@@ -1,10 +1,8 @@
 # Generate transcription factor bidning motif
 
-## The TF binding motif psql dump is available at:
+**The TF binding motif psql dump is available at `./fimo_psql_dump/2017_07_27_fimo`**
 
-`.\fimo_psql_dump\2017_07_27_fimo`
-
-## To create a new TF motif file, please follow the instruction below:
+# To create a new TF motif file, please follow the instruction below:
 
 - This directory contains several versions of Motifs, both in [MotifDb](https://bioconductor.org/packages/release/bioc/html/MotifDb.html) lists (in `.RDS` format) and in [JASPAR](http://jaspar.genereg.net/downloads/)-formatted files (in `.txt` format).
 
