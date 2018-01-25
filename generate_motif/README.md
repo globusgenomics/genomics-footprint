@@ -1,8 +1,6 @@
 # Generate transcription factor bidning motif
 
-### 2017_07_27_fimo, the TF binding motif, is available for downloading at   s3://bdds-public/fimo/2017_07_27_fimo:
-
-`aws s3 cp s3://bdds-public/fimo/2017_07_27_fimo .`
+### 2017_07_27_fimo, the TF binding motif, is available for downloading at   s3://bdds-public/fimo/2017_07_27_fimo:  `aws s3 cp s3://bdds-public/fimo/2017_07_27_fimo .`
 
 ### To create a new TF motif file, please follow the instruction below.
 
