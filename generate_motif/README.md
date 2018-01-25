@@ -44,9 +44,11 @@ biocLite(c("BiocGenerics", "S4Vectors", "IRanges", "Biostrings", "rtracklayer"))
 #### 3. Using the FIMO program, intersect the motif .meme files with all chromosomes
 
 - Install the FIMO tools from the MEME suite (the  instruction is available  [here](http://meme-suite.org/doc/install.html?man_type=web) and run FIMO on your  .meme motif file and do so on all chromosomes. Your .meme file is already in your workspace, but you will need the hg38 chromosomes. We have them broken up into sensibly-sized groups in an Amazon S3 bucket, so copy them to your workspace with the following:
+
 `aws s3 cp s3://bdds-public/GRCh38 . --recursive`
 
 - Run chromosomes individually or all in parallel. Below is for chr1 as an example:
+
 `fimo --text --oc . --no-qvalue ./meme/your_file.meme ../chromosomes/1.fa > ./01_your_file_fimo.txt`
 
 **Please note: this step will take a long time, so plan accordingly**
