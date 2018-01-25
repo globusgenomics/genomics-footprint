@@ -2,7 +2,7 @@
 
 - [getting_started](https://github.com/globusgenomics/genomics-footprint/tree/master/getting_started) - This getting_started shows how to access the footprint databases and provides a case example for query.
 
-   Followings are this directory containing workflows and scripts used to generate DNase footprint, TF binding motif, and database.
+   **Followings are this directories containing workflows and scripts used to generate DNase footprint, TF binding motif, and database.**
 
 - [generate_footprints](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_footprints) - This generate_footprints provide an instruction for how to run the DNAse footprinting workflow and include a demo snapshot.
 
