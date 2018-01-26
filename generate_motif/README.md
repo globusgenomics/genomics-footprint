@@ -5,9 +5,10 @@
        `./fimo_psql_dump/2017_07_27_fimo`
 
 Generation of the FIMO database can be broken down into three primary steps:
-       1. Identifying and collecting motif catalogs from varous sources
-       2. Running Tomtom to identify a core set of non-redundant motifs across the input sources
-       3. Running FIMO to identify the genomic location of all motifs
+
+      1. Identifying and collecting motif catalogs from varous sources
+      2. Running Tomtom to identify a core set of non-redundant motifs across the input sources
+      3. Running FIMO to identify the genomic location of all motifs
 
 - Identifying and collecting motif catalogs from various resources:
 
@@ -19,7 +20,7 @@ Generation of the FIMO database can be broken down into three primary steps:
        (https://github.com/PriceLab/BDDS/tree/master/trenadb/fimo/TOMTOM)
      - Output for Tomtom, containing all non-redundant motifs can be found here:
      `./output/2017_07_27_all_fimo_motifs`
-    
+
  - Running FIMO to identify the genomic location of all motifs
        - `fimo --text --oc . --no-qvalue ./meme/your_file.meme ../chromosomes/1.fa > ./01_your_file_fimo.txt`
 
