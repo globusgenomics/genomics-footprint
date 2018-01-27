@@ -15,7 +15,7 @@ Generation of the FIMO database can be broken down into three primary steps:
     - [MotifDb] is an R package that is a clearing house for multiple motif databases (https://bioconductor.org/packages/release/bioc/html/MotifDb.html) lists (in `.RDS` format) and in [JASPAR](http://jaspar.genereg.net/downloads/)-formatted files (in `.txt` format).
      - Motifs from JASPAR2016, HOCOMOCOv10, UniPROBE and SwissRegulon were taken from MotifDb
 
-- Running Tomtom to identify a core set of non-redundant motifs across the input sources
+- Running [Tomtom](http://meme-suite.org/tools/tomtom) to identify a core set of non-redundant motifs across the input sources
      - Code for running Tomtom can be found here:
        (https://github.com/PriceLab/BDDS/tree/master/trenadb/fimo/TOMTOM)
      - Output for Tomtom, containing all non-redundant motifs can be found here:
