@@ -17,7 +17,7 @@ Generation of the FIMO database can be broken down into three primary steps:
 
 - Running [Tomtom](http://meme-suite.org/tools/tomtom) to identify a core set of non-redundant motifs across the input sources
      - Code for running Tomtom can be found here:
-       (https://github.com/PriceLab/BDDS/tree/master/trenadb/fimo/TOMTOM)
+       (https://github.com/globusgenomics/genomics-footprint/tree/master/generate_motif/TOMTOM)
      - Output for Tomtom, containing all non-redundant motifs can be found here:
        `./output/2017_07_27_all_fimo_motifs`
 
