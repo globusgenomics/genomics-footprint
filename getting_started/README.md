@@ -13,6 +13,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <th style='border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: center;'>Tissue</th>
 <th style='border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: center;'>Method</th>
 <th style='border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: center;'>Seed</th>
+<th style='border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: center;'>DB dump size (GB)</th>
 </tr>
 </thead>
 <tbody>
@@ -23,6 +24,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>adrenal_gland</td>
 <td style='text-align: center;'>hint</td>
 <td style='text-align: center;'>20</td>
+<td style='text-align: center;'>0.86</td>
 </tr>
 <tr>
 <td style='text-align: left;'>2</td>
@@ -31,6 +33,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>adrenal_gland</td>
 <td style='text-align: center;'>hint</td>
 <td style='text-align: center;'>16</td>
+<td style='text-align: center;'>2.0</td>
 </tr>
 <tr>
 <td style='text-align: left;'>3</td>
@@ -39,6 +42,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>adrenal_gland</td>
 <td style='text-align: center;'>wellington</td>
 <td style='text-align: center;'>16</td>
+<td style='text-align: center;'>0.77</td>
 </tr>
 <tr>
 <td style='text-align: left;'>4</td>
@@ -47,6 +51,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>adrenal_gland</td>
 <td style='text-align: center;'>wellington</td>
 <td style='text-align: center;'>20</td>
+<td style='text-align: center;'>0.78</td>
 </tr>
 <tr>
 <td style='text-align: left;'>5</td>
@@ -55,6 +60,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>blood_vessel</td>
 <td style='text-align: center;'>hint</td>
 <td style='text-align: center;'>20</td>
+<td style='text-align: center;'>6.8</td>
 </tr>
 <tr>
 <td style='text-align: left;'>6</td>
@@ -63,6 +69,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>blood_vessel</td>
 <td style='text-align: center;'>hint</td>
 <td style='text-align: center;'>16</td>
+<td style='text-align: center;'>6.9</td>
 </tr>
 <tr>
 <td style='text-align: left;'>7</td>
@@ -71,6 +78,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>blood_vessel</td>
 <td style='text-align: center;'>wellington</td>
 <td style='text-align: center;'>20</td>
+<td style='text-align: center;'>1.7</td>
 </tr>
 <tr>
 <td style='text-align: left;'>8</td>
@@ -79,6 +87,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>blood_vessel</td>
 <td style='text-align: center;'>wellington</td>
 <td style='text-align: center;'>16</td>
+<td style='text-align: center;'>1.8</td>
 </tr>
 <tr>
 <td style='text-align: left;'>9</td>
@@ -87,6 +96,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>bone_element</td>
 <td style='text-align: center;'>hint</td>
 <td style='text-align: center;'>20</td>
+<td style='text-align: center;'>0.86</td>
 </tr>
 <tr>
 <td style='text-align: left;'>10</td>
@@ -95,6 +105,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>bone_element</td>
 <td style='text-align: center;'>hint</td>
 <td style='text-align: center;'>16</td>
+<td style='text-align: center;'>0.86</td>
 </tr>
 <tr>
 <td style='text-align: left;'>11</td>
@@ -103,6 +114,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>bone_element</td>
 <td style='text-align: center;'>wellington</td>
 <td style='text-align: center;'>16</td>
+<td style='text-align: center;'>0.24</td>
 </tr>
 <tr>
 <td style='text-align: left;'>12</td>
@@ -111,6 +123,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>bone_element</td>
 <td style='text-align: center;'>wellington</td>
 <td style='text-align: center;'>20</td>
+<td style='text-align: center;'>0.24</td>
 </tr>
 <tr>
 <td style='text-align: left;'>13</td>
@@ -119,6 +132,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>brain</td>
 <td style='text-align: center;'>hint</td>
 <td style='text-align: center;'>16</td>
+<td style='text-align: center;'>18.6</td>
 </tr>
 <tr>
 <td style='text-align: left;'>14</td>
@@ -127,6 +141,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>brain</td>
 <td style='text-align: center;'>hint</td>
 <td style='text-align: center;'>20</td>
+<td style='text-align: center;'>19.0</td>
 </tr>
 <tr>
 <td style='text-align: left;'>15</td>
@@ -135,6 +150,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>brain</td>
 <td style='text-align: center;'>wellington</td>
 <td style='text-align: center;'>16</td>
+<td style='text-align: center;'>6.6</td>
 </tr>
 <tr>
 <td style='text-align: left;'>16</td>
@@ -143,6 +159,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>brain</td>
 <td style='text-align: center;'>wellington</td>
 <td style='text-align: center;'>20</td>
+<td style='text-align: center;'>6.6</td>
 </tr>
 <tr>
 <td style='text-align: left;'>17</td>
@@ -151,6 +168,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>bronchus</td>
 <td style='text-align: center;'>hint</td>
 <td style='text-align: center;'>20</td>
+<td style='text-align: center;'>0.86</td>
 </tr>
 <tr>
 <td style='text-align: left;'>18</td>
@@ -159,6 +177,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>bronchus</td>
 <td style='text-align: center;'>hint</td>
 <td style='text-align: center;'>16</td>
+<td style='text-align: center;'>1.5</td>
 </tr>
 <tr>
 <td style='text-align: left;'>19</td>
@@ -167,6 +186,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>bronchus</td>
 <td style='text-align: center;'>wellington</td>
 <td style='text-align: center;'>16</td>
+<td style='text-align: center;'>0.42</td>
 </tr>
 <tr>
 <td style='text-align: left;'>20</td>
@@ -175,6 +195,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>bronchus</td>
 <td style='text-align: center;'>wellington</td>
 <td style='text-align: center;'>20</td>
+<td style='text-align: center;'>0.24</td>
 </tr>
 <tr>
 <td style='text-align: left;'>21</td>
@@ -183,6 +204,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>esophagus</td>
 <td style='text-align: center;'>hint</td>
 <td style='text-align: center;'>16</td>
+<td style='text-align: center;'>0.99</td>
 </tr>
 <tr>
 <td style='text-align: left;'>22</td>
@@ -191,6 +213,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>esophagus</td>
 <td style='text-align: center;'>hint</td>
 <td style='text-align: center;'>20</td>
+<td style='text-align: center;'>1.4</td>
 </tr>
 <tr>
 <td style='text-align: left;'>23</td>
@@ -199,6 +222,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>esophagus</td>
 <td style='text-align: center;'>wellington</td>
 <td style='text-align: center;'>20</td>
+<td style='text-align: center;'>0.58</td>
 </tr>
 <tr>
 <td style='text-align: left;'>24</td>
@@ -207,6 +231,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>esophagus</td>
 <td style='text-align: center;'>wellington</td>
 <td style='text-align: center;'>16</td>
+<td style='text-align: center;'>0.28</td>
 </tr>
 <tr>
 <td style='text-align: left;'>25</td>
@@ -215,6 +240,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>extraembryonic_structure</td>
 <td style='text-align: center;'>hint</td>
 <td style='text-align: center;'>16</td>
+<td style='text-align: center;'>8.8</td>
 </tr>
 <tr>
 <td style='text-align: left;'>26</td>
@@ -223,6 +249,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>extraembryonic_structure</td>
 <td style='text-align: center;'>hint</td>
 <td style='text-align: center;'>20</td>
+<td style='text-align: center;'>8.9</td>
 </tr>
 <tr>
 <td style='text-align: left;'>27</td>
@@ -231,6 +258,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>extraembryonic_structure</td>
 <td style='text-align: center;'>wellington</td>
 <td style='text-align: center;'>16</td>
+<td style='text-align: center;'>3.5</td>
 </tr>
 <tr>
 <td style='text-align: left;'>28</td>
@@ -239,6 +267,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>extraembryonic_structure</td>
 <td style='text-align: center;'>wellington</td>
 <td style='text-align: center;'>20</td>
+<td style='text-align: center;'>3.6</td>
 </tr>
 <tr>
 <td style='text-align: left;'>29</td>
@@ -247,6 +276,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>eye</td>
 <td style='text-align: center;'>hint</td>
 <td style='text-align: center;'>20</td>
+<td style='text-align: center;'>7.2</td>
 </tr>
 <tr>
 <td style='text-align: left;'>30</td>
@@ -255,6 +285,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>eye</td>
 <td style='text-align: center;'>hint</td>
 <td style='text-align: center;'>16</td>
+<td style='text-align: center;'>7.2</td>
 </tr>
 <tr>
 <td style='text-align: left;'>31</td>
@@ -263,6 +294,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>eye</td>
 <td style='text-align: center;'>wellington</td>
 <td style='text-align: center;'>20</td>
+<td style='text-align: center;'>2.4</td>
 </tr>
 <tr>
 <td style='text-align: left;'>32</td>
@@ -271,6 +303,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>eye</td>
 <td style='text-align: center;'>wellington</td>
 <td style='text-align: center;'>16</td>
+<td style='text-align: center;'>2.5</td>
 </tr>
 <tr>
 <td style='text-align: left;'>33</td>
@@ -279,6 +312,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>gonad</td>
 <td style='text-align: center;'>hint</td>
 <td style='text-align: center;'>20</td>
+<td style='text-align: center;'>1.1</td>
 </tr>
 <tr>
 <td style='text-align: left;'>34</td>
@@ -287,6 +321,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>gonad</td>
 <td style='text-align: center;'>hint</td>
 <td style='text-align: center;'>16</td>
+<td style='text-align: center;'>1.8</td>
 </tr>
 <tr>
 <td style='text-align: left;'>35</td>
@@ -295,6 +330,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>gonad</td>
 <td style='text-align: center;'>wellington</td>
 <td style='text-align: center;'>20</td>
+<td style='text-align: center;'>0.72</td>
 </tr>
 <tr>
 <td style='text-align: left;'>36</td>
@@ -303,6 +339,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>gonad</td>
 <td style='text-align: center;'>wellington</td>
 <td style='text-align: center;'>16</td>
+<td style='text-align: center;'>0.83</td>
 </tr>
 <tr>
 <td style='text-align: left;'>37</td>
@@ -311,6 +348,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>heart</td>
 <td style='text-align: center;'>hint</td>
 <td style='text-align: center;'>16</td>
+<td style='text-align: center;'>5.7</td>
 </tr>
 <tr>
 <td style='text-align: left;'>38</td>
@@ -319,6 +357,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>heart</td>
 <td style='text-align: center;'>hint</td>
 <td style='text-align: center;'>20</td>
+<td style='text-align: center;'>6.6</td>
 </tr>
 <tr>
 <td style='text-align: left;'>39</td>
@@ -327,6 +366,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>heart</td>
 <td style='text-align: center;'>wellington</td>
 <td style='text-align: center;'>16</td>
+<td style='text-align: center;'>0.83</td>
 </tr>
 <tr>
 <td style='text-align: left;'>40</td>
@@ -335,6 +375,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>heart</td>
 <td style='text-align: center;'>wellington</td>
 <td style='text-align: center;'>20</td>
+<td style='text-align: center;'>0.72</td>
 </tr>
 <tr>
 <td style='text-align: left;'>41</td>
@@ -343,6 +384,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>kidney</td>
 <td style='text-align: center;'>hint</td>
 <td style='text-align: center;'>20</td>
+<td style='text-align: center;'>6.5</td>
 </tr>
 <tr>
 <td style='text-align: left;'>42</td>
@@ -351,6 +393,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>kidney</td>
 <td style='text-align: center;'>hint</td>
 <td style='text-align: center;'>16</td>
+<td style='text-align: center;'>6.5</td>
 </tr>
 <tr>
 <td style='text-align: left;'>43</td>
@@ -359,6 +402,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>kidney</td>
 <td style='text-align: center;'>wellington</td>
 <td style='text-align: center;'>16</td>
+<td style='text-align: center;'>2.2</td>
 </tr>
 <tr>
 <td style='text-align: left;'>44</td>
@@ -367,6 +411,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>kidney</td>
 <td style='text-align: center;'>wellington</td>
 <td style='text-align: center;'>20</td>
+<td style='text-align: center;'>2.2</td>
 </tr>
 <tr>
 <td style='text-align: left;'>45</td>
@@ -375,6 +420,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>large_intestine</td>
 <td style='text-align: center;'>hint</td>
 <td style='text-align: center;'>16</td>
+<td style='text-align: center;'>2.9</td>
 </tr>
 <tr>
 <td style='text-align: left;'>46</td>
@@ -383,6 +429,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>large_intestine</td>
 <td style='text-align: center;'>hint</td>
 <td style='text-align: center;'>20</td>
+<td style='text-align: center;'>3.1</td>
 </tr>
 <tr>
 <td style='text-align: left;'>47</td>
@@ -391,6 +438,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>large_intestine</td>
 <td style='text-align: center;'>wellington</td>
 <td style='text-align: center;'>16</td>
+<td style='text-align: center;'>1.4</td>
 </tr>
 <tr>
 <td style='text-align: left;'>48</td>
@@ -399,6 +447,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>large_intestine</td>
 <td style='text-align: center;'>wellington</td>
 <td style='text-align: center;'>20</td>
+<td style='text-align: center;'>1.7</td>
 </tr>
 <tr>
 <td style='text-align: left;'>49</td>
@@ -407,6 +456,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>liver</td>
 <td style='text-align: center;'>hint</td>
 <td style='text-align: center;'>16</td>
+<td style='text-align: center;'>2.6</td>
 </tr>
 <tr>
 <td style='text-align: left;'>50</td>
@@ -415,6 +465,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>liver</td>
 <td style='text-align: center;'>hint</td>
 <td style='text-align: center;'>20</td>
+<td style='text-align: center;'>1.6</td>
 </tr>
 <tr>
 <td style='text-align: left;'>51</td>
@@ -423,6 +474,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>liver</td>
 <td style='text-align: center;'>wellington</td>
 <td style='text-align: center;'>20</td>
+<td style='text-align: center;'>0.72</td>
 </tr>
 <tr>
 <td style='text-align: left;'>52</td>
@@ -431,6 +483,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>liver</td>
 <td style='text-align: center;'>wellington</td>
 <td style='text-align: center;'>16</td>
+<td style='text-align: center;'>1.2</td>
 </tr>
 <tr>
 <td style='text-align: left;'>53</td>
@@ -439,6 +492,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>lung</td>
 <td style='text-align: center;'>hint</td>
 <td style='text-align: center;'>20</td>
+<td style='text-align: center;'>5.7</td>
 </tr>
 <tr>
 <td style='text-align: left;'>54</td>
@@ -447,6 +501,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>lung</td>
 <td style='text-align: center;'>hint</td>
 <td style='text-align: center;'>16</td>
+<td style='text-align: center;'>5.7</td>
 </tr>
 <tr>
 <td style='text-align: left;'>55</td>
@@ -455,6 +510,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>lung</td>
 <td style='text-align: center;'>wellington</td>
 <td style='text-align: center;'>16</td>
+<td style='text-align: center;'>1.6</td>
 </tr>
 <tr>
 <td style='text-align: left;'>56</td>
@@ -463,6 +519,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>lung</td>
 <td style='text-align: center;'>wellington</td>
 <td style='text-align: center;'>20</td>
+<td style='text-align: center;'>1.6</td>
 </tr>
 <tr>
 <td style='text-align: left;'>57</td>
@@ -471,6 +528,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>lymphatic_vessel</td>
 <td style='text-align: center;'>hint</td>
 <td style='text-align: center;'>20</td>
+<td style='text-align: center;'>1.4</td>
 </tr>
 <tr>
 <td style='text-align: left;'>58</td>
@@ -479,6 +537,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>lymphatic_vessel</td>
 <td style='text-align: center;'>hint</td>
 <td style='text-align: center;'>16</td>
+<td style='text-align: center;'>1.4</td>
 </tr>
 <tr>
 <td style='text-align: left;'>59</td>
@@ -487,6 +546,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>lymphatic_vessel</td>
 <td style='text-align: center;'>wellington</td>
 <td style='text-align: center;'>20</td>
+<td style='text-align: center;'>0.33</td>
 </tr>
 <tr>
 <td style='text-align: left;'>60</td>
@@ -495,6 +555,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>lymphatic_vessel</td>
 <td style='text-align: center;'>wellington</td>
 <td style='text-align: center;'>16</td>
+<td style='text-align: center;'>0.33</td>
 </tr>
 <tr>
 <td style='text-align: left;'>61</td>
@@ -503,6 +564,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>lymphoblast</td>
 <td style='text-align: center;'>hint</td>
 <td style='text-align: center;'>16</td>
+<td style='text-align: center;'>10.7</td>
 </tr>
 <tr>
 <td style='text-align: left;'>62</td>
@@ -511,6 +573,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>lymphoblast</td>
 <td style='text-align: center;'>hint</td>
 <td style='text-align: center;'>20</td>
+<td style='text-align: center;'>11.1</td>
 </tr>
 <tr>
 <td style='text-align: left;'>63</td>
@@ -519,6 +582,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>lymphoblast</td>
 <td style='text-align: center;'>wellington</td>
 <td style='text-align: center;'>16</td>
+<td style='text-align: center;'>4.3</td>
 </tr>
 <tr>
 <td style='text-align: left;'>64</td>
@@ -527,6 +591,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>lymphoblast</td>
 <td style='text-align: center;'>wellington</td>
 <td style='text-align: center;'>20</td>
+<td style='text-align: center;'>4.2</td>
 </tr>
 <tr>
 <td style='text-align: left;'>65</td>
@@ -535,6 +600,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>mammary_gland</td>
 <td style='text-align: center;'>hint</td>
 <td style='text-align: center;'>20</td>
+<td style='text-align: center;'>1.4</td>
 </tr>
 <tr>
 <td style='text-align: left;'>66</td>
@@ -543,6 +609,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>mammary_gland</td>
 <td style='text-align: center;'>hint</td>
 <td style='text-align: center;'>16</td>
+<td style='text-align: center;'>1.4</td>
 </tr>
 <tr>
 <td style='text-align: left;'>67</td>
@@ -551,6 +618,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>mammary_gland</td>
 <td style='text-align: center;'>wellington</td>
 <td style='text-align: center;'>20</td>
+<td style='text-align: center;'>0.36</td>
 </tr>
 <tr>
 <td style='text-align: left;'>68</td>
@@ -559,6 +627,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>mammary_gland</td>
 <td style='text-align: center;'>wellington</td>
 <td style='text-align: center;'>16</td>
+<td style='text-align: center;'>0.36</td>
 </tr>
 <tr>
 <td style='text-align: left;'>69</td>
@@ -567,6 +636,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>mouth</td>
 <td style='text-align: center;'>hint</td>
 <td style='text-align: center;'>20</td>
+<td style='text-align: center;'>3.6</td>
 </tr>
 <tr>
 <td style='text-align: left;'>70</td>
@@ -575,6 +645,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>mouth</td>
 <td style='text-align: center;'>hint</td>
 <td style='text-align: center;'>16</td>
+<td style='text-align: center;'>3.6</td>
 </tr>
 <tr>
 <td style='text-align: left;'>71</td>
@@ -583,6 +654,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>mouth</td>
 <td style='text-align: center;'>wellington</td>
 <td style='text-align: center;'>16</td>
+<td style='text-align: center;'>1.2</td>
 </tr>
 <tr>
 <td style='text-align: left;'>72</td>
@@ -591,6 +663,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>mouth</td>
 <td style='text-align: center;'>wellington</td>
 <td style='text-align: center;'>20</td>
+<td style='text-align: center;'>1.2</td>
 </tr>
 <tr>
 <td style='text-align: left;'>73</td>
@@ -599,6 +672,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>muscle_organ</td>
 <td style='text-align: center;'>hint</td>
 <td style='text-align: center;'>16</td>
+<td style='text-align: center;'>2.8</td>
 </tr>
 <tr>
 <td style='text-align: left;'>74</td>
@@ -607,6 +681,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>muscle_organ</td>
 <td style='text-align: center;'>hint</td>
 <td style='text-align: center;'>20</td>
+<td style='text-align: center;'>2.9</td>
 </tr>
 <tr>
 <td style='text-align: left;'>75</td>
@@ -615,6 +690,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>muscle_organ</td>
 <td style='text-align: center;'>wellington</td>
 <td style='text-align: center;'>16</td>
+<td style='text-align: center;'>0.93</td>
 </tr>
 <tr>
 <td style='text-align: left;'>76</td>
@@ -623,6 +699,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>muscle_organ</td>
 <td style='text-align: center;'>wellington</td>
 <td style='text-align: center;'>20</td>
+<td style='text-align: center;'>0.99</td>
 </tr>
 <tr>
 <td style='text-align: left;'>77</td>
@@ -631,6 +708,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>pancreas</td>
 <td style='text-align: center;'>hint</td>
 <td style='text-align: center;'>16</td>
+<td style='text-align: center;'>1.6</td>
 </tr>
 <tr>
 <td style='text-align: left;'>78</td>
@@ -639,6 +717,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>pancreas</td>
 <td style='text-align: center;'>hint</td>
 <td style='text-align: center;'>20</td>
+<td style='text-align: center;'>2.1</td>
 </tr>
 <tr>
 <td style='text-align: left;'>79</td>
@@ -647,6 +726,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>pancreas</td>
 <td style='text-align: center;'>wellington</td>
 <td style='text-align: center;'>16</td>
+<td style='text-align: center;'>0.81</td>
 </tr>
 <tr>
 <td style='text-align: left;'>80</td>
@@ -655,6 +735,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>pancreas</td>
 <td style='text-align: center;'>wellington</td>
 <td style='text-align: center;'>20</td>
+<td style='text-align: center;'>1.2</td>
 </tr>
 <tr>
 <td style='text-align: left;'>81</td>
@@ -663,6 +744,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>prostate_gland</td>
 <td style='text-align: center;'>hint</td>
 <td style='text-align: center;'>16</td>
+<td style='text-align: center;'>1.1</td>
 </tr>
 <tr>
 <td style='text-align: left;'>82</td>
@@ -671,6 +753,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>prostate_gland</td>
 <td style='text-align: center;'>hint</td>
 <td style='text-align: center;'>20</td>
+<td style='text-align: center;'>1.3</td>
 </tr>
 <tr>
 <td style='text-align: left;'>83</td>
@@ -679,6 +762,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>prostate_gland</td>
 <td style='text-align: center;'>wellington</td>
 <td style='text-align: center;'>16</td>
+<td style='text-align: center;'>0.41</td>
 </tr>
 <tr>
 <td style='text-align: left;'>84</td>
@@ -687,6 +771,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>prostate_gland</td>
 <td style='text-align: center;'>wellington</td>
 <td style='text-align: center;'>20</td>
+<td style='text-align: center;'>0.58</td>
 </tr>
 <tr>
 <td style='text-align: left;'>85</td>
@@ -695,6 +780,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>skin</td>
 <td style='text-align: center;'>hint</td>
 <td style='text-align: center;'>16</td>
+<td style='text-align: center;'>26.1</td>
 </tr>
 <tr>
 <td style='text-align: left;'>86</td>
@@ -703,6 +789,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>skin</td>
 <td style='text-align: center;'>hint</td>
 <td style='text-align: center;'>20</td>
+<td style='text-align: center;'>26.8</td>
 </tr>
 <tr>
 <td style='text-align: left;'>87</td>
@@ -711,6 +798,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>skin</td>
 <td style='text-align: center;'>wellington</td>
 <td style='text-align: center;'>20</td>
+<td style='text-align: center;'>8.0</td>
 </tr>
 <tr>
 <td style='text-align: left;'>88</td>
@@ -719,6 +807,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>skin</td>
 <td style='text-align: center;'>wellington</td>
 <td style='text-align: center;'>16</td>
+<td style='text-align: center;'>7.9</td>
 </tr>
 <tr>
 <td style='text-align: left;'>89</td>
@@ -727,6 +816,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>spinal_cord</td>
 <td style='text-align: center;'>hint</td>
 <td style='text-align: center;'>16</td>
+<td style='text-align: center;'>2.1</td>
 </tr>
 <tr>
 <td style='text-align: left;'>90</td>
@@ -735,6 +825,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>spinal_cord</td>
 <td style='text-align: center;'>hint</td>
 <td style='text-align: center;'>20</td>
+<td style='text-align: center;'>2.2</td>
 </tr>
 <tr>
 <td style='text-align: left;'>91</td>
@@ -743,6 +834,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>spinal_cord</td>
 <td style='text-align: center;'>wellington</td>
 <td style='text-align: center;'>16</td>
+<td style='text-align: center;'>0.66</td>
 </tr>
 <tr>
 <td style='text-align: left;'>92</td>
@@ -751,6 +843,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>spinal_cord</td>
 <td style='text-align: center;'>wellington</td>
 <td style='text-align: center;'>20</td>
+<td style='text-align: center;'>0.70</td>
 </tr>
 <tr>
 <td style='text-align: left;'>93</td>
@@ -759,6 +852,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>stomach</td>
 <td style='text-align: center;'>hint</td>
 <td style='text-align: center;'>20</td>
+<td style='text-align: center;'>1.4</td>
 </tr>
 <tr>
 <td style='text-align: left;'>94</td>
@@ -767,6 +861,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>stomach</td>
 <td style='text-align: center;'>hint</td>
 <td style='text-align: center;'>16</td>
+<td style='text-align: center;'>1.4</td>
 </tr>
 <tr>
 <td style='text-align: left;'>95</td>
@@ -775,6 +870,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>stomach</td>
 <td style='text-align: center;'>wellington</td>
 <td style='text-align: center;'>20</td>
+<td style='text-align: center;'>0.55</td>
 </tr>
 <tr>
 <td style='text-align: left;'>96</td>
@@ -783,6 +879,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>stomach</td>
 <td style='text-align: center;'>wellington</td>
 <td style='text-align: center;'>16</td>
+<td style='text-align: center;'>0.54</td>
 </tr>
 <tr>
 <td style='text-align: left;'>97</td>
@@ -791,6 +888,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>thyroid_gland</td>
 <td style='text-align: center;'>hint</td>
 <td style='text-align: center;'>20</td>
+<td style='text-align: center;'>2.5</td>
 </tr>
 <tr>
 <td style='text-align: left;'>98</td>
@@ -799,6 +897,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>thyroid_gland</td>
 <td style='text-align: center;'>hint</td>
 <td style='text-align: center;'>16</td>
+<td style='text-align: center;'>2.3</td>
 </tr>
 <tr>
 <td style='text-align: left;'>99</td>
@@ -807,6 +906,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>thyroid_gland</td>
 <td style='text-align: center;'>wellington</td>
 <td style='text-align: center;'>16</td>
+<td style='text-align: center;'>0.99</td>
 </tr>
 <tr>
 <td style='text-align: left;'>100</td>
@@ -815,6 +915,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>thyroid_gland</td>
 <td style='text-align: center;'>wellington</td>
 <td style='text-align: center;'>20</td>
+<td style='text-align: center;'>1.2</td>
 </tr>
 <tr>
 <td style='text-align: left;'>101</td>
@@ -823,6 +924,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>tongue</td>
 <td style='text-align: center;'>hint</td>
 <td style='text-align: center;'>16</td>
+<td style='text-align: center;'>2.4</td>
 </tr>
 <tr>
 <td style='text-align: left;'>102</td>
@@ -831,6 +933,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>tongue</td>
 <td style='text-align: center;'>hint</td>
 <td style='text-align: center;'>20</td>
+<td style='text-align: center;'>2.4</td>
 </tr>
 <tr>
 <td style='text-align: left;'>103</td>
@@ -839,6 +942,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>tongue</td>
 <td style='text-align: center;'>wellington</td>
 <td style='text-align: center;'>16</td>
+<td style='text-align: center;'>0.88</td>
 </tr>
 <tr>
 <td style='text-align: left;'>104</td>
@@ -847,6 +951,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>tongue</td>
 <td style='text-align: center;'>wellington</td>
 <td style='text-align: center;'>20</td>
+<td style='text-align: center;'>0.91</td>
 </tr>
 <tr>
 <td style='text-align: left;'>105</td>
@@ -855,6 +960,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>urinary_bladder</td>
 <td style='text-align: center;'>hint</td>
 <td style='text-align: center;'>20</td>
+<td style='text-align: center;'>0.67</td>
 </tr>
 <tr>
 <td style='text-align: left;'>106</td>
@@ -863,6 +969,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>urinary_bladder</td>
 <td style='text-align: center;'>hint</td>
 <td style='text-align: center;'>16</td>
+<td style='text-align: center;'>0.67</td>
 </tr>
 <tr>
 <td style='text-align: left;'>107</td>
@@ -871,6 +978,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='text-align: center;'>urinary_bladder</td>
 <td style='text-align: center;'>wellington</td>
 <td style='text-align: center;'>16</td>
+<td style='text-align: center;'>0.27</td>
 </tr>
 <tr>
 <td style='border-bottom: 2px solid grey; text-align: left;'>108</td>
@@ -879,6 +987,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <td style='border-bottom: 2px solid grey; text-align: center;'>urinary_bladder</td>
 <td style='border-bottom: 2px solid grey; text-align: center;'>wellington</td>
 <td style='border-bottom: 2px solid grey; text-align: center;'>20</td>
+<td style='text-align: center;'>0.27</td>
 </tr>
 </tbody>
 </table>
