@@ -13,7 +13,7 @@ To get started, please take a look at this [Notebook (HTML)](http://footprints.b
 <th style='border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: center;'>Tissue</th>
 <th style='border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: center;'>Method</th>
 <th style='border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: center;'>Seed</th>
-<th style='border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: center;'>DB dump size (GB)</th>
+<th style='border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: center;'>DB.dump.size (GB)</th>
 </tr>
 </thead>
 <tbody>
