@@ -8,12 +8,14 @@ Generating the fimo output files and uploading to a database can be done by runn
 
    - Make sure that: (1) hg38 sequences in [./fimo_input/hg38](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_motif/fimo_input/hg38) are uncompressed; (2) PostgreSQL is installed; and (3) [FIMO](http://meme-suite.org/doc/install.html?man_type=web) is installed.
 
+   - We use the pre-generated non-redundant motifs.
+
             `Rscript ./script/create_fimo_db.R`
 
 
 **Please note: this process will take a long time, so plan accordingly**
 
-Generation of the FIMO database can be broken down into three primary steps:
+Specifically, generation of the FIMO database can be broken down into three primary steps:
 
       1. Identifying and collecting motif catalogs from various sources
       2. Running Tomtom to identify a core set of non-redundant motifs across the input sources
