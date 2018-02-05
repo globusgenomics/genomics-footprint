@@ -15,7 +15,8 @@ Generating the fimo output files and uploading to a database can be done by runn
 
 **Please note: this process will take a long time, so plan accordingly**
 
----
+***
+
 Specifically, generation of the FIMO database can be broken down into three primary steps:
 
       1. Identifying and collecting motif catalogs from various sources
