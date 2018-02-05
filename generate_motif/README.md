@@ -6,7 +6,7 @@
 
 Generating the fimo output files and uploading to a database can be done by running the R script [create_fimo_db.R](https://github.com/globusgenomics/genomics-footprint/blob/master/generate_motif/script/create_fimo_db.R):
 
-      - Make sure that: (1) hg38 sequences in [./fimo_input/hg38](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_motif/fimo_input/hg38) are uncompressed; (2) PostgreSQL is installed; and (3) [FIMO](http://meme-suite.org/doc/install.html?man_type=web) is installed.
+   - Make sure that: (1) hg38 sequences in [./fimo_input/hg38](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_motif/fimo_input/hg38) are uncompressed; (2) PostgreSQL is installed; and (3) [FIMO](http://meme-suite.org/doc/install.html?man_type=web) is installed.
 
             `Rscript ./script/create_fimo_db.R`
 
