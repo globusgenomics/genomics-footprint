@@ -28,9 +28,10 @@ Generation of the FIMO database can be broken down into three primary steps:
 
        `fimo --text --oc . --no-qvalue ./fimo_input/motif/non-redundant_fimo_motifs.meme ./fimo_input_hg38/1.fa > ./chr1_fimo_output.txt`
 
-Generating the fimo output files can be done by running the R script:
+Generating the fimo output files and uploading to a database can be done by running the R script:
+   - Make sure that: (1) hg38 sequences in `./fimo_input/hg38/` are uncompressed; (2) PostgreSQL is installed; and (3) FIMO is installed.
 
-       ` `
+       `Rscript ./script/create_fimo_db.R`
 
 
 ## Instructions on how to create and update FIMO
