@@ -2,7 +2,7 @@
 
 **Final catalog as a psql dump is available at to download :**   
 
-       `s3cmd get s3://bdds-public/index_dbs/2017_07_27_fimo`
+       `s3cmd get s3://bdds-public/index_dbs/2017_07_27_fimo . `
 
 Generation of the FIMO database can be broken down into three primary steps:
 
