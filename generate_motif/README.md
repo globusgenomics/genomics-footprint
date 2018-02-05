@@ -4,6 +4,14 @@
 
        `s3cmd get s3://bdds-public/index_dbs/2017_07_27_fimo . `
 
+Generating the fimo output files and uploading to a database can be done by running the R script [create_fimo_db.R](https://github.com/globusgenomics/genomics-footprint/blob/master/generate_motif/script/create_fimo_db.R):
+      - Make sure that: (1) hg38 sequences in [./fimo_input/hg38](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_motif/fimo_input/hg38) are uncompressed; (2) PostgreSQL is installed; and (3) [FIMO](http://meme-suite.org/doc/install.html?man_type=web) is installed.
+
+            `Rscript ./script/create_fimo_db.R`
+
+
+**Please note: this process will take a long time, so plan accordingly**
+
 Generation of the FIMO database can be broken down into three primary steps:
 
       1. Identifying and collecting motif catalogs from various sources
@@ -27,11 +35,3 @@ Generation of the FIMO database can be broken down into three primary steps:
  - Running FIMO to identify the genomic location of all motifs. Below is an exmaple with chromosome 1.
 
        `fimo --text --oc . --no-qvalue ./fimo_input/motif/non-redundant_fimo_motifs.meme ./fimo_input_hg38/1.fa > ./chr1_fimo_output.txt`
-
-Generating the fimo output files and uploading to a database can be done by running the R script:
-   - Make sure that: (1) hg38 sequences in [fimo_input/hg38](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_motif/fimo_input/hg38) are uncompressed; (2) PostgreSQL is installed; and (3) [FIMO](http://meme-suite.org/doc/install.html?man_type=web) is installed.
-
-       `Rscript ./script/create_fimo_db.R`
-
-
-**Please note: this process will take a long time, so plan accordingly**
