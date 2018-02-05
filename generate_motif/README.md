@@ -21,11 +21,16 @@ Generation of the FIMO database can be broken down into three primary steps:
        (https://github.com/globusgenomics/genomics-footprint/tree/master/generate_motif/TOMTOM)
 
      - The file for non-redundant motifs is available for downloading at:
+
        `./fimo_input/motif/non-redundant_fimo_motifs.meme`
 
  - Running FIMO to identify the genomic location of all motifs. Below is an exmaple with chromosome 1.
 
-     - `fimo --text --oc . --no-qvalue ./fimo_input/motif/non-redundant_fimo_motifs.meme ./fimo_input_hg38/1.fa > ./chr1_fimo_output.txt`
+       `fimo --text --oc . --no-qvalue ./fimo_input/motif/non-redundant_fimo_motifs.meme ./fimo_input_hg38/1.fa > ./chr1_fimo_output.txt`
+
+Generating the fimo output files can be done by running the R script:
+
+       ` `
 
 
 ## Instructions on how to create and update FIMO
