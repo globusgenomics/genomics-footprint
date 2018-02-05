@@ -1,12 +1,12 @@
 # Generate the transcription factor binding motif catalog
 
-**Final catalog as a psql dump is available at:**   
+**Final catalog as a psql dump is available at to download :**   
 
-       `./fimo_psql_dump/2017_07_27_fimo`
+       `s3cmd get s3://bdds-public/index_dbs/2017_07_27_fimo`
 
 Generation of the FIMO database can be broken down into three primary steps:
 
-      1. Identifying and collecting motif catalogs from varous sources
+      1. Identifying and collecting motif catalogs from various sources
       2. Running Tomtom to identify a core set of non-redundant motifs across the input sources
       3. Running FIMO to identify the genomic location of all motifs
 
