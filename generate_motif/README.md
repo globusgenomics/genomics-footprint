@@ -29,54 +29,9 @@ Generation of the FIMO database can be broken down into three primary steps:
        `fimo --text --oc . --no-qvalue ./fimo_input/motif/non-redundant_fimo_motifs.meme ./fimo_input_hg38/1.fa > ./chr1_fimo_output.txt`
 
 Generating the fimo output files and uploading to a database can be done by running the R script:
-   - Make sure that: (1) hg38 sequences in `./fimo_input/hg38/` are uncompressed; (2) PostgreSQL is installed; and (3) FIMO is installed.
+   - Make sure that: (1) hg38 sequences in `./fimo_input/hg38/` are uncompressed; (2) PostgreSQL is installed; and (3) [FIMO](http://meme-suite.org/doc/install.html?man_type=web) is installed.
 
        `Rscript ./script/create_fimo_db.R`
 
 
-## Instructions on how to create and update FIMO
-
-1. Install the latest [MotifDb](https://github.com/PriceLab/MotifDb) version from the forked PriceLab repo
-
-   - Clone the repo onto your machine:
-
-     `git clone https://github.com/PriceLab/MotifDb.git`
-
-   - Open up R and install the necessary dependency packages from BioConductor using the following:
-   ```
-      source("https://bioconductor.org/biocLite.R")
-      biocLite(c("BiocGenerics", "S4Vectors", "IRanges", "Biostrings", "rtracklayer"))
-
-   ```
-
-   - Once the dependency packages are installed, exit R and navigate to the MotifDb root directory (e.g. ./MotifDb) and install the MotifDb package locally:
-   `R CMD INSTALL .`
-
-2. Using MotifDb in R, export .meme files of your desired motifs
-
-   - Open up R again and load the MotifDb package:
-
-      `library(MotifDb)`
-
-   - As detailed in the [MotifDb vignette](http://bioconductor.org/packages/release/bioc/vignettes/MotifDb/inst/doc/MotifDb.pdf), you can filter out certain types of motifs using the `query` function. For example, we can select the human (*H.sapiens*) motifs from JASPAR 2016 as follows:
-
-      `jaspar_human <- query(query(MotifDb, "hsapiens"),"jaspar2016")`
-
-   - In order to run these motifs through the FIMO program, we want a .meme file; this can be directly done using MotifDb as follows:
-
-      `export(jaspar_human, con = "./output/jaspar_human.meme", format = "meme")`
-
-   - We've now created the file "jaspar_human.meme" of human motifs found in the JASPAR 2016 database.
-
-
-3. Using the FIMO program, intersect the motif .meme files with all chromosomes
-
-   - Install the FIMO tools from the MEME suite (the  instruction is available  [here](http://meme-suite.org/doc/install.html?man_type=web) and run FIMO on your  .meme motif file and do so on all chromosomes. Your .meme file is already in your workspace, but you will need the hg38 chromosomes. We have them broken up into sensibly-sized groups in an Amazon S3 bucket, so copy them to your workspace with the following:
-
-      `aws s3 cp s3://bdds-public/GRCh38 . --recursive`
-
-   - Run chromosomes individually or all in parallel. Below is for chr1 as an example:
-
-      `fimo --text --oc . --no-qvalue ./meme/your_file.meme ../chromosomes/1.fa > ./01_your_file_fimo.txt`
-
-**Please note: this step will take a long time, so plan accordingly**
+**Please note: this process will take a long time, so plan accordingly**
