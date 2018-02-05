@@ -18,8 +18,8 @@ Generation of the FIMO database can be broken down into three primary steps:
 - Running [Tomtom](http://meme-suite.org/tools/tomtom) to identify a core set of non-redundant motifs across the input sources
      - Code for running Tomtom can be found here:
        (https://github.com/globusgenomics/genomics-footprint/tree/master/generate_motif/TOMTOM)
-     - Output for Tomtom, containing all non-redundant motifs can be found here:
-       `./output/2017_07_27_all_fimo_motifs`
+     - The file for non-redundant 1530 motifs is available for downloading at:
+       `./fimo_input/motif/non_redundant_fimo_motifs.meme`
 
  - Running FIMO to identify the genomic location of all motifs
      - `fimo --text --oc . --no-qvalue ./meme/your_file.meme ../chromosomes/1.fa > ./01_your_file_fimo.txt`
