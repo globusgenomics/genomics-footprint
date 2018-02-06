@@ -1,6 +1,6 @@
 #/bin/bash
 
-psql postgres -U trena -h localhost << EOF
+psql postgres -U trena -h bddsrds.globusgenomics.org << EOF
 
 create database urinary_bladder_wellington_20;
 grant all privileges on database urinary_bladder_wellington_20 to trena;

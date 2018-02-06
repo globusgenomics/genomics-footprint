@@ -14,10 +14,10 @@ data.path <- "/ssd/mrichard/data/footprints/urinary_bladder_hint_20"
 # establish database connections:
 
 if(!exists("db.hint"))
-    db.hint <- "urinary_bladder_hint_20_localhost"
+    db.hint <- "urinary_bladder_hint_20"
 
 if(!exists("db.fimo"))
-    db.fimo <- "fimo_localhost"
+    db.fimo <- "fimo"
 #-------------------------------------------------------------------------------
 # Source the libraries
 source("../src/dependencies.R")

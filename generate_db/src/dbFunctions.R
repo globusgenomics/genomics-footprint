@@ -7,623 +7,623 @@ getDBConnection <- function(database) {
     user= "ben"
     password="ben_PASS"
     dbname="trenatest"
-    host="bdds-rds.globusgenomics.org"
+    host="bddsrds.globusgenomics.org"
 
   } else if (database == "fimo") {
     user= "trena"
     password="trena"
     dbname="fimo"
-    host="bdds-rds.globusgenomics.org"
+    host="bddsrds.globusgenomics.org"
 
   } else if (database == "adrenal_gland_wellington_20") {
     user = "trena"
     password = "trena"
     dbname = "adrenal_gland_wellington_20"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
   } else if (database == "adrenal_gland_hint_20") {
     user = "trena"
     password = "trena"
     dbname = "adrenal_gland_hint_20"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
 
   } else if (database == "adrenal_gland_wellington_16") {
     user = "trena"
     password = "trena"
     dbname = "adrenal_gland_wellington_16"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
   } else if (database == "adrenal_gland_hint_16") {
     user = "trena"
     password = "trena"
     dbname = "adrenal_gland_hint_16"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
 
   } else if (database == "blood_vessel_wellington_20") {
     user = "trena"
     password = "trena"
     dbname = "blood_vessel_wellington_20"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
   } else if (database == "blood_vessel_hint_20") {
     user = "trena"
     password = "trena"
     dbname = "blood_vessel_hint_20"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
 
   } else if (database == "blood_vessel_wellington_16") {
     user = "trena"
     password = "trena"
     dbname = "blood_vessel_wellington_16"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
   } else if (database == "blood_vessel_hint_16") {
     user = "trena"
     password = "trena"
     dbname = "blood_vessel_hint_16"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
 
   } else if (database == "bone_element_wellington_20") {
     user = "trena"
     password = "trena"
     dbname = "bone_element_wellington_20"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
   } else if (database == "bone_element_hint_20") {
     user = "trena"
     password = "trena"
     dbname = "bone_element_hint_20"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
 
   } else if (database == "bone_element_wellington_16") {
     user = "trena"
     password = "trena"
     dbname = "bone_element_wellington_16"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
   } else if (database == "bone_element_hint_16") {
     user = "trena"
     password = "trena"
     dbname = "bone_element_hint_16"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
 
   } else if (database == "brain_wellington_16") {
     user = "trena"
     password = "trena"
     dbname = "brain_wellington_16"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
   } else if (database == "brain_hint_16") {
     user = "trena"
     password = "trena"
     dbname = "brain_hint_16"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
 
   } else if (database == "brain_wellington_20") {
     user = "trena"
     password = "trena"
     dbname = "brain_wellington_20"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
   } else if (database == "brain_hint_20") {
     user = "trena"
     password = "trena"
     dbname = "brain_hint_20"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
 
   } else if (database == "bronchus_wellington_20") {
     user = "trena"
     password = "trena"
     dbname = "bronchus_wellington_20"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
   } else if (database == "bronchus_hint_20") {
     user = "trena"
     password = "trena"
     dbname = "bronchus_hint_20"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
 
   } else if (database == "bronchus_wellington_16") {
     user = "trena"
     password = "trena"
     dbname = "bronchus_wellington_16"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
   } else if (database == "bronchus_hint_16") {
     user = "trena"
     password = "trena"
     dbname = "bronchus_hint_16"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
 
   } else if (database == "esophagus_wellington_20") {
     user = "trena"
     password = "trena"
     dbname = "esophagus_wellington_20"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
   } else if (database == "esophagus_hint_20") {
     user = "trena"
     password = "trena"
     dbname = "esophagus_hint_20"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
 
   } else if (database == "esophagus_wellington_16") {
     user = "trena"
     password = "trena"
     dbname = "esophagus_wellington_16"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
   } else if (database == "esophagus_hint_16") {
     user = "trena"
     password = "trena"
     dbname = "esophagus_hint_16"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
 
   } else if (database == "extraembryonic_structure_hint_20") {
     user = "trena"
     password = "trena"
     dbname = "extraembryonic_structure_hint_20"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
   } else if (database == "extraembryonic_structure_wellington_20") {
     user = "trena"
     password = "trena"
     dbname = "extraembryonic_structure_wellington_20"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
 
   } else if (database == "extraembryonic_structure_hint_16") {
     user = "trena"
     password = "trena"
     dbname = "extraembryonic_structure_hint_16"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
   } else if (database == "extraembryonic_structure_wellington_16") {
     user = "trena"
     password = "trena"
     dbname = "extraembryonic_structure_wellington_16"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
 
   } else if (database == "eye_hint_20") {
     user = "trena"
     password = "trena"
     dbname = "eye_hint_20"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
   } else if (database == "eye_wellington_20") {
     user = "trena"
     password = "trena"
     dbname = "eye_wellington_20"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
 
   } else if (database == "eye_hint_16") {
     user = "trena"
     password = "trena"
     dbname = "eye_hint_16"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
   } else if (database == "eye_wellington_16") {
     user = "trena"
     password = "trena"
     dbname = "eye_wellington_16"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
 
   } else if (database == "gonad_hint_20") {
     user = "trena"
     password = "trena"
     dbname = "gonad_hint_20"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
   } else if (database == "gonad_wellington_20") {
     user = "trena"
     password = "trena"
     dbname = "gonad_wellington_20"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
 
   } else if (database == "gonad_hint_16") {
     user = "trena"
     password = "trena"
     dbname = "gonad_hint_16"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
   } else if (database == "gonad_wellington_16") {
     user = "trena"
     password = "trena"
     dbname = "gonad_wellington_16"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
 
   } else if (database == "heart_hint_20") {
     user = "trena"
     password = "trena"
     dbname = "heart_hint_20"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
   } else if (database == "heart_wellington_20") {
     user = "trena"
     password = "trena"
     dbname = "heart_wellington_20"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
 
   } else if (database == "heart_hint_16") {
     user = "trena"
     password = "trena"
     dbname = "heart_hint_16"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
   } else if (database == "heart_wellington_16") {
     user = "trena"
     password = "trena"
     dbname = "heart_wellington_16"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
 
   } else if (database == "kidney_hint_20") {
     user = "trena"
     password = "trena"
     dbname = "kidney_hint_20"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
   } else if (database == "kidney_wellington_20") {
     user = "trena"
     password = "trena"
     dbname = "kidney_wellington_20"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
 
   } else if (database == "kidney_hint_16") {
     user = "trena"
     password = "trena"
     dbname = "kidney_hint_16"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
   } else if (database == "kidney_wellington_16") {
     user = "trena"
     password = "trena"
     dbname = "kidney_wellington_16"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
 
   } else if (database == "large_intestine_hint_20") {
     user = "trena"
     password = "trena"
     dbname = "large_intestine_hint_20"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
   } else if (database == "large_intestine_wellington_20") {
     user = "trena"
     password = "trena"
     dbname = "large_intestine_wellington_20"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
 
   } else if (database == "large_intestine_hint_16") {
     user = "trena"
     password = "trena"
     dbname = "large_intestine_hint_16"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
   } else if (database == "large_intestine_wellington_16") {
     user = "trena"
     password = "trena"
     dbname = "large_intestine_wellington_16"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
 
   } else if (database == "liver_hint_20") {
     user = "trena"
     password = "trena"
     dbname = "liver_hint_20"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
   } else if (database == "liver_wellington_20") {
     user = "trena"
     password = "trena"
     dbname = "liver_wellington_20"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
 
   } else if (database == "liver_hint_16") {
     user = "trena"
     password = "trena"
     dbname = "liver_hint_16"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
   } else if (database == "liver_wellington_16") {
     user = "trena"
     password = "trena"
     dbname = "liver_wellington_16"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
 
   } else if (database == "lung_hint_20") {
     user = "trena"
     password = "trena"
     dbname = "lung_hint_20"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
   } else if (database == "lung_wellington_20") {
     user = "trena"
     password = "trena"
     dbname = "lung_wellington_20"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
 
   } else if (database == "lung_hint_16") {
     user = "trena"
     password = "trena"
     dbname = "lung_hint_16"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
   } else if (database == "lung_wellington_16") {
     user = "trena"
     password = "trena"
     dbname = "lung_wellington_16"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
 
   } else if (database == "lymphatic_vessel_hint_20") {
     user = "trena"
     password = "trena"
     dbname = "lymphatic_vessel_hint_20"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
   } else if (database == "lymphatic_vessel_wellington_20") {
     user = "trena"
     password = "trena"
     dbname = "lymphatic_vessel_wellington_20"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
 
   } else if (database == "lymphatic_vessel_hint_16") {
     user = "trena"
     password = "trena"
     dbname = "lymphatic_vessel_hint_16"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
   } else if (database == "lymphatic_vessel_wellington_16") {
     user = "trena"
     password = "trena"
     dbname = "lymphatic_vessel_wellington_16"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
 
   } else if (database == "lymphoblast_wellington_16") {
     user = "trena"
     password = "trena"
     dbname = "lymphoblast_wellington_16"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
   } else if (database == "lymphoblast_hint_16") {
     user = "trena"
     password = "trena"
     dbname = "lymphoblast_hint_16"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
 
   } else if (database == "lymphoblast_wellington_20") {
     user = "trena"
     password = "trena"
     dbname = "lymphoblast_wellington_20"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
   } else if (database == "lymphoblast_hint_20") {
     user = "trena"
     password = "trena"
     dbname = "lymphoblast_hint_20"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
 
   } else if (database == "mammary_gland_hint_20") {
     user = "trena"
     password = "trena"
     dbname = "mammary_gland_hint_20"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
   } else if (database == "mammary_gland_wellington_20") {
     user = "trena"
     password = "trena"
     dbname = "mammary_gland_wellington_20"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
 
   } else if (database == "mammary_gland_hint_16") {
     user = "trena"
     password = "trena"
     dbname = "mammary_gland_hint_16"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
   } else if (database == "mammary_gland_wellington_16") {
     user = "trena"
     password = "trena"
     dbname = "mammary_gland_wellington_16"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
 
   } else if (database == "mouth_hint_20") {
     user = "trena"
     password = "trena"
     dbname = "mouth_hint_20"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
   } else if (database == "mouth_wellington_20") {
     user = "trena"
     password = "trena"
     dbname = "mouth_wellington_20"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
 
   } else if (database == "mouth_hint_16") {
     user = "trena"
     password = "trena"
     dbname = "mouth_hint_16"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
   } else if (database == "mouth_wellington_16") {
     user = "trena"
     password = "trena"
     dbname = "mouth_wellington_16"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
 
   } else if (database == "muscle_organ_hint_20") {
     user = "trena"
     password = "trena"
     dbname = "muscle_organ_hint_20"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
   } else if (database == "muscle_organ_wellington_20") {
     user = "trena"
     password = "trena"
     dbname = "muscle_organ_wellington_20"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
 
   } else if (database == "muscle_organ_hint_16") {
     user = "trena"
     password = "trena"
     dbname = "muscle_organ_hint_16"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
   } else if (database == "muscle_organ_wellington_16") {
     user = "trena"
     password = "trena"
     dbname = "muscle_organ_wellington_16"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
 
   } else if (database == "pancreas_hint_20") {
     user = "trena"
     password = "trena"
     dbname = "pancreas_hint_20"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
   } else if (database == "pancreas_wellington_20") {
     user = "trena"
     password = "trena"
     dbname = "pancreas_wellington_20"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
 
   } else if (database == "pancreas_hint_16") {
     user = "trena"
     password = "trena"
     dbname = "pancreas_hint_16"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
   } else if (database == "pancreas_wellington_16") {
     user = "trena"
     password = "trena"
     dbname = "pancreas_wellington_16"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
 
   } else if (database == "prostate_gland_hint_20") {
     user = "trena"
     password = "trena"
     dbname = "prostate_gland_hint_20"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
   } else if (database == "prostate_gland_wellington_20") {
     user = "trena"
     password = "trena"
     dbname = "prostate_gland_wellington_20"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
 
   } else if (database == "prostate_gland_hint_16") {
     user = "trena"
     password = "trena"
     dbname = "prostate_gland_hint_16"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
   } else if (database == "prostate_gland_wellington_16") {
     user = "trena"
     password = "trena"
     dbname = "prostate_gland_wellington_16"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
 
   } else if (database == "skin_wellington_16") {
     user = "trena"
     password = "trena"
     dbname = "skin_wellington_16"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
   } else if (database == "skin_hint_16") {
     user = "trena"
     password = "trena"
     dbname = "skin_hint_16"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
 
   } else if (database == "skin_wellington_20") {
     user = "trena"
     password = "trena"
     dbname = "skin_wellington_20"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
   } else if (database == "skin_hint_20") {
     user = "trena"
     password = "trena"
     dbname = "skin_hint_20"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
 
   } else if (database == "spinal_cord_hint_20") {
     user = "trena"
     password = "trena"
     dbname = "spinal_cord_hint_20"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
   } else if (database == "spinal_cord_wellington_20") {
     user = "trena"
     password = "trena"
     dbname = "spinal_cord_wellington_20"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
 
   } else if (database == "spinal_cord_hint_16") {
     user = "trena"
     password = "trena"
     dbname = "spinal_cord_hint_16"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
   } else if (database == "spinal_cord_wellington_16") {
     user = "trena"
     password = "trena"
     dbname = "spinal_cord_wellington_16"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
 
   } else if (database == "stomach_hint_20") {
     user = "trena"
     password = "trena"
     dbname = "stomach_hint_20"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
   } else if (database == "stomach_wellington_20") {
     user = "trena"
     password = "trena"
     dbname = "stomach_wellington_20"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
 
   } else if (database == "stomach_hint_16") {
     user = "trena"
     password = "trena"
     dbname = "stomach_hint_16"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
   } else if (database == "stomach_wellington_16") {
     user = "trena"
     password = "trena"
     dbname = "stomach_wellington_16"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
 
   } else if (database == "thyroid_gland_hint_20") {
     user = "trena"
     password = "trena"
     dbname = "thyroid_gland_hint_20"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
   } else if (database == "thyroid_gland_wellington_20") {
     user = "trena"
     password = "trena"
     dbname = "thyroid_gland_wellington_20"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
 
   } else if (database == "thyroid_gland_hint_16") {
     user = "trena"
     password = "trena"
     dbname = "thyroid_gland_hint_16"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
   } else if (database == "thyroid_gland_wellington_16") {
     user = "trena"
     password = "trena"
     dbname = "thyroid_gland_wellington_16"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
 
   } else if (database == "tongue_hint_20") {
     user = "trena"
     password = "trena"
     dbname = "tongue_hint_20"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
   } else if (database == "tongue_wellington_20") {
     user = "trena"
     password = "trena"
     dbname = "tongue_wellington_20"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
 
   } else if (database == "tongue_hint_16") {
     user = "trena"
     password = "trena"
     dbname = "tongue_hint_16"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
   } else if (database == "tongue_wellington_16") {
     user = "trena"
     password = "trena"
     dbname = "tongue_wellington_16"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
 
   } else if (database == "urinary_bladder_hint_20") {
     user = "trena"
     password = "trena"
     dbname = "urinary_bladder_hint_20"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
   } else if (database == "urinary_bladder_wellington_20") {
     user = "trena"
     password = "trena"
     dbname = "urinary_bladder_wellington_20"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
 
   } else if (database == "urinary_bladder_hint_16") {
     user = "trena"
     password = "trena"
     dbname = "urinary_bladder_hint_16"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
   } else if (database == "urinary_bladder_wellington_16") {
     user = "trena"
     password = "trena"
     dbname = "urinary_bladder_wellington_16"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
 
   } else if (database == "test_wellington") {
     user = "trena"
     password = "trena"
     dbname = "testwellington"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
   } else if (database == "test_hint") {
     user = "trena"
     password = "trena"
     dbname = "testhint"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
   } else if (database == "test_piq") {
     user = "trena"
     password = "trena"
     dbname = "test_piq"
-    host = "bdds-rds.globusgenomics.org"
+    host = "bddsrds.globusgenomics.org"
 
   }
 

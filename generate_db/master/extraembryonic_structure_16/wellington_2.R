@@ -14,10 +14,10 @@ data.path <- "/scratch/data/footprints/extraembryonic_structure_wellington_16"
 # establish database connections:
 
 if(!exists("db.wellington"))
-    db.wellington <- "extraembryonic_structure_wellington_16_localhost"
+    db.wellington <- "extraembryonic_structure_wellington_16"
 
 if(!exists("db.fimo"))
-    db.fimo <- "fimo_localhost"
+    db.fimo <- "fimo"
 #-------------------------------------------------------------------------------
 # Source the libraries
 source("../src/dependencies.R")

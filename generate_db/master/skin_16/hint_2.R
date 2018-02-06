@@ -14,10 +14,10 @@ data.path <- "/scratch/data/footprints/seed16/skin/hint"
 # establish database connections:
 
 if(!exists("db.hint"))
-    db.hint <- "skin_hint_16_localhost"
+    db.hint <- "skin_hint_16"
 
 if(!exists("db.fimo"))
-    db.fimo <- "fimo_localhost"
+    db.fimo <- "fimo"
 #-------------------------------------------------------------------------------
 # Source the libraries
 source("../src/dependencies.R")

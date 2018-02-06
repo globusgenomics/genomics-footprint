@@ -14,10 +14,10 @@ data.path <- "/scratch/data/footprints/prostate_gland_wellington_20"
 # establish database connections:
 
 if(!exists("db.wellington"))
-    db.wellington <- "prostate_gland_wellington_20_localhost"
+    db.wellington <- "prostate_gland_wellington_20"
 
 if(!exists("db.fimo"))
-    db.fimo <- "fimo_localhost"
+    db.fimo <- "fimo"
 #-------------------------------------------------------------------------------
 # Source the libraries
 source("../src/dependencies.R")

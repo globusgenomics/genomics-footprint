@@ -14,10 +14,10 @@ data.path <- "/scratch/data/footprints/seed16/brain/hint"
 # establish database connections:
 
 if(!exists("db.hint"))
-    db.hint <- "brain_hint_16_localhost"
+    db.hint <- "brain_hint_16"
 
 if(!exists("db.fimo"))
-    db.fimo <- "fimo_localhost"
+    db.fimo <- "fimo"
 #-------------------------------------------------------------------------------
 # Source the libraries
 source("../src/dependencies.R")

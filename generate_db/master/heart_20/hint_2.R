@@ -14,10 +14,10 @@ data.path <- "/scratch/data/footprints/heart_hint_20"
 # establish database connections:
 
 if(!exists("db.hint"))
-    db.hint <- "heart_hint_20_localhost"
+    db.hint <- "heart_hint_20"
 
 if(!exists("db.fimo"))
-    db.fimo <- "fimo_localhost"
+    db.fimo <- "fimo"
 #-------------------------------------------------------------------------------
 # Source the libraries
 source("../src/dependencies.R")
