@@ -1,0 +1,258 @@
+{
+    "a_galaxy_workflow": "true", 
+    "annotation": "", 
+    "format-version": "0.1", 
+    "name": "Footprints MASTER Workflow", 
+    "steps": {
+        "0": {
+            "annotation": "", 
+            "content_id": "get_bdbag_from_minid", 
+            "errors": null, 
+            "id": 0, 
+            "input_connections": {}, 
+            "inputs": [], 
+            "label": null, 
+            "name": "Get BDBag from MINID", 
+            "outputs": [
+                {
+                    "name": "output1", 
+                    "type": "txt"
+                }
+            ], 
+            "position": {
+                "left": 229.77940368652344, 
+                "top": 210.91910552978516
+            }, 
+            "post_job_actions": {}, 
+            "tool_id": "get_bdbag_from_minid", 
+            "tool_state": "{\"__page__\": null, \"__rerun_remap_job_id__\": null, \"chromInfo\": \"\\\"/mnt/galaxyIndices/galaxy/chrom/?.len\\\"\", \"minid\": \"\\\"ark:/57799/b9nd50\\\"\"}", 
+            "tool_version": "1.0.0", 
+            "type": "tool", 
+            "uuid": "83d3fe84-43c6-44bd-b6e8-528435b3369b", 
+            "workflow_outputs": []
+        }, 
+        "1": {
+            "annotation": "", 
+            "content_id": "create_batch_for_snap_wf", 
+            "errors": null, 
+            "id": 1, 
+            "input_connections": {
+                "input_file": {
+                    "id": 0, 
+                    "output_name": "output1"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Create batch for TRENA SNAP workflow", 
+                    "name": "input_file"
+                }
+            ], 
+            "label": "Create batch for patient SNAP alignment workflow", 
+            "name": "Create batch for TRENA SNAP workflow", 
+            "outputs": [
+                {
+                    "name": "output", 
+                    "type": "txt"
+                }
+            ], 
+            "position": {
+                "left": 227.90440368652344, 
+                "top": 279.8896942138672
+            }, 
+            "post_job_actions": {}, 
+            "tool_id": "create_batch_for_snap_wf", 
+            "tool_state": "{\"username\": \"\\\"arodri1215\\\"\", \"__page__\": null, \"input_file\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"url\": \"\\\"https://bdds.globusgenomics.org\\\"\", \"__rerun_remap_job_id__\": null, \"historyid\": \"\\\"76e5c3e175011698\\\"\", \"userapi\": \"\\\"567fa357c5fc2d1680668e404e72149a\\\"\"}", 
+            "tool_version": "1.0", 
+            "type": "tool", 
+            "uuid": "0f1d50bd-fa35-4aa8-b610-b09ed759bb86", 
+            "workflow_outputs": []
+        }, 
+        "2": {
+            "annotation": "", 
+            "content_id": "batch_submit", 
+            "errors": null, 
+            "id": 2, 
+            "input_connections": {
+                "input": {
+                    "id": 1, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Workflow batch submit", 
+                    "name": "input"
+                }
+            ], 
+            "label": "SNAP Workflow Batch Submit", 
+            "name": "Workflow batch submit", 
+            "outputs": [
+                {
+                    "name": "log", 
+                    "type": "txt"
+                }
+            ], 
+            "position": {
+                "left": 228.84190368652344, 
+                "top": 389.9632110595703
+            }, 
+            "post_job_actions": {}, 
+            "tool_id": "batch_submit", 
+            "tool_state": "{\"__page__\": null, \"url\": \"\\\"https://bdds.globusgenomics.org\\\"\", \"__rerun_remap_job_id__\": null, \"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"goauth\": \"\\\"None\\\"\", \"userapi\": \"\\\"567fa357c5fc2d1680668e404e72149a\\\"\"}", 
+            "tool_version": "1.0.0", 
+            "type": "tool", 
+            "uuid": "f0a5fe9d-b2e0-44fd-847b-70b79e6c213c", 
+            "workflow_outputs": []
+        }, 
+        "3": {
+            "annotation": "", 
+            "content_id": "monitor_batch", 
+            "errors": null, 
+            "id": 3, 
+            "input_connections": {
+                "input": {
+                    "id": 2, 
+                    "output_name": "log"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Monitor batch jobs", 
+                    "name": "input"
+                }
+            ], 
+            "label": "Generate SNAP BAG", 
+            "name": "Monitor batch jobs", 
+            "outputs": [
+                {
+                    "name": "summary", 
+                    "type": "html"
+                }
+            ], 
+            "position": {
+                "left": 227.90440368652344, 
+                "top": 499.90806579589844
+            }, 
+            "post_job_actions": {}, 
+            "tool_id": "monitor_batch", 
+            "tool_state": "{\"url\": \"\\\"https://bdds.globusgenomics.org\\\"\", \"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"userapi\": \"\\\"567fa357c5fc2d1680668e404e72149a\\\"\", \"__page__\": null}", 
+            "tool_version": "1.0.0", 
+            "type": "tool", 
+            "uuid": "645e93ea-cc98-451c-a70c-80066da3a262", 
+            "workflow_outputs": []
+        }, 
+        "4": {
+            "annotation": "", 
+            "content_id": "create_batch_footprints_workflow", 
+            "errors": null, 
+            "id": 4, 
+            "input_connections": {
+                "input_file": {
+                    "id": 3, 
+                    "output_name": "summary"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Create batch for TRENA footprints workflow", 
+                    "name": "input_file"
+                }
+            ], 
+            "label": "Create batch for patient footprints workflow", 
+            "name": "Create batch for TRENA footprints workflow", 
+            "outputs": [
+                {
+                    "name": "output", 
+                    "type": "txt"
+                }
+            ], 
+            "position": {
+                "left": 227.7021942138672, 
+                "top": 592.8860015869141
+            }, 
+            "post_job_actions": {}, 
+            "tool_id": "create_batch_footprints_workflow", 
+            "tool_state": "{\"username\": \"\\\"**\\\"\", \"__page__\": null, \"input_file\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"url\": \"\\\"https://bdds.globusgenomics.org\\\"\", \"__rerun_remap_job_id__\": null, \"historyid\": \"\\\"76e5c3e175011698\\\"\", \"userapi\": \"\\\"567fa357c5fc2d1680668e404e72149a\\\"\"}", 
+            "tool_version": "1.0", 
+            "type": "tool", 
+            "uuid": "69639709-5522-429d-ae6f-ed88af2f56c8", 
+            "workflow_outputs": []
+        }, 
+        "5": {
+            "annotation": "", 
+            "content_id": "batch_submit", 
+            "errors": null, 
+            "id": 5, 
+            "input_connections": {
+                "input": {
+                    "id": 4, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Workflow batch submit", 
+                    "name": "input"
+                }
+            ], 
+            "label": "Footprints Workflow Batch Submit", 
+            "name": "Workflow batch submit", 
+            "outputs": [
+                {
+                    "name": "log", 
+                    "type": "txt"
+                }
+            ], 
+            "position": {
+                "left": 228.8970489501953, 
+                "top": 702.9778900146484
+            }, 
+            "post_job_actions": {}, 
+            "tool_id": "batch_submit", 
+            "tool_state": "{\"__page__\": null, \"url\": \"\\\"https://bdds.globusgenomics.org\\\"\", \"__rerun_remap_job_id__\": null, \"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"goauth\": \"\\\"None\\\"\", \"userapi\": \"\\\"567fa357c5fc2d1680668e404e72149a\\\"\"}", 
+            "tool_version": "1.0.0", 
+            "type": "tool", 
+            "uuid": "a518cd11-205e-42ae-a5a2-c69ee4b83a66", 
+            "workflow_outputs": []
+        }, 
+        "6": {
+            "annotation": "", 
+            "content_id": "monitor_batch", 
+            "errors": null, 
+            "id": 6, 
+            "input_connections": {
+                "input": {
+                    "id": 5, 
+                    "output_name": "log"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Monitor batch jobs", 
+                    "name": "input"
+                }
+            ], 
+            "label": "Generate Footprints BAG", 
+            "name": "Monitor batch jobs", 
+            "outputs": [
+                {
+                    "name": "summary", 
+                    "type": "html"
+                }
+            ], 
+            "position": {
+                "left": 227.90440368652344, 
+                "top": 815.0367279052734
+            }, 
+            "post_job_actions": {}, 
+            "tool_id": "monitor_batch", 
+            "tool_state": "{\"url\": \"null\", \"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"userapi\": \"\\\"None\\\"\", \"__page__\": null}", 
+            "tool_version": "1.0.0", 
+            "type": "tool", 
+            "uuid": "48c23b7b-6a59-4b3f-9a59-c0bc239095c5", 
+            "workflow_outputs": []
+        }
+    }, 
+    "uuid": "f96e7448-9e29-4fae-9a91-bcc2bb16f676"
+}

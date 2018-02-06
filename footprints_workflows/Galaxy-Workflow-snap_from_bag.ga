@@ -1,0 +1,90 @@
+{
+    "a_galaxy_workflow": "true", 
+    "annotation": "", 
+    "format-version": "0.1", 
+    "name": "snap_from_bag", 
+    "steps": {
+        "0": {
+            "annotation": "0", 
+            "content_id": "get_from_encode_url", 
+            "errors": null, 
+            "id": 0, 
+            "input_connections": {}, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Get FASTQ from ENCODE URL", 
+                    "name": "input"
+                }
+            ], 
+            "label": null, 
+            "name": "Get FASTQ from ENCODE URL", 
+            "outputs": [
+                {
+                    "name": "output1", 
+                    "type": "txt"
+                }
+            ], 
+            "position": {
+                "left": 129, 
+                "top": 163
+            }, 
+            "post_job_actions": {
+                "HideDatasetActionoutput1": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "output1"
+                }
+            }, 
+            "tool_id": "get_from_encode_url", 
+            "tool_state": "{\"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"__page__\": null}", 
+            "tool_version": "1.0.0", 
+            "type": "tool", 
+            "uuid": "None", 
+            "workflow_outputs": []
+        }, 
+        "1": {
+            "annotation": "1", 
+            "content_id": "SNAP_Alignment_id_bag", 
+            "errors": null, 
+            "id": 1, 
+            "input_connections": {
+                "input_source|bag_config": {
+                    "id": 0, 
+                    "output_name": "output1"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool SNAP Sequence Aligner with BDBag", 
+                    "name": "input_source"
+                }
+            ], 
+            "label": null, 
+            "name": "SNAP Sequence Aligner with BDBag", 
+            "outputs": [
+                {
+                    "name": "output", 
+                    "type": "bam"
+                }
+            ], 
+            "position": {
+                "left": 456, 
+                "top": 174
+            }, 
+            "post_job_actions": {}, 
+            "tool_id": "SNAP_Alignment_id_bag", 
+            "tool_state": "{\"genomeSource\": \"{\\\"indices\\\": \\\"hg38_isb\\\", \\\"refGenomeSource\\\": \\\"indexed\\\", \\\"__current_case__\\\": 0}\", \"input_source\": \"{\\\"source_type\\\": \\\"bdbag\\\", \\\"bag_config\\\": null, \\\"__current_case__\\\": 0, \\\"sample_id\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}}\", \"__rerun_remap_job_id__\": null, \"__page__\": null}", 
+            "tool_version": "1.0.0", 
+            "type": "tool", 
+            "uuid": "None", 
+            "workflow_outputs": [
+                {
+                    "label": null, 
+                    "output_name": "output", 
+                    "uuid": null
+                }
+            ]
+        }
+    }, 
+    "uuid": "acc83684-f06b-4627-b6e0-18152c71dcf6"
+}

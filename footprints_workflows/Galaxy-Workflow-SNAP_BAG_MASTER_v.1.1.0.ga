@@ -1,0 +1,217 @@
+{
+    "a_galaxy_workflow": "true", 
+    "annotation": "", 
+    "format-version": "0.1", 
+    "name": "SNAP_BAG_MASTER_v.1.1.0", 
+    "steps": {
+        "0": {
+            "annotation": "", 
+            "content_id": null, 
+            "errors": null, 
+            "id": 0, 
+            "input_connections": {}, 
+            "inputs": [
+                {
+                    "description": "", 
+                    "name": "BATCH_FILE"
+                }
+            ], 
+            "label": "BATCH_FILE", 
+            "name": "Input dataset", 
+            "outputs": [], 
+            "position": {
+                "left": 100, 
+                "top": 175.5
+            }, 
+            "tool_id": null, 
+            "tool_state": "{\"name\": \"BATCH_FILE\"}", 
+            "tool_version": null, 
+            "type": "data_input", 
+            "uuid": "552f063a-5354-428c-a536-a2c91607bbe2", 
+            "workflow_outputs": [
+                {
+                    "label": null, 
+                    "output_name": "output", 
+                    "uuid": "b3150d8f-9d99-4c6a-9706-12fd0531e6f5"
+                }
+            ]
+        }, 
+        "1": {
+            "annotation": "", 
+            "content_id": "batch_submit_trena", 
+            "errors": null, 
+            "id": 1, 
+            "input_connections": {
+                "input": {
+                    "id": 0, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Workflow batch submit for TRENA replicates", 
+                    "name": "input"
+                }, 
+                {
+                    "description": "runtime parameter for tool Workflow batch submit for TRENA replicates", 
+                    "name": "sample_id"
+                }
+            ], 
+            "label": null, 
+            "name": "Workflow batch submit for TRENA replicates", 
+            "outputs": [
+                {
+                    "name": "log", 
+                    "type": "txt"
+                }
+            ], 
+            "position": {
+                "left": 306, 
+                "top": 200
+            }, 
+            "post_job_actions": {
+                "HideDatasetActionlog": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "log"
+                }
+            }, 
+            "tool_id": "batch_submit_trena", 
+            "tool_state": "{\"__page__\": null, \"url\": \"\\\"None\\\"\", \"__rerun_remap_job_id__\": null, \"sample_id\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"goauth\": \"\\\"None\\\"\", \"userapi\": \"\\\"None\\\"\"}", 
+            "tool_version": "1.0.0", 
+            "type": "tool", 
+            "uuid": "e795ab83-8ab7-4055-86fc-797b008c0826", 
+            "workflow_outputs": []
+        }, 
+        "2": {
+            "annotation": "", 
+            "content_id": "monitor_batch", 
+            "errors": null, 
+            "id": 2, 
+            "input_connections": {
+                "input": {
+                    "id": 1, 
+                    "output_name": "log"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Monitor batch jobs", 
+                    "name": "input"
+                }
+            ], 
+            "label": "Generate Replicate SNAP BAG", 
+            "name": "Monitor batch jobs", 
+            "outputs": [
+                {
+                    "name": "summary", 
+                    "type": "html"
+                }
+            ], 
+            "position": {
+                "left": 590, 
+                "top": 193.5
+            }, 
+            "post_job_actions": {
+                "HideDatasetActionsummary": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "summary"
+                }
+            }, 
+            "tool_id": "monitor_batch", 
+            "tool_state": "{\"url\": \"\\\"None\\\"\", \"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"userapi\": \"\\\"None\\\"\", \"__page__\": null}", 
+            "tool_version": "1.0.0", 
+            "type": "tool", 
+            "uuid": "105366fb-f32e-47c4-a1ba-cd01e9da44f9", 
+            "workflow_outputs": []
+        }, 
+        "3": {
+            "annotation": "", 
+            "content_id": "samtools_merge_bags", 
+            "errors": null, 
+            "id": 3, 
+            "input_connections": {
+                "input_file": {
+                    "id": 2, 
+                    "output_name": "summary"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool SAMtools merge", 
+                    "name": "input_file"
+                }
+            ], 
+            "label": "SAMtools Merge replicates", 
+            "name": "SAMtools merge", 
+            "outputs": [
+                {
+                    "name": "output", 
+                    "type": "bam"
+                }
+            ], 
+            "position": {
+                "left": 813, 
+                "top": 205.5
+            }, 
+            "post_job_actions": {
+                "HideDatasetActionoutput": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "output"
+                }
+            }, 
+            "tool_id": "samtools_merge_bags", 
+            "tool_state": "{\"__page__\": null, \"__rerun_remap_job_id__\": null, \"remove_dups\": \"\\\"false\\\"\", \"input_file\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\"}", 
+            "tool_version": "SAMTOOLS: 1.2", 
+            "type": "tool", 
+            "uuid": "97cc56d0-9131-4b01-bec9-5dfde32645e3", 
+            "workflow_outputs": []
+        }, 
+        "4": {
+            "annotation": "", 
+            "content_id": "samtools_sort", 
+            "errors": null, 
+            "id": 4, 
+            "input_connections": {
+                "input": {
+                    "id": 3, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Sort", 
+                    "name": "input"
+                }
+            ], 
+            "label": "Sort BAM", 
+            "name": "Sort", 
+            "outputs": [
+                {
+                    "name": "output", 
+                    "type": "bam"
+                }
+            ], 
+            "position": {
+                "left": 1060, 
+                "top": 209
+            }, 
+            "post_job_actions": {}, 
+            "tool_id": "samtools_sort", 
+            "tool_state": "{\"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"order\": \"\\\"coordinate\\\"\", \"__page__\": null}", 
+            "tool_version": "SAMTOOLS: 1.2", 
+            "type": "tool", 
+            "uuid": "027076a0-6e89-4c22-a29e-76b7e0f1558d", 
+            "workflow_outputs": [
+                {
+                    "label": null, 
+                    "output_name": "output", 
+                    "uuid": "c6fcdbd7-efbb-4229-b92e-0902bde06ba2"
+                }
+            ]
+        }
+    }, 
+    "uuid": "68bc5245-65b7-486c-bbe6-304c159981c8"
+}
