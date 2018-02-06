@@ -1,0 +1,567 @@
+{
+    "a_galaxy_workflow": "true", 
+    "annotation": "", 
+    "format-version": "0.1", 
+    "name": "DNAse-footprints-singlesample-bamInput_wellington_hint", 
+    "steps": {
+        "0": {
+            "annotation": "0", 
+            "content_id": null, 
+            "errors": null, 
+            "id": 0, 
+            "input_connections": {}, 
+            "inputs": [
+                {
+                    "description": "0", 
+                    "name": "sortedBam"
+                }
+            ], 
+            "label": "sortedBam", 
+            "name": "Input dataset", 
+            "outputs": [], 
+            "position": {
+                "left": 206, 
+                "top": 267
+            }, 
+            "tool_id": null, 
+            "tool_state": "{\"name\": \"sortedBam\"}", 
+            "tool_version": null, 
+            "type": "data_input", 
+            "uuid": "d9303597-7d56-4a72-acd3-614edfb23301", 
+            "workflow_outputs": [
+                {
+                    "label": null, 
+                    "output_name": "output", 
+                    "uuid": "272eec92-f3f9-42ad-86f2-88be0cbc2167"
+                }
+            ]
+        }, 
+        "1": {
+            "annotation": "2", 
+            "content_id": "bedtools_bamtobed", 
+            "errors": null, 
+            "id": 1, 
+            "input_connections": {
+                "input_source|input_dir_obj": {
+                    "id": 0, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Convert from BAM to BED", 
+                    "name": "input_source"
+                }, 
+                {
+                    "description": "runtime parameter for tool Convert from BAM to BED", 
+                    "name": "input_source"
+                }
+            ], 
+            "label": null, 
+            "name": "Convert from BAM to BED", 
+            "outputs": [
+                {
+                    "name": "output", 
+                    "type": "bed"
+                }
+            ], 
+            "position": {
+                "left": 430, 
+                "top": 185
+            }, 
+            "post_job_actions": {
+                "HideDatasetActionoutput": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "output"
+                }
+            }, 
+            "tool_id": "bedtools_bamtobed", 
+            "tool_state": "{\"__page__\": null, \"option\": \"\\\"\\\"\", \"__rerun_remap_job_id__\": null, \"ed_score\": \"\\\"false\\\"\", \"tag\": \"\\\"\\\"\", \"split\": \"\\\"false\\\"\", \"input_source\": \"{\\\"input_type\\\": \\\"bag\\\", \\\"input_dir_obj\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}, \\\"__current_case__\\\": 2, \\\"sample_name\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}}\"}", 
+            "tool_version": "BEDTOOLS: 2.17.0", 
+            "type": "tool", 
+            "uuid": "ab34a952-ddd4-44a2-9fcc-81ea39ddba24", 
+            "workflow_outputs": []
+        }, 
+        "2": {
+            "annotation": "14", 
+            "content_id": "fseq_wrapper", 
+            "errors": null, 
+            "id": 2, 
+            "input_connections": {
+                "fd_0|input": {
+                    "id": 1, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "FSeq", 
+            "outputs": [
+                {
+                    "name": "output", 
+                    "type": "bed,wig"
+                }
+            ], 
+            "position": {
+                "left": 721, 
+                "top": 181
+            }, 
+            "post_job_actions": {
+                "ChangeDatatypeActionoutput": {
+                    "action_arguments": {
+                        "newtype": "bed"
+                    }, 
+                    "action_type": "ChangeDatatypeAction", 
+                    "output_name": "output"
+                }, 
+                "HideDatasetActionoutput": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "output"
+                }
+            }, 
+            "tool_id": "fseq_wrapper", 
+            "tool_state": "{\"__page__\": null, \"outputFormat\": \"\\\"bed\\\"\", \"wiggleTrackStep\": \"\\\"1\\\"\", \"__rerun_remap_job_id__\": null, \"featLen\": \"\\\"600\\\"\", \"fd\": \"[{\\\"__index__\\\": 0, \\\"input\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}}]\", \"threshold\": \"\\\"2.5\\\"\", \"fragSize\": \"\\\"0\\\"\"}", 
+            "tool_version": "F-Seq: 1.85", 
+            "type": "tool", 
+            "uuid": "e78fceaf-1cbd-490f-ba2f-a9229c62d84d", 
+            "workflow_outputs": []
+        }, 
+        "3": {
+            "annotation": "15", 
+            "content_id": "Cut1", 
+            "errors": null, 
+            "id": 3, 
+            "input_connections": {
+                "input": {
+                    "id": 2, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Cut", 
+                    "name": "input"
+                }
+            ], 
+            "label": null, 
+            "name": "Cut", 
+            "outputs": [
+                {
+                    "name": "out_file1", 
+                    "type": "tabular"
+                }
+            ], 
+            "position": {
+                "left": 998, 
+                "top": 201
+            }, 
+            "post_job_actions": {
+                "HideDatasetActionout_file1": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "out_file1"
+                }
+            }, 
+            "tool_id": "Cut1", 
+            "tool_state": "{\"columnList\": \"\\\"c1,c2,c3\\\"\", \"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"delimiter\": \"\\\"T\\\"\", \"__rerun_remap_job_id__\": null, \"__page__\": null}", 
+            "tool_version": "1.0.2", 
+            "type": "tool", 
+            "uuid": "384c4b28-6aa2-4708-a18c-6ff149843997", 
+            "workflow_outputs": []
+        }, 
+        "4": {
+            "annotation": "8", 
+            "content_id": "Add_a_column1", 
+            "errors": null, 
+            "id": 4, 
+            "input_connections": {
+                "input": {
+                    "id": 3, 
+                    "output_name": "out_file1"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Compute", 
+                    "name": "input"
+                }
+            ], 
+            "label": null, 
+            "name": "Compute", 
+            "outputs": [
+                {
+                    "name": "out_file1", 
+                    "type": "input"
+                }
+            ], 
+            "position": {
+                "left": 996, 
+                "top": 309
+            }, 
+            "post_job_actions": {
+                "HideDatasetActionout_file1": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "out_file1"
+                }
+            }, 
+            "tool_id": "Add_a_column1", 
+            "tool_state": "{\"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"cond\": \"\\\"c2-c3\\\"\", \"round\": \"\\\"no\\\"\", \"__page__\": null}", 
+            "tool_version": "1.1.0", 
+            "type": "tool", 
+            "uuid": "82eb9d9b-ee8a-41f3-9ae6-89a124775fa9", 
+            "workflow_outputs": []
+        }, 
+        "5": {
+            "annotation": "9", 
+            "content_id": "Filter1", 
+            "errors": null, 
+            "id": 5, 
+            "input_connections": {
+                "input": {
+                    "id": 4, 
+                    "output_name": "out_file1"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Filter", 
+                    "name": "input"
+                }
+            ], 
+            "label": null, 
+            "name": "Filter", 
+            "outputs": [
+                {
+                    "name": "out_file1", 
+                    "type": "input"
+                }
+            ], 
+            "position": {
+                "left": 994, 
+                "top": 401
+            }, 
+            "post_job_actions": {
+                "HideDatasetActionout_file1": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "out_file1"
+                }
+            }, 
+            "tool_id": "Filter1", 
+            "tool_state": "{\"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"header_lines\": \"\\\"0\\\"\", \"cond\": \"\\\"c4<-400\\\"\", \"__page__\": null}", 
+            "tool_version": "1.1.0", 
+            "type": "tool", 
+            "uuid": "7f626d86-ee56-4ada-8d0b-2c1a4fe1af42", 
+            "workflow_outputs": []
+        }, 
+        "6": {
+            "annotation": "10", 
+            "content_id": "Cut1", 
+            "errors": null, 
+            "id": 6, 
+            "input_connections": {
+                "input": {
+                    "id": 5, 
+                    "output_name": "out_file1"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Cut", 
+                    "name": "input"
+                }
+            ], 
+            "label": null, 
+            "name": "Cut", 
+            "outputs": [
+                {
+                    "name": "out_file1", 
+                    "type": "tabular"
+                }
+            ], 
+            "position": {
+                "left": 995, 
+                "top": 500
+            }, 
+            "post_job_actions": {
+                "HideDatasetActionout_file1": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "out_file1"
+                }
+            }, 
+            "tool_id": "Cut1", 
+            "tool_state": "{\"columnList\": \"\\\"c1,c2,c3\\\"\", \"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"delimiter\": \"\\\"T\\\"\", \"__rerun_remap_job_id__\": null, \"__page__\": null}", 
+            "tool_version": "1.0.2", 
+            "type": "tool", 
+            "uuid": "8390f901-50e2-42a9-8217-896ab45b5281", 
+            "workflow_outputs": []
+        }, 
+        "7": {
+            "annotation": "11", 
+            "content_id": "Filter1", 
+            "errors": null, 
+            "id": 7, 
+            "input_connections": {
+                "input": {
+                    "id": 6, 
+                    "output_name": "out_file1"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Filter", 
+                    "name": "input"
+                }
+            ], 
+            "label": null, 
+            "name": "Filter", 
+            "outputs": [
+                {
+                    "name": "out_file1", 
+                    "type": "input"
+                }
+            ], 
+            "position": {
+                "left": 993, 
+                "top": 600
+            }, 
+            "post_job_actions": {
+                "ChangeDatatypeActionout_file1": {
+                    "action_arguments": {
+                        "newtype": "bed"
+                    }, 
+                    "action_type": "ChangeDatatypeAction", 
+                    "output_name": "out_file1"
+                }, 
+                "HideDatasetActionout_file1": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "out_file1"
+                }
+            }, 
+            "tool_id": "Filter1", 
+            "tool_state": "{\"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"header_lines\": \"\\\"0\\\"\", \"cond\": \"\\\"c1=='chr1' or c1=='chr2'or c1=='chr3' or c1=='chr4' or c1=='chr5' or c1=='chr6' or c1=='chr7' or c1=='chr8' or c1=='chr9' or c1=='chr10' or c1=='chr11' or c1=='chr12' or c1=='chr13' or c1=='chr14' or c1=='chr15' or c1=='chr16' or c1=='chr17' or c1=='chr18' or c1=='chr19' or c1=='chr20' or c1=='chr21' or c1=='chr22' or c1=='chrX' or c1=='chrY'\\\"\", \"__page__\": null}", 
+            "tool_version": "1.1.0", 
+            "type": "tool", 
+            "uuid": "9bcb50d2-4a55-40d6-a45e-1a929eb90c71", 
+            "workflow_outputs": []
+        }, 
+        "8": {
+            "annotation": "12", 
+            "content_id": "wellington_footprints", 
+            "errors": null, 
+            "id": 8, 
+            "input_connections": {
+                "bed_file": {
+                    "id": 7, 
+                    "output_name": "out_file1"
+                }, 
+                "input_source|input_dir_obj": {
+                    "id": 0, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Wellington Footprints", 
+                    "name": "input_source"
+                }, 
+                {
+                    "description": "runtime parameter for tool Wellington Footprints", 
+                    "name": "input_source"
+                }, 
+                {
+                    "description": "runtime parameter for tool Wellington Footprints", 
+                    "name": "bed_file"
+                }
+            ], 
+            "label": null, 
+            "name": "Wellington Footprints", 
+            "outputs": [
+                {
+                    "name": "output", 
+                    "type": "bed"
+                }
+            ], 
+            "position": {
+                "left": 1295, 
+                "top": 239
+            }, 
+            "post_job_actions": {
+                "HideDatasetActionoutput": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "output"
+                }
+            }, 
+            "tool_id": "wellington_footprints", 
+            "tool_state": "{\"input_source\": \"{\\\"input_type\\\": \\\"bag\\\", \\\"input_dir_obj\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}, \\\"__current_case__\\\": 1, \\\"sample_name\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}}\", \"fdrlimit\": \"\\\"0\\\"\", \"bed_file\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"__page__\": null}", 
+            "tool_version": "0.2.5", 
+            "type": "tool", 
+            "uuid": "2ffb1d3b-87f9-4ef6-9f84-8a3c2482129a", 
+            "workflow_outputs": []
+        }, 
+        "9": {
+            "annotation": "13", 
+            "content_id": "hint", 
+            "errors": null, 
+            "id": 9, 
+            "input_connections": {
+                "input_source|input_dir_obj": {
+                    "id": 0, 
+                    "output_name": "output"
+                }, 
+                "region": {
+                    "id": 7, 
+                    "output_name": "out_file1"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Hint", 
+                    "name": "input_source"
+                }, 
+                {
+                    "description": "runtime parameter for tool Hint", 
+                    "name": "input_source"
+                }, 
+                {
+                    "description": "runtime parameter for tool Hint", 
+                    "name": "region"
+                }
+            ], 
+            "label": null, 
+            "name": "Hint", 
+            "outputs": [
+                {
+                    "name": "output", 
+                    "type": "bed"
+                }
+            ], 
+            "position": {
+                "left": 1296, 
+                "top": 414
+            }, 
+            "post_job_actions": {
+                "HideDatasetActionoutput": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "output"
+                }
+            }, 
+            "tool_id": "hint", 
+            "tool_state": "{\"input_source\": \"{\\\"input_type\\\": \\\"bag\\\", \\\"input_dir_obj\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}, \\\"__current_case__\\\": 1, \\\"sample_name\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}}\", \"__page__\": null, \"region\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null}", 
+            "tool_version": "HINT: 1.1.1", 
+            "type": "tool", 
+            "uuid": "4e3ffd44-67b2-46ad-a44e-09a1e502fcd1", 
+            "workflow_outputs": []
+        }, 
+        "10": {
+            "annotation": "14", 
+            "content_id": "sort1", 
+            "errors": null, 
+            "id": 10, 
+            "input_connections": {
+                "input": {
+                    "id": 8, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Sort", 
+                    "name": "input"
+                }
+            ], 
+            "label": null, 
+            "name": "Sort", 
+            "outputs": [
+                {
+                    "name": "out_file1", 
+                    "type": "input"
+                }
+            ], 
+            "position": {
+                "left": 1564, 
+                "top": 262
+            }, 
+            "post_job_actions": {
+                "RenameDatasetActionout_file1": {
+                    "action_arguments": {
+                        "newname": "wellington_sorted"
+                    }, 
+                    "action_type": "RenameDatasetAction", 
+                    "output_name": "out_file1"
+                }
+            }, 
+            "tool_id": "sort1", 
+            "tool_state": "{\"__page__\": null, \"style\": \"\\\"alpha\\\"\", \"column\": \"\\\"1\\\"\", \"__rerun_remap_job_id__\": null, \"order\": \"\\\"ASC\\\"\", \"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"column_set\": \"[]\"}", 
+            "tool_version": "1.0.3", 
+            "type": "tool", 
+            "uuid": "79e00cf3-6c84-40d6-8136-5aa2c665f8cc", 
+            "workflow_outputs": [
+                {
+                    "label": null, 
+                    "output_name": "out_file1", 
+                    "uuid": "cfff55a3-ec6f-403b-9c8a-af00b8f837e0"
+                }
+            ]
+        }, 
+        "11": {
+            "annotation": "15", 
+            "content_id": "sort1", 
+            "errors": null, 
+            "id": 11, 
+            "input_connections": {
+                "input": {
+                    "id": 9, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Sort", 
+                    "name": "input"
+                }
+            ], 
+            "label": null, 
+            "name": "Sort", 
+            "outputs": [
+                {
+                    "name": "out_file1", 
+                    "type": "input"
+                }
+            ], 
+            "position": {
+                "left": 1578, 
+                "top": 429
+            }, 
+            "post_job_actions": {
+                "RenameDatasetActionout_file1": {
+                    "action_arguments": {
+                        "newname": "hint_sorted"
+                    }, 
+                    "action_type": "RenameDatasetAction", 
+                    "output_name": "out_file1"
+                }
+            }, 
+            "tool_id": "sort1", 
+            "tool_state": "{\"__page__\": null, \"style\": \"\\\"alpha\\\"\", \"column\": \"\\\"1\\\"\", \"__rerun_remap_job_id__\": null, \"order\": \"\\\"ASC\\\"\", \"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"column_set\": \"[]\"}", 
+            "tool_version": "1.0.3", 
+            "type": "tool", 
+            "uuid": "3187775b-d908-4c1c-950b-11d0e3cc39d7", 
+            "workflow_outputs": [
+                {
+                    "label": null, 
+                    "output_name": "out_file1", 
+                    "uuid": "1a104082-1558-4532-b8f4-e3e4c2c497cb"
+                }
+            ]
+        }
+    }, 
+    "uuid": "073a7e8a-7d3c-417a-8da2-a2b8fdc30e31"
+}
