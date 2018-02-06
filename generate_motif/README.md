@@ -2,7 +2,7 @@
 
 **Final catalog as a psql dump is available at to download :**   
 
-       `s3cmd get s3://bdds-public/index_dbs/2017_07_27_fimo . `
+`s3cmd get s3://bdds-public/index_dbs/2017_07_27_fimo . `
 
 Generating the fimo output files and uploading to a database can be done by running the R script [create_fimo_db.R](https://github.com/globusgenomics/genomics-footprint/blob/master/generate_motif/script/create_fimo_db.R):
 
@@ -10,7 +10,7 @@ Generating the fimo output files and uploading to a database can be done by runn
 
    - We use the pre-generated non-redundant motifs - [non-redundant-fimo_motifs.meme](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_motif/fimo_input/motif/non-redundant_fimo_motifs.meme).
 
-            `Rscript ./script/create_fimo_db.R`
+  `Rscript ./script/create_fimo_db.R`
 
 
 **Please note: this process will take a long time, so plan accordingly**
