@@ -26,10 +26,8 @@ else if (database == "skin_hint_20") {
 ```
 - Run the master scripts in [master/skin_20](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/master/skin_20)
 ```
-nohup R -f hint_1.R &
-nohup R -f wellington_1.R &
-nohup R -f hint_2.R &
-nohup R -f wellington_2.R &
+Rscript -f hint.R
+Rscript -f wellington.R
 ```
 - Index the databases
 ```
