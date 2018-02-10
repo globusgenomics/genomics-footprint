@@ -1,0 +1,10 @@
+universe = vanilla
+getenv = true
+executable = /scratch/galaxy/test/sjung/TFBS/extraembryonic_structure_wellington20.sh
+output = /scratch/galaxy/test/sjung/TFBS/extraembryonic_structure_wellington20.o
+error = /scratch/galaxy/test/sjung/TFBS/extraembryonic_structure_wellington20.e
+log = /scratch/galaxy/test/sjung/TFBS/extraembryonic_structure_wellington20.log
+notification = NEVER
++Tenant="ci"
+request_cpus=32
+queue

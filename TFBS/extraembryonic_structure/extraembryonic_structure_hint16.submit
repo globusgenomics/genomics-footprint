@@ -1,0 +1,10 @@
+universe = vanilla
+getenv = true
+executable = /scratch/galaxy/test/sjung/TFBS/extraembryonic_structure_hint16.sh
+output = /scratch/galaxy/test/sjung/TFBS/extraembryonic_structure_hint16.o
+error = /scratch/galaxy/test/sjung/TFBS/extraembryonic_structure_hint16.e
+log = /scratch/galaxy/test/sjung/TFBS/extraembryonic_structure_hint16.log
+notification = NEVER
++Tenant="ci"
+request_cpus=32
+queue
