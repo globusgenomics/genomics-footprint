@@ -1,12 +1,12 @@
 #-------------------------------------------------------------------------------
 readDataTable <- function(directory, sampleID, nrows=NA, chromosome=NA, method = "DEFAULT")
 {
-  # regular expression to match filename starting with sampleID and ending with 
+  # regular expression to match filename starting with sampleID and ending with
   # .bed
   pattern = paste(sampleID, ".*bed$", sep='')
   filename <- grep(pattern, list.files(directory), v=TRUE)
   full.path <- file.path(directory, filename)
-  
+
   if(!file.exists(full.path))
     return(data.frame)
 
@@ -22,16 +22,16 @@ readDataTable <- function(directory, sampleID, nrows=NA, chromosome=NA, method =
             # Make sure to select only these 6 columns
             tbl <- tbl[,c("chrom", "start", "end", "name", "score", "strand")]
         }
-    
+
   #tbl$chrom <- paste("chr", tbl$chrom, sep="")
   if(!is.na(chromosome))
     tbl <- subset(tbl, chrom==chromosome)
-  
+
   if(!is.na(nrows))
     tbl <- tbl[1:nrows,]
-  
+
   invisible(tbl)
-  
+
 } # readDataTable
 #-------------------------------------------------------------------------------
 mergeFimoWithFootprints <- function(tbl.fp, sampleID, dbConnection = db.fimo, method = "DEFAULT")
@@ -61,44 +61,46 @@ mergeFimoWithFootprints <- function(tbl.fp, sampleID, dbConnection = db.fimo, me
             #effectively cutting off the ends
             min.pos <- min(tbl.fp$start)
             max.pos <- max(tbl.fp$end)
-            
+
             fimo.chromosome <- sub("chr", "", chromosome)
             query <- sprintf("select * from fimo_hg38 where chrom='%s' and start >= %d and endpos <= %d",
                              fimo.chromosome, min.pos, max.pos)
-            
+
             # This is the actual FIMO query that gets the chosen chromosome
             tbl.fimo <- dbGetQuery(dbConnection, query)
+            #colnames(tbl.fimo) <- c("motif", "chrom", "motif.start", "motif.end", "motif.strand",
+            #                        "fimo.score","fimo.pvalue", "empty", "motif.sequence", "loc")
+
             colnames(tbl.fimo) <- c("motif", "chrom", "motif.start", "motif.end", "motif.strand",
-                                    "fimo.score","fimo.pvalue", "empty", "motif.sequence", "loc")
-            
+                                    "fimo.score","fimo.pvalue", "empty", "motif.sequence")
+
+
             tbl.fimo <- tbl.fimo[, -grep("empty", colnames(tbl.fimo))]
             tbl.fimo$chrom <- paste("chr", tbl.fimo$chrom, sep="")
-    
+
             # Converts the FIMO data into a GenomicRanges object, making the intersection with footprints fast
             gr.fimo <- with(tbl.fimo, GRanges(seqnames=chrom, IRanges(start=motif.start, end=motif.end)))
-      
+
             # --- get some footprints
             # Converts the footprints into GenomicRanges objects
             gr.wellington <- with(tbl.fp,   GRanges(seqnames=chrom, IRanges(start=start, end=end)))
-            
+
             # the "within" is conservative. I will run this with "any" to increase
             #the number of motif interesects
             tbl.overlaps <- as.data.frame(findOverlaps(gr.fimo, gr.wellington, type="any"))
 
-            # Comment out this line, which is no longer necessary and took a long time
-#            tbl.fimo$loc <- with(tbl.fimo, sprintf("%s:%d-%d", chrom, motif.start, motif.end))
             tbl.fimo$method <- method
             tbl.fimo$sample_id <- sampleID
-            
+
             tbl.regions <- tbl.fimo[tbl.overlaps$queryHits,]
             tbl.regions <- cbind(tbl.regions,
                                  wellington.score=tbl.fp[tbl.overlaps$subjectHits, "score"],
                                  fp.start=tbl.fp[tbl.overlaps$subjectHits, "start"],
                                  fp.end=tbl.fp[tbl.overlaps$subjectHits, "end"])
-        }    
-    
+        }
+
   invisible(tbl.regions)
-  
+
 } # mergeFimoWithFootprints
 #-------------------------------------------------------------------------------
 # I cant' explain this very well, but the output is actually two tables. One table is a running list of unique positions.
@@ -107,7 +109,7 @@ splitTableIntoRegionsAndHits <- function(tbl, minid = "temp.filler.minid", metho
 {
     # Split of the regions table; this is the same for all methods
     tbl.regions <- unique(tbl[, c("loc", "chrom", "motif.start", "motif.end")])
-    colnames(tbl.regions) <- region.schema() # 29    
+    colnames(tbl.regions) <- region.schema() # 29
     # c("loc", "chrom", "motif_start", "motif_end")
 
     # Pull hits slightly differently
@@ -119,26 +121,25 @@ splitTableIntoRegionsAndHits <- function(tbl, minid = "temp.filler.minid", metho
                  "score1", "score2", "score3", "score4",
                  "score5", "score6")
     } else{
-        tbl.hits <- tbl[, c("loc", "fp.start", "fp.end", "motif", "motif.strand", "sample_id", "method",         
-                            "wellington.score", "fimo.score", "fimo.pvalue")]        
+        tbl.hits <- tbl[, c("loc", "fp.start", "fp.end", "motif", "motif.strand", "sample_id", "method",
+                            "wellington.score", "fimo.score", "fimo.pvalue")]
         tbl.hits$score4 <- NA
         coi <- c("loc", "fp.start", "fp.end", "type", "motif", "length",
                  "motif.strand", "sample_id", "method", "provenance",
                  "wellington.score", "fimo.score", "fimo.pvalue", "score4",
                  "score5", "score6")
     }
-    
+
     # Add method-agnostic things
     tbl.hits$length <- with(tbl, 1 + motif.end - motif.start)
-    tbl.hits$provenance <- minid   
-    tbl.hits$score5 <- NA    
-    tbl.hits$score6 <- NA    
-    tbl.hits$type <- "motif.in.footprint"
+    tbl.hits$provenance <- minid
+    tbl.hits$score5 <- NA
+    tbl.hits$score6 <- NA
 
     # Format hits appropriately and return both tables in a list
-    tbl.hits <- tbl.hits[, coi]    
-    colnames(tbl.hits) <- hit.schema()    
+    tbl.hits <- tbl.hits[, coi]
+    colnames(tbl.hits) <- hit.schema()
     invisible(list(regions=tbl.regions, hits=tbl.hits))
-    
-} # splitTableIntoRegionsAndHits    
+
+} # splitTableIntoRegionsAndHits
 #-------------------------------------------------------------------------------

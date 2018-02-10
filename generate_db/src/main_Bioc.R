@@ -10,20 +10,20 @@ fillAllSamplesByChromosome <- function(chromosome,
                                        method = "DEFAULT")
 {
 
-  all.sampleIDs <- unlist(lapply(strsplit(list.files(sourcePath, 
-                                                     "ENCSR.*.bed$"), 
+  all.sampleIDs <- unlist(lapply(strsplit(list.files(sourcePath,
+                                                     "ENCSR.*.bed$"),
                                           ".", fixed=TRUE), "[", 1))
-  
+
   for(sampleID in all.sampleIDs){
-    printf("---- %s (%s) (%d/%d)", sampleID, chromosome, 
+    printf("---- %s (%s) (%d/%d)", sampleID, chromosome,
            grep(sampleID, all.sampleIDs), length(all.sampleIDs))
 
     if (isTest) {
       # nrow set for testing
-      tbl.wellington <- readDataTable(sourcePath, sampleID, nrow = 10, 
+      tbl.wellington <- readDataTable(sourcePath, sampleID, nrow = 10,
                                           chromosome, method = method)
     } else {
-      tbl.wellington <- readDataTable(sourcePath, sampleID, NA, 
+      tbl.wellington <- readDataTable(sourcePath, sampleID, NA,
                                           chromosome, method = method)
     }
     print("Data table read. Merging with Fimo...")
@@ -35,27 +35,37 @@ fillAllSamplesByChromosome <- function(chromosome,
     }
 
     fimo.con <- getDBConnection(fimo)
-    tbl <- mergeFimoWithFootprints(tbl.wellington, sampleID, 
+    tbl <- mergeFimoWithFootprints(tbl.wellington, sampleID,
                                    dbConnection = fimo.con,
                                    method=method)
     dbDisconnect(fimo.con)
 
-    print("Merged. Now splitting table to regions and hits...")
-    x <- splitTableIntoRegionsAndHits(tbl, minid, method = method)
-    printf("filling %d regions, %d hits for %s", nrow(x$regions), 
-           nrow(x$hits), sampleID)
-	   
-    dbConnection.con <- getDBConnection(dbConnection)	   
+    library(data.table)
+    dir_path=paste(sourcePath,"/TFBS_OUTPUT",sep="")
+    fname=paste(dir_path,"/",db.wellington,"_",chromosome,".csv",sep="")
+    fwrite(tbl,fname, sep=",")
+
+
+    #-----------------------------------------------------------------------------------------------
+    # Below is to fill database with the data so please uncomment if that's what you want.
+    #-----------------------------------------------------------------------------------------------
+
+    #print("Merged. Now splitting table to regions and hits...")
+    #x <- splitTableIntoRegionsAndHits(tbl, minid, method = method)
+    #printf("filling %d regions, %d hits for %s", nrow(x$regions),
+    #       nrow(x$hits), sampleID)
+
+    #dbConnection.con <- getDBConnection(dbConnection)
 
     # Trim the tables using a subset
-    regions.locs <- dbGetQuery(dbConnection.con, "select loc from regions")
-    x$regions <- subset(x$regions, (!loc %in% regions.locs$loc))
-    
-    fillToDatabase(x$regions, x$hits, dbConnection.con, dbUser, dbTable)
-    
-    databaseSummary(dbConnection.con)
+    #regions.locs <- dbGetQuery(dbConnection.con, "select loc from regions")
+    #x$regions <- subset(x$regions, (!loc %in% regions.locs$loc))
+
+    #fillToDatabase(x$regions, x$hits, dbConnection.con, dbUser, dbTable)
+
+    #databaseSummary(dbConnection.con)
     #close the connection
-    dbDisconnect(dbConnection.con)
+    #dbDisconnect(dbConnection.con)
   } # for sampleID
 } # fill.all.samples.by.chromosome
 #-------------------------------------------------------------------------------
