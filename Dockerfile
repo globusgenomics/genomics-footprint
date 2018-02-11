@@ -17,9 +17,9 @@ USER root
 
 RUN apt-get update && apt-get install -y git build-essential zlib1g-dev libpng-dev libcurl4-openssl-dev
 ################## INSTALLATION OF HINT ######################
-RUN conda install pybigwig -c bioconda
-RUN pip install ngslib
-RUN pip install RGT
+RUN conda install pybigwig==0.3.10 -c bioconda
+RUN pip install ngslib==1.1.20
+RUN pip install RGT==0.11.2
 
 ################## INSTALLATION OF BEDTOOLS ######################
 
