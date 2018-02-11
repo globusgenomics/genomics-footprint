@@ -15,7 +15,11 @@ MAINTAINER Ravi K. Madduri <madduri@anl.gov>
 
 USER root
 
-RUN apt-get update && apt-get install -y git build-essential zlib1g-dev
+RUN apt-get update && apt-get install -y git build-essential zlib1g-dev libpng-dev
+################## INSTALLATION OF HINT ######################
+
+RUN pip2 install --user ngslib
+RUN pip2 install --user RGT
 
 ################## INSTALLATION OF BEDTOOLS ######################
 
@@ -27,12 +31,6 @@ RUN conda install samtools=1.1.0
 
 ################## INSTALLATION OF WELLINGTON ######################
 RUN pip install pyDNase==0.2.5
-
-
-################## INSTALLATION OF HINT ######################
-
-RUN pip install cython numpy scipy
-#RUN pip install RGT
 
 ################## INSTALLATION OF FSEQ ######################
 
