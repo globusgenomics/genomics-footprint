@@ -15,11 +15,11 @@ MAINTAINER Ravi K. Madduri <madduri@anl.gov>
 
 USER root
 
-RUN apt-get update && apt-get install -y git build-essential zlib1g-dev libpng-dev
+RUN apt-get update && apt-get install -y git build-essential zlib1g-dev libpng-dev libcurl4-openssl-dev
 ################## INSTALLATION OF HINT ######################
-
-RUN pip2 install --user ngslib
-RUN pip2 install --user RGT
+RUN conda install pybigwig -c bioconda
+RUN pip install ngslib
+RUN pip install RGT
 
 ################## INSTALLATION OF BEDTOOLS ######################
 
