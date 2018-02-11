@@ -11,6 +11,12 @@ LABEL tags="Footprints"
 ################## MAINTAINER ######################
 MAINTAINER Ravi K. Madduri <madduri@anl.gov>
 
+################## UPDATE OF SYSTEM PACKAGES ######################
+
+USER root
+
+RUN apt-get update && apt-get install -y git build-essential zlib1g-dev
+
 ################## INSTALLATION OF BEDTOOLS ######################
 
 RUN conda install bedtools=2.17.0
@@ -30,8 +36,6 @@ RUN pip install cython numpy scipy
 
 ################## INSTALLATION OF FSEQ ######################
 
-USER root
-
 RUN curl -o /tmp/fseq_1.84.tgz http://html-large-files-dept-fureylab.cloudapps.unc.edu/fureylabfiles/fseq/fseq_1.84.tgz
 
 RUN cd /tmp
@@ -39,4 +43,15 @@ RUN cd /tmp
 RUN tar -xzf /tmp/fseq_1.84.tgz -C /usr/bin/
 
 ENV PATH="/usr/bin/fseq/bin:${PATH}"
+
+################## INSTALLATION OF SNAP from Github version ######################
+
+WORKDIR /tmp/
+RUN git clone https://github.com/amplab/snap.git
+WORKDIR /tmp/snap
+RUN git checkout 48e7ae5d38145c094af1fe42a4b3abf1e72e1bb7
+WORKDIR /tmp/snap/
+RUN make
+RUN mv /tmp/snap/snap-aligner /usr/bin/
+RUN rm -rf /tmp/snap
 ##############################################################################
