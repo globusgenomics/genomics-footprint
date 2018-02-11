@@ -42,7 +42,7 @@ fillAllSamplesByChromosome <- function(chromosome,
 
     library(data.table)
     dir_path=paste(sourcePath,"/TFBS_OUTPUT",sep="")
-    fname=paste(dir_path,"/",db.wellington,"_",chromosome,".csv",sep="")
+    fname=paste(dir_path,"/",db.wellington,".",sampleID,".",:chromosome,".csv",sep="")
     fwrite(tbl,fname, sep=",")
 
 

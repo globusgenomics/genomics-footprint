@@ -63,40 +63,42 @@ mergeFimoWithFootprints <- function(tbl.fp, sampleID, dbConnection = db.fimo, me
             max.pos <- max(tbl.fp$end)
 
             fimo.chromosome <- sub("chr", "", chromosome)
-            query <- sprintf("select * from fimo_hg38 where chrom='%s' and start >= %d and endpos <= %d",
-                             fimo.chromosome, min.pos, max.pos)
+            if(!is.na(fimo.chromosome)){
+                query <- sprintf("select * from fimo_hg38 where chrom='%s' and start >= %d and endpos <= %d",
+                                 fimo.chromosome, min.pos, max.pos)
 
-            # This is the actual FIMO query that gets the chosen chromosome
-            tbl.fimo <- dbGetQuery(dbConnection, query)
-            #colnames(tbl.fimo) <- c("motif", "chrom", "motif.start", "motif.end", "motif.strand",
-            #                        "fimo.score","fimo.pvalue", "empty", "motif.sequence", "loc")
+                # This is the actual FIMO query that gets the chosen chromosome
+                tbl.fimo <- dbGetQuery(dbConnection, query)
+                #colnames(tbl.fimo) <- c("motif", "chrom", "motif.start", "motif.end", "motif.strand",
+                #                        "fimo.score","fimo.pvalue", "empty", "motif.sequence", "loc")
 
-            colnames(tbl.fimo) <- c("motif", "chrom", "motif.start", "motif.end", "motif.strand",
-                                    "fimo.score","fimo.pvalue", "empty", "motif.sequence")
+                colnames(tbl.fimo) <- c("motif", "chrom", "motif.start", "motif.end", "motif.strand",
+                                        "fimo.score","fimo.pvalue", "empty", "motif.sequence")
 
 
-            tbl.fimo <- tbl.fimo[, -grep("empty", colnames(tbl.fimo))]
-            tbl.fimo$chrom <- paste("chr", tbl.fimo$chrom, sep="")
+                tbl.fimo <- tbl.fimo[, -grep("empty", colnames(tbl.fimo))]
+                tbl.fimo$chrom <- paste("chr", tbl.fimo$chrom, sep="")
 
-            # Converts the FIMO data into a GenomicRanges object, making the intersection with footprints fast
-            gr.fimo <- with(tbl.fimo, GRanges(seqnames=chrom, IRanges(start=motif.start, end=motif.end)))
+                # Converts the FIMO data into a GenomicRanges object, making the intersection with footprints fast
+                gr.fimo <- with(tbl.fimo, GRanges(seqnames=chrom, IRanges(start=motif.start, end=motif.end)))
 
-            # --- get some footprints
-            # Converts the footprints into GenomicRanges objects
-            gr.wellington <- with(tbl.fp,   GRanges(seqnames=chrom, IRanges(start=start, end=end)))
+                # --- get some footprints
+                # Converts the footprints into GenomicRanges objects
+                gr.wellington <- with(tbl.fp,   GRanges(seqnames=chrom, IRanges(start=start, end=end)))
 
-            # the "within" is conservative. I will run this with "any" to increase
-            #the number of motif interesects
-            tbl.overlaps <- as.data.frame(findOverlaps(gr.fimo, gr.wellington, type="any"))
+                # the "within" is conservative. I will run this with "any" to increase
+                #the number of motif interesects
+                tbl.overlaps <- as.data.frame(findOverlaps(gr.fimo, gr.wellington, type="any"))
 
-            tbl.fimo$method <- method
-            tbl.fimo$sample_id <- sampleID
+                tbl.fimo$method <- method
+                tbl.fimo$sample_id <- sampleID
 
-            tbl.regions <- tbl.fimo[tbl.overlaps$queryHits,]
-            tbl.regions <- cbind(tbl.regions,
-                                 wellington.score=tbl.fp[tbl.overlaps$subjectHits, "score"],
-                                 fp.start=tbl.fp[tbl.overlaps$subjectHits, "start"],
-                                 fp.end=tbl.fp[tbl.overlaps$subjectHits, "end"])
+                tbl.regions <- tbl.fimo[tbl.overlaps$queryHits,]
+                tbl.regions <- cbind(tbl.regions,
+                                     wellington.score=tbl.fp[tbl.overlaps$subjectHits, "score"],
+                                     fp.start=tbl.fp[tbl.overlaps$subjectHits, "start"],
+                                     fp.end=tbl.fp[tbl.overlaps$subjectHits, "end"])
+            }                     
         }
 
   invisible(tbl.regions)
@@ -110,7 +112,6 @@ splitTableIntoRegionsAndHits <- function(tbl, minid = "temp.filler.minid", metho
     # Split of the regions table; this is the same for all methods
     tbl.regions <- unique(tbl[, c("loc", "chrom", "motif.start", "motif.end")])
     colnames(tbl.regions) <- region.schema() # 29
-    # c("loc", "chrom", "motif_start", "motif_end")
 
     # Pull hits slightly differently
     if(method == "PIQ"){
