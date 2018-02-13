@@ -40,9 +40,7 @@ in the [condor_submit_script](https://github.com/globusgenomics/genomics-footpri
 Note that, by default, a BDBag of TFBSs are generated whereas filling up a database table is optional. To enable it,
 please change the parameter in the [master R script](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/master) as follows:
 
-`Fill_DB_Enable=FALSE --> Fill_DB_Enable=TRUE`
-
-in this function below.
+`Fill_DB_Enable=FALSE --> Fill_DB_Enable=TRUE`  in this function below.
 
 ```
 if(!interactive()){
