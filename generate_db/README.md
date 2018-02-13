@@ -37,11 +37,12 @@ in the [condor_submit_script](https://github.com/globusgenomics/genomics-footpri
 
    For example, the [urinary_bladder_16 bdbag](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/bdbag_output/urinary_bladder_16) contains the urinary_bladder_hint_16.tar.gz and urinary_bladder_wellington_16.tar.gz files.
 
-Note that, by default, filling the database is disabled. To enable, please change the parameter in the [master R script](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/master).
+Note that, by default, a BDBag of TFBSs are generated whereas filling up a database table is optional. To enable it,
+please change the parameter in the [master R script](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/master) as follows:
 
 `Fill_DB_Enable=FALSE --> Fill_DB_Enable=TRUE`
 
-Below is the function including the parameter above.
+in this function below.
 
 ```
 if(!interactive()){
