@@ -42,11 +42,12 @@ if(!interactive()){
              dbUser = "trena",
              dbTable = "urinary_bladder_wellington_16",
              sourcePath = data.path,
-             isTest = TRUE,
-             method = "WELLINGTON"))
+             isTest = FALSE,
+             method = "WELLINGTON",
+             Fill_DB_Enable=FALSE))
 }
 
-cmd=paste("tar -zcvf ", output_path, ".tar.gz ", output_path, sep="")
+cmd=paste("tar -zcvf ", bdbag.path, "/", db.wellington,".tar.gz ", output_path, sep="")
 system(cmd, intern = TRUE)
 unlink(output_path,recursive=TRUE)
 #print(bpok(result))

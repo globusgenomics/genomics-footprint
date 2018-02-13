@@ -12,6 +12,9 @@ print(date())
 data.path <- "/scratch/shared/footprints/bone_element_hint_20"
 output_path=paste(data.path,"/TFBS_OUTPUT",sep="")
 dir.create(output_path, showWarnings = FALSE)
+
+bdbag.path<-"/scratch/shared/footprints/bone_element_20"
+dir.create(bdbag.path, showWarnings = FALSE)
 #-------------------------------------------------------------------------------
 # establish database connections:
 
@@ -43,10 +46,11 @@ if(!interactive()){
              dbTable = "bone_element_hint_20",
              sourcePath = data.path,
              isTest = FALSE,
-             method = "HINT"))
+             method = "HINT",
+             Fill_DB_Enable=FALSE))
 }
 
-cmd=paste("tar -zcvf ", output_path, ".tar.gz ", output_path, sep="")
+cmd=paste("tar -zcvf ", bdbag.path, "/", db.wellington,".tar.gz ", output_path, sep="")
 system(cmd, intern = TRUE)
 unlink(output_path,recursive=TRUE)
 #print(bpok(result))

@@ -9,15 +9,17 @@
 print(date())
 #-------------------------------------------------------------------------------
 # set path to hint output
-#data.path <- "/scratch/data/footprints/tongue_wellington_20"
-data.path <- "/scratch/shared/footprints/tongue_wellington_20"
+data.path <- "/scratch/shared/footprints/muscle_organ_wellington_20"
 output_path=paste(data.path,"/TFBS_OUTPUT",sep="")
 dir.create(output_path, showWarnings = FALSE)
+
+bdbag.path<-"/scratch/shared/footprints/muscle_organ_20"
+dir.create(bdbag.path, showWarnings = FALSE)
 #-------------------------------------------------------------------------------
 # establish database connections:
 
 if(!exists("db.wellington"))
-    db.wellington <- "tongue_wellington_20"
+    db.wellington <- "muscle_organ_wellington_20"
 
 if(!exists("db.fimo"))
     db.fimo <- "fimo"
@@ -38,15 +40,16 @@ if(!interactive()){
     result <- bptry(bplapply(chromosomes, fillAllSamplesByChromosome,
              dbConnection = db.wellington,
              fimo = db.fimo,
-             minid = "tongue_wellington_20.minid",
+             minid = "muscle_organ_wellington_20.minid",
              dbUser = "trena",
-             dbTable = "tongue_wellington_20",
+             dbTable = "muscle_organ_wellington_20",
              sourcePath = data.path,
-             isTest = TRUE,
-             method = "WELLINGTON"))
+             isTest = FALSE,
+             method = "WELLINGTON",
+             Fill_DB_Enable=FALSE))
 }
 
-cmd=paste("tar -zcvf ", output_path, ".tar.gz ", output_path, sep="")
+cmd=paste("tar -zcvf ", bdbag.path, "/", db.wellington,".tar.gz ", output_path, sep="")
 system(cmd, intern = TRUE)
 unlink(output_path,recursive=TRUE)
 #print(bpok(result))
