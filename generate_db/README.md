@@ -63,6 +63,7 @@ if(!interactive()){
 }
 ```
 
+-------------------
 
 - Index the databases
 ```
