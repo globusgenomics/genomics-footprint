@@ -30,9 +30,13 @@ Rscript -f hint.R
 Rscript -f wellington.R
 ```
 
-The output is the BDBag that includes two compressed files for hint and wellington.
+- For our use case, jobs were submitted for execution to [Condor](https://en.wikipedia.org/wiki/HTCondor).  We make our submit script available
+in [condor_submit_script](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/condor_submit_script).  
+
+The output is a BDBag that contains two compressed TFBS files for hint and wellington.
+
 For example, the [urinary_bladder_16 bdbag](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/bdbag_output/urinary_bladder_16)
-contains ./urinary_bladder_16/urinary_bladder_hint_16.tar.gz and ./urinary_bladder_16/urinary_bladder_wellington_16.tar.gz.
+contains the urinary_bladder_hint_16.tar.gz and urinary_bladder_wellington_16.tar.gz files.
 
 Note that, by default, filling the database is disabled. To enable, please change the parameter in the [master R script](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/master).
 
