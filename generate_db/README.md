@@ -29,6 +29,39 @@ else if (database == "skin_hint_20") {
 Rscript -f hint.R
 Rscript -f wellington.R
 ```
+
+The output is the BDBag that includes two compressed files for hint and wellington.
+For example, the [urinary_bladder_16 bdbag](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/bdbag_output/urinary_bladder_16)
+contains [./urinary_bladder_16/urinary_bladder_hint_16.tar.gz](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/bdbag_output/urinary_bladder_16/urinary_bladder_hint_16.tar.gz) and [./urinary_bladder_16/urinary_bladder_hint_16.tar.gz](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/bdbag_output/urinary_bladder_16/urinary_bladder_hint_16.tar.gz).
+
+Note that, by default, filling the database is disabled. To enable, please change the parameter:
+
+`Fill_DB_Enable=FALSE --> Fill_DB_Enable=TRUE`
+
+in the master R script.  Below is the function including the parameter.
+
+```
+if(!interactive()){
+    chromosomes <- paste0("chr",c(1:22,"X","Y","MT"))
+    # Create parallel structure here
+    library(BiocParallel)
+    register(MulticoreParam(workers = 10, stop.on.error = FALSE, log = TRUE), default = TRUE)
+
+    # Run on all 24 possible chromosomes at once
+    result <- bptry(bplapply(chromosomes, fillAllSamplesByChromosome,
+             dbConnection = db.wellington,
+             fimo = db.fimo,
+             minid = "urinary_bladder_wellington_20.minid",
+             dbUser = "trena",
+             dbTable = "urinary_bladder_wellington_20",
+             sourcePath = data.path,
+             isTest = FALSE,
+             method = "WELLINGTON",
+             Fill_DB_Enable=TRUE)))
+}
+```
+
+
 - Index the databases
 ```
 nohup psql skin_wellington_20 -f index_skin_wellington_20.sql &

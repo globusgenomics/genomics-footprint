@@ -7,7 +7,8 @@ fillAllSamplesByChromosome <- function(chromosome,
                                        dbTable = "testwellington",
                                        sourcePath = wellington.path,
                                        isTest = True,
-                                       method = "DEFAULT")
+                                       method = "DEFAULT",
+                                       Fill_DB_Enable=FALSE)
 {
 
   all.sampleIDs <- unlist(lapply(strsplit(list.files(sourcePath,
@@ -50,22 +51,25 @@ fillAllSamplesByChromosome <- function(chromosome,
     # Below is to fill database with the data so please uncomment if that's what you want.
     #-----------------------------------------------------------------------------------------------
 
-    #print("Merged. Now splitting table to regions and hits...")
-    #x <- splitTableIntoRegionsAndHits(tbl, minid, method = method)
-    #printf("filling %d regions, %d hits for %s", nrow(x$regions),
-    #       nrow(x$hits), sampleID)
+    if (Fill_DB_Enable == TRUE){
 
-    #dbConnection.con <- getDBConnection(dbConnection)
+        print("Merged. Now splitting table to regions and hits...")
+        x <- splitTableIntoRegionsAndHits(tbl, minid, method = method)
+        printf("filling %d regions, %d hits for %s", nrow(x$regions),
+               nrow(x$hits), sampleID)
 
-    # Trim the tables using a subset
-    #regions.locs <- dbGetQuery(dbConnection.con, "select loc from regions")
-    #x$regions <- subset(x$regions, (!loc %in% regions.locs$loc))
+        dbConnection.con <- getDBConnection(dbConnection)
 
-    #fillToDatabase(x$regions, x$hits, dbConnection.con, dbUser, dbTable)
+        # Trim the tables using a subset
+        regions.locs <- dbGetQuery(dbConnection.con, "select loc from regions")
+        x$regions <- subset(x$regions, (!loc %in% regions.locs$loc))
 
-    #databaseSummary(dbConnection.con)
-    #close the connection
-    #dbDisconnect(dbConnection.con)
+        fillToDatabase(x$regions, x$hits, dbConnection.con, dbUser, dbTable)
+
+        databaseSummary(dbConnection.con)
+        close the connection
+        dbDisconnect(dbConnection.con)
+    }
   } # for sampleID
 } # fill.all.samples.by.chromosome
 #-------------------------------------------------------------------------------
