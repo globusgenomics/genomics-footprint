@@ -32,13 +32,13 @@ Rscript -f wellington.R
 
 The output is the BDBag that includes two compressed files for hint and wellington.
 For example, the [urinary_bladder_16 bdbag](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/bdbag_output/urinary_bladder_16)
-contains [./urinary_bladder_16/urinary_bladder_hint_16.tar.gz](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/bdbag_output/urinary_bladder_16/urinary_bladder_hint_16.tar.gz) and [./urinary_bladder_16/urinary_bladder_wellington_16.tar.gz](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/bdbag_output/urinary_bladder_16/urinary_bladder_wellington_16.tar.gz).
+contains ./urinary_bladder_16/urinary_bladder_hint_16.tar.gz and ./urinary_bladder_16/urinary_bladder_wellington_16.tar.gz.
 
-Note that, by default, filling the database is disabled. To enable, please change the parameter:
+Note that, by default, filling the database is disabled. To enable, please change the parameter in the [master R script](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/master).
 
 `Fill_DB_Enable=FALSE --> Fill_DB_Enable=TRUE`
 
-in the master R script.  Below is the function including the parameter.
+Below is the function including the parameter above.
 
 ```
 if(!interactive()){
