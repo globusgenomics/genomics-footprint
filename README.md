@@ -7,7 +7,7 @@
    - Step 4 generating D5 [generate_motif](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_motif) - This generate_motif directory is a guideline if one needs to create transcription factor motifs. The motif file is used for annotating  the footprints.
 
    - Step 5 generating D6 [generate_db](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db) - The generate_db directory shows a step-by-step procedure along with the processing code to intersect hint or wellington] footprints output with the FIMO database and put the results in a database.
-[getting_started](https://github.com/globusgenomics/genomics-footprint/tree/master/getting_started) - This getting_started shows how to access the footprint databases and provides a case example for query.
+- [getting_started](https://github.com/globusgenomics/genomics-footprint/tree/master/getting_started) - This getting_started shows how to access the footprint databases and provides a case example for query.
 
 
 
