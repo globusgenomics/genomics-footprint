@@ -69,7 +69,7 @@ You will need import each of the following workflows:
  * [Footprints MASTER Workflow]( https://bdds.globusgenomics.org/u/arodri1215/w/copy-of-imported-footprints-master-workflow-4)
  * [SNAP_BAG_MASTER_v.1.1.0](https://bdds.globusgenomics.org/u/arodri1215/w/copy-of-snapbagmasterv100)
  * [DNAse-footprints-singlesample-bamInput_wellington_hint]( https://bdds.globusgenomics.org/u/arodri1215/w/imported-dnase-footprints-singlesample-baminputwellingtonhint)
- * [snap_from_bag]( https://bdds.globusgenomics.org/u/arodri1215/w/snapfromminidbag)
+ * [snap_from_minid_bag]( https://bdds.globusgenomics.org/u/arodri1215/w/snapfromminidbag)
 
 For each workflow in the list above, follow these steps to import to your environment:
 
