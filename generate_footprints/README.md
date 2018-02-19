@@ -66,7 +66,7 @@ NOTE - If you modify any of the workflows or rename the workflows you import, th
 
 You will need import each of the following workflows:
 
- * [Footprints MASTER Workflow](https://bdds.globusgenomics.org/u/arodri1215/w/trena-master-workflow)
+ * [Footprints MASTER Workflow]( https://bdds.globusgenomics.org/u/arodri1215/w/copy-of-imported-footprints-master-workflow-4)
  * [SNAP_BAG_MASTER_v.1.1.0](https://bdds.globusgenomics.org/u/arodri1215/w/copy-of-snapbagmasterv100)
  * [DNAse-footprints-singlesample-bamInput_wellington_hint]( https://bdds.globusgenomics.org/u/arodri1215/w/imported-dnase-footprints-singlesample-baminputwellingtonhint)
  * [snap_from_bag](https://bdds.globusgenomics.org/u/arodri1215/w/snapfrombag)
