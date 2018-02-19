@@ -1,8 +1,10 @@
-# R Markdown Notebook for access to footprint databases
+# R Markdown Notebook for accessing the footprint databases on AWS RDS
 
 To get started, please take a look at this [Notebook (HTML)](http://footprints.bdds.globusgenomics.org/)
 
 ### List of BDDS footprint Databases
+
+The following footprint databases are available for use. The R Markdown notebook above provides sample code on how one may access the databases.
 
 <table class='gmisc_table' style='border-collapse: collapse; margin-top: 1em; margin-bottom: 1em;' >
 <thead>
