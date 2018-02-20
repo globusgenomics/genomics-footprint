@@ -31,7 +31,7 @@ your local directory or optionally put in a database.
 
   ```
 
-- For our use case, jobs were submitted for execution to [Condor](https://en.wikipedia.org/wiki/HTCondor).  We make our submit scripts available
+For our use case, jobs were submitted for execution to [Condor](https://en.wikipedia.org/wiki/HTCondor).  We make our submit scripts available
   in the [condor_submit_script](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/condor_submit_script) directory.  
 
 - The output is a BDBag that contains two compressed TFBS files for hint and wellington.
