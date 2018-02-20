@@ -87,6 +87,7 @@ Using the example  [skin_20](https://github.com/globusgenomics/genomics-footprin
    4. Run the [master](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/master) R scripts.
       Make sure your directory paths are all correct.  
 -------------------
+This is for sanity check that you can skip.
 
 - Index the databases
 ```
@@ -126,6 +127,7 @@ pg_dump -Fc -h bddsrds.globusgenomics.org -U trena skin_hint_20 > ./skin_hint_20
 aws s3 cp ./skin_wellington_20.dump s3://bdds-public/index_dbs/
 aws s3 cp ./skin_hint_20.dump s3://bdds-public/index_dbs/
 ```
+------
 
 - Here is the snapshot of some of the database we created in bddsrds.globusgenomics.org:
 
