@@ -5,7 +5,7 @@
     `s3cmd get s3://bdds-public/index_dbs/2017_07_27_fimo . `
 ---------
 
-**Optionally, you can generate your own fimo following the instruction below, but again this process will take a long time, so plan accordingly**
+**Optionally, you can generate your own fimo following the instruction below, but again this process will take a long time, so plan accordingly.**
 
 Generating the fimo output files and uploading to a database can be done by running the R script [create_fimo_db.R](https://github.com/globusgenomics/genomics-footprint/blob/master/generate_motif/script/create_fimo_db.R):
 
