@@ -87,7 +87,7 @@ Using the example  [skin_20](https://github.com/globusgenomics/genomics-footprin
    4. Run the [master](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/master) R scripts.
       Make sure your directory paths are all correct.  
 -------------------
-This is for sanity check that you can skip.
+Below is a sanity check for database connection, table creation, etc that you can skip.
 
 - Index the databases
 ```
