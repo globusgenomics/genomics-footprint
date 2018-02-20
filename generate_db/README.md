@@ -41,16 +41,9 @@ For our use case, jobs were submitted for execution to [Condor](https://en.wikip
   Note that, by default, a BDBag of TFBSs are generated whereas filling up a database table is optional. To enable it,
   please change the parameter in the [master R script](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/master) as follows:
 
-  `Fill_DB_Enable=FALSE --> Fill_DB_Enable=TRUE`  in this function below.
+  `Fill_DB_Enable=FALSE --> Fill_DB_Enable=TRUE`  in this function:
 
   ```
-  if(!interactive()){
-      chromosomes <- paste0("chr",c(1:22,"X","Y","MT"))
-      # Create parallel structure here
-      library(BiocParallel)
-      register(MulticoreParam(workers = 10, stop.on.error = FALSE, log = TRUE), default = TRUE)
-
-      # Run on all 24 possible chromosomes at once
       result <- bptry(bplapply(chromosomes, fillAllSamplesByChromosome,
                dbConnection = db.wellington,
                fimo = db.fimo,
@@ -61,7 +54,6 @@ For our use case, jobs were submitted for execution to [Condor](https://en.wikip
                isTest = FALSE,
                method = "WELLINGTON",
                Fill_DB_Enable=TRUE)))
-  }
   ```
 --------------
 
