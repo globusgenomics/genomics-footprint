@@ -61,7 +61,13 @@ If you want to build your own database, please follow the instruction below.
 
 Using the example  [skin_20](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/master/skin_20), the steps are as follows :
 
-   1. Add a new database info to the R script [src/dbFunctions.R](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/src/dbFunctions.R) as shown in the example below.
+   1. Run a database creation shell script in [master/skin_20](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/master/skin_20)
+
+   ```
+   ./create_dbs_test.sh
+   ```
+
+   2. Add the new database info to the R script [src/dbFunctions.R](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/src/dbFunctions.R) as shown in the example below.
 
    ```
     else if (database == "skin_wellington_20") {
@@ -75,12 +81,12 @@ Using the example  [skin_20](https://github.com/globusgenomics/genomics-footprin
        dbname = "skin_hint_20"
        host = "bdds-rds.globusgenomics.org"}
    ```
-   2. Prepare your footprint files in your local directory.
 
-   3. Run the database creation shell script in [master/skin_20](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/master/skin_20)
-   ```
-   ./create_dbs_test.sh
-   ```
+   3. Prepare your footprint files in your local directory.
+
+   4. Run the [master](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/master) R scripts 
+
+
 
 -------------------
 
