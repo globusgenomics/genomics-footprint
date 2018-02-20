@@ -82,12 +82,10 @@ Using the example  [skin_20](https://github.com/globusgenomics/genomics-footprin
        host = "bdds-rds.globusgenomics.org"}
    ```
 
-   3. Prepare your footprint files in your local directory.
+   3. Prepare your skin footprints output files in your local directory.
 
-   4. Run the [master](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/master) R scripts 
-
-
-
+   4. Run the [master](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/master) R scripts.
+      Make sure your directory paths are all correct.  
 -------------------
 
 - Index the databases
