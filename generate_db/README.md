@@ -57,7 +57,7 @@ For our use case, jobs were submitted for execution to [Condor](https://en.wikip
   ```
 --------------
 
-To build your own database, please follow the instruction below.
+If you want to build your own database, please follow the instruction below.
 
 Using the example  [skin_20](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/master/skin_20), the steps are as follows :
 
