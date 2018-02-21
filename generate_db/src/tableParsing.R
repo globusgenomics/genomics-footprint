@@ -4,7 +4,7 @@ readDataTable <- function(directory, sampleID, nrows=NA, chromosome=NA, method =
   # regular expression to match filename starting with sampleID and ending with
   # .bed
   pattern = paste(sampleID, ".*bed$", sep='')
-  filename <- grep(pattern, list.files(directory), v=TRUE)
+  filename <- grep(pattern, list.files(directory), ignore.case=TRUE, v=TRUE)
   full.path <- file.path(directory, filename)
 
   if(!file.exists(full.path))
@@ -98,7 +98,7 @@ mergeFimoWithFootprints <- function(tbl.fp, sampleID, dbConnection = db.fimo, me
                                      wellington.score=tbl.fp[tbl.overlaps$subjectHits, "score"],
                                      fp.start=tbl.fp[tbl.overlaps$subjectHits, "start"],
                                      fp.end=tbl.fp[tbl.overlaps$subjectHits, "end"])
-            }                     
+            }
         }
 
   invisible(tbl.regions)

@@ -10,9 +10,8 @@ fillAllSamplesByChromosome <- function(chromosome,
                                        method = "DEFAULT",
                                        Fill_DB_Enable=FALSE)
 {
-
   all.sampleIDs <- unlist(lapply(strsplit(list.files(sourcePath,
-                                                     "ENCSR.*.bed$"),
+                                                     "ENCSR.*.bed$",ignore.case = TRUE),
                                           ".", fixed=TRUE), "[", 1))
 
   for(sampleID in all.sampleIDs){
