@@ -78,7 +78,7 @@ your local directory or optionally put in a database.
 
 ### Output validation
 
-To compare the output, we have a simple [R script](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/validation/overlap_check.R) that compares two input files based on the genomic loation (chr, start, stop).
+To compare the output, we have a simple [R script](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/validation/overlap_check.R) in [validation](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/validation) that compares two input files based on the genomic loation (chr, start, stop).
 
   ```
   Rscript overlap_check.R urinary_bladder_hint_16_ENCSR813CKU_chr1.csv urinary_bladder_wellington_16_chr1.csv
