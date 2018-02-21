@@ -19,8 +19,8 @@ your local directory or optionally put in a database.
 - Once the paths are correctly updated, then you are ready to run the master script.
 
   ```
-  Rscript -f hint.R
-  Rscript -f wellington.R
+  Rscript hint.R
+  Rscript wellington.R
   ```
 
   Note that the master scripts are set to use 25 workers (cpus).  You might want to adjust if this will be too much for your computing resources. To do that, please update the the following lines accordingly.
