@@ -25,11 +25,7 @@ your local directory or optionally put in a database.
 
   Note that the master scripts are set to use 25 workers (cpus).  You might want to adjust if this will be too much for your computing resources. To do that, please update the the following lines accordingly (i.e, workers = 25 --> workers = 4).
 
-  ```
-  line 38:  register(MulticoreParam(workers = 25, stop.on.error = FALSE, log = TRUE), default = TRUE) to register(MulticoreParam(workers = 10, stop.on.error = FALSE, log = TRUE)
-
-  ```
-
+  `line 38:  register(MulticoreParam(workers = 25, stop.on.error = FALSE, log = TRUE), default = TRUE)`
 
   Optionally, you can try to test quickly by setting (isTest = FALSE --> isTest = TRUE):
 
