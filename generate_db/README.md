@@ -68,7 +68,7 @@ your local directory or optionally put in a database.
 
   You are done!
 --------------
-Below is additional notes that you may find useful, but can skip as well.
+**Below is additional notes that you may find useful, but can skip as well.**
 
 - For our use case, jobs were submitted for execution to [Condor](https://en.wikipedia.org/wiki/HTCondor).  We make our submit scripts available
   in the [condor_submit_script](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/condor_submit_script) directory.  
