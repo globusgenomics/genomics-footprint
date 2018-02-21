@@ -70,7 +70,17 @@ your local directory or optionally put in a database.
 --------------
 **Below is additional notes that you may find useful, but can skip as well.**
 
-- To compare the output, we have a simple [R script](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/validation/overlap_check.R) that compares two input files based on the genomic loation (chr, start, stop).
+## Table of Contents
+
+- [Output validation](#output-validation)
+- [Submit to Condor](#submit-to-condor)
+- [Build your own database](#build-your-own-database)
+- [Check database](#check-database)
+
+
+#Output validation
+
+To compare the output, we have a simple [R script](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/validation/overlap_check.R) that compares two input files based on the genomic loation (chr, start, stop).
 
   ```
   Rscript overlap_check.R urinary_bladder_hint_16_ENCSR813CKU_chr1.csv urinary_bladder_wellington_16_chr1.csv
@@ -79,11 +89,15 @@ your local directory or optionally put in a database.
   [1] "file1: 739525 lines and file2: 249732 lines that have 349340 exact matches in motifs"
   ```
 
-- For our use case, jobs were submitted for execution to [Condor](https://en.wikipedia.org/wiki/HTCondor).  We make our submit scripts available
+#Submit to Condor
+
+For our use case, jobs were submitted for execution to [Condor](https://en.wikipedia.org/wiki/HTCondor).  We make our submit scripts available
   in the [condor_submit_script](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/condor_submit_script) directory.  
 
 
-- If you want to build your own database, please follow the instruction below.
+#Build your own database
+
+If you want to build your own database, please follow the instruction below.
 
   Using the example  [skin_20](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/master/skin_20), the steps are as follows :
 
@@ -113,7 +127,9 @@ your local directory or optionally put in a database.
    4. Run the [master](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/master) R scripts.
       Make sure your directory paths are all correct.  
 
-- This is a sanity check for database connection, table creation, etc.
+#Check database
+
+This is a sanity check for database connection, table creation, etc.
 
   - Index the databases
   ```
