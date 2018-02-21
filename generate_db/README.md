@@ -23,13 +23,30 @@ your local directory or optionally put in a database.
   Rscript wellington.R
   ```
 
-  Note that the master scripts are set to use 25 workers (cpus).  You might want to adjust if this will be too much for your computing resources. To do that, please update the the following lines accordingly.
+  Note that the master scripts are set to use 25 workers (cpus).  You might want to adjust if this will be too much for your computing resources. To do that, please update the the following lines accordingly (i.e, workers = 25 --> workers = 4).
 
   ```
-  line 34:  chromosomes <- paste0("chr",c(1:22,"X","Y","MT")) to chromosomes <- paste0("chr",c(1:10))
   line 38:  register(MulticoreParam(workers = 25, stop.on.error = FALSE, log = TRUE), default = TRUE) to register(MulticoreParam(workers = 10, stop.on.error = FALSE, log = TRUE)
 
   ```
+
+
+  Optionally, you can try to test quickly by setting (isTest = FALSE --> isTest = TRUE):
+
+  ```
+  result <- bptry(bplapply(chromosomes,fillAllSamplesByChromosome,
+           dbConnection = db.wellington,
+           fimo = db.fimo,
+           minid = "urinary_bladder_hint_16.minid",
+           dbUser = "trena",
+           dbTable = "urinary_bladder_hint_16",
+           sourcePath = data.path,
+           isTest = FALSE,
+           method = "HINT",
+           Fill_DB_Enable=FALSE))
+  ```
+
+  This will capture the first 10 lines in the footprint input file and then intersect with FIMO.
 
 For our use case, jobs were submitted for execution to [Condor](https://en.wikipedia.org/wiki/HTCondor).  We make our submit scripts available
   in the [condor_submit_script](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/condor_submit_script) directory.  
