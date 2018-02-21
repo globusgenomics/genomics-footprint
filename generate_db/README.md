@@ -70,6 +70,15 @@ your local directory or optionally put in a database.
 --------------
 **Below is additional notes that you may find useful, but can skip as well.**
 
+- To compare the output, we have a simple [R script](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/validation/overlap_check.R) that compares two input files based on the genomic loation (chr, start, stop).
+
+  ```
+  Rscript overlap_check.R urinary_bladder_hint_16_ENCSR813CKU_chr1.csv urinary_bladder_wellington_16_chr1.csv
+
+  [1] "file1: 739525 lines and file2: 249732 lines that have 3271 exact matches in footprints"
+  [1] "file1: 739525 lines and file2: 249732 lines that have 349340 exact matches in motifs"
+  ```
+
 - For our use case, jobs were submitted for execution to [Condor](https://en.wikipedia.org/wiki/HTCondor).  We make our submit scripts available
   in the [condor_submit_script](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/condor_submit_script) directory.  
 
