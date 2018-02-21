@@ -76,7 +76,7 @@ your local directory or optionally put in a database.
 - [Check database](#check-database)
 
 
-#Output validation
+## Output validation
 
 To compare the output, we have a simple [R script](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/validation/overlap_check.R) that compares two input files based on the genomic loation (chr, start, stop).
 
@@ -87,13 +87,13 @@ To compare the output, we have a simple [R script](https://github.com/globusgeno
   [1] "file1: 739525 lines and file2: 249732 lines that have 349340 exact matches in motifs"
   ```
 
-#Submit to Condor
+## Submit to Condor
 
 For our use case, jobs were submitted for execution to [Condor](https://en.wikipedia.org/wiki/HTCondor).  We make our submit scripts available
   in the [condor_submit_script](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/condor_submit_script) directory.  
 
 
-#Build your own database
+## Build your own database
 
 If you want to build your own database, please follow the instruction below.
 
@@ -125,7 +125,7 @@ If you want to build your own database, please follow the instruction below.
    4. Run the [master](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/master) R scripts.
       Make sure your directory paths are all correct.  
 
-#Check database
+## Check database
 
 This is a sanity check for database connection, table creation, etc.
 
