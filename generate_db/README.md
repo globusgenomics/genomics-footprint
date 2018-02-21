@@ -70,13 +70,13 @@ your local directory or optionally put in a database.
 --------------
 Below is additional notes that you may find useful, but can skip as well.
 
-For our use case, jobs were submitted for execution to [Condor](https://en.wikipedia.org/wiki/HTCondor).  We make our submit scripts available
+- For our use case, jobs were submitted for execution to [Condor](https://en.wikipedia.org/wiki/HTCondor).  We make our submit scripts available
   in the [condor_submit_script](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/condor_submit_script) directory.  
 
 
-If you want to build your own database, please follow the instruction below.
+- If you want to build your own database, please follow the instruction below.
 
-Using the example  [skin_20](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/master/skin_20), the steps are as follows :
+  Using the example  [skin_20](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/master/skin_20), the steps are as follows :
 
    1. Run a database creation shell script in [master/skin_20](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/master/skin_20)
 
@@ -103,47 +103,47 @@ Using the example  [skin_20](https://github.com/globusgenomics/genomics-footprin
 
    4. Run the [master](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/master) R scripts.
       Make sure your directory paths are all correct.  
--------------------
-Below is a sanity check for database connection, table creation, etc that you can skip.
 
-- Index the databases
-```
-nohup psql skin_wellington_20 -f index_skin_wellington_20.sql &
-nohup psql skin_hint_20 -f index_skin_hint_20.sql &
-```
-- Check database contents
-```
-psql skin_wellington_20 -U trena -h bddsrds.globusgenomics.org
-select * from hits limit 10;
-select * from regions limit 10;
+- Below is a sanity check for database connection, table creation, etc that you can skip.
 
-\connect skin_hint_20
-select * from hits limit 10;
-select * from regions limit 10;
-\q
-```
+  - Index the databases
+  ```
+  nohup psql skin_wellington_20 -f index_skin_wellington_20.sql &
+  nohup psql skin_hint_20 -f index_skin_hint_20.sql &
+  ```
+  - Check database contents
+  ```
+  psql skin_wellington_20 -U trena -h bddsrds.globusgenomics.org
+  select * from hits limit 10;
+  select * from regions limit 10;
+
+  \connect skin_hint_20
+  select * from hits limit 10;
+  select * from regions limit 10;
+  \q
+  ```
 - Make database read only
-```
-psql skin_wellington_20 -U trena -h bddsrds.globusgenomics.org
-revoke insert, update, delete, truncate on hits from public;
-revoke insert, update, delete, truncate on hits from trena;
+  ```
+  psql skin_wellington_20 -U trena -h bddsrds.globusgenomics.org
+  revoke insert, update, delete, truncate on hits from public;
+  revoke insert, update, delete, truncate on hits from trena;
 
-\connect skin_hint_20
-revoke insert, update, delete, truncate on hits from public;
-revoke insert, update, delete, truncate on hits from trena;
+  \connect skin_hint_20
+  revoke insert, update, delete, truncate on hits from public;
+  revoke insert, update, delete, truncate on hits from trena;
 
-\q
-```
+  \q
+  ```
 
 - Dump the databases to AWS S3 to store and share
-```
-pg_dump -Fc -h bddsrds.globusgenomics.org -U trena skin_wellington_20 > ./skin_wellington_20
-pg_dump -Fc -h bddsrds.globusgenomics.org -U trena skin_hint_20 > ./skin_hint_20
+  ```
+  pg_dump -Fc -h bddsrds.globusgenomics.org -U trena skin_wellington_20 > ./skin_wellington_20
+  pg_dump -Fc -h bddsrds.globusgenomics.org -U trena skin_hint_20 > ./skin_hint_20
 
 
-aws s3 cp ./skin_wellington_20.dump s3://bdds-public/index_dbs/
-aws s3 cp ./skin_hint_20.dump s3://bdds-public/index_dbs/
-```
+  aws s3 cp ./skin_wellington_20.dump s3://bdds-public/index_dbs/
+  aws s3 cp ./skin_hint_20.dump s3://bdds-public/index_dbs/
+  ```
 ------
 
 - Here is the snapshot of some of the database we created in bddsrds.globusgenomics.org:
