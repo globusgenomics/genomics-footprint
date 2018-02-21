@@ -70,8 +70,6 @@ your local directory or optionally put in a database.
 --------------
 **Below is additional notes that you may find useful, but can skip as well.**
 
-## Table of Contents
-
 - [Output validation](#output-validation)
 - [Submit to Condor](#submit-to-condor)
 - [Build your own database](#build-your-own-database)
