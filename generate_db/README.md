@@ -104,7 +104,7 @@ Below is additional notes that you may find useful, but can skip as well.
    4. Run the [master](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/master) R scripts.
       Make sure your directory paths are all correct.  
 
-- Below is a sanity check for database connection, table creation, etc that you can skip.
+- This is a sanity check for database connection, table creation, etc.
 
   - Index the databases
   ```
