@@ -3,6 +3,16 @@
 This directory includes the processing code to intersect [hint](http://www.regulatory-genomics.org/hint/introduction/) or [wellington](https://github.com/jpiper/pyDNase) footprints output with the FIMO database and save the results in
 your local directory or optionally put in a database.
 
+- R library dependencies:
+  - GenomicRanges (https://bioconductor.org/packages/release/bioc/html/GenomicRanges.html)
+  - BiocParallel (https://bioconductor.org/packages/release/bioc/html/BiocParallel.html)
+  - RUnit (https://cran.r-project.org/web/packages/RUnit/README.html)
+    - To install run in R shell: install.packages("RUnit")
+  - RPostgreSQL (https://cran.r-project.org/web/packages/RPostgreSQL/index.html)
+    - To install run in R shell: install.packages("RPostgreSQL")
+    - If you run into issues installing this library you might be missing libpq-dev C library and will need to install it.
+
+
 - To intersect footprints with TFBS motifs, you need to update: (1) the footprint data path; (2) bdbag path; (3) library paths in the the master scripts. For example, update accordingly the lines 12 and 14 and 28-31 to your own directory paths in the wellington.R or hint.R scripts in [master/skin_20](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/master/skin_20):  
 
   ```
