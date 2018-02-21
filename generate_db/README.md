@@ -44,10 +44,7 @@ your local directory or optionally put in a database.
 
   This will capture the first 10 lines in the footprint input file and then intersect with FIMO.
 
-For our use case, jobs were submitted for execution to [Condor](https://en.wikipedia.org/wiki/HTCondor).  We make our submit scripts available
-  in the [condor_submit_script](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/condor_submit_script) directory.  
-
-- The output is a BDBag that contains two compressed TFBS files for hint and wellington.
+- The output is a BDBag that contains compressed TFBS files for hint and wellington.
 
   For example, the [urinary_bladder_16 bdbag](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/bdbag_output/urinary_bladder_16) contains the urinary_bladder_hint_16.tar.gz and urinary_bladder_wellington_16.tar.gz files.
 
@@ -68,7 +65,14 @@ For our use case, jobs were submitted for execution to [Condor](https://en.wikip
                method = "WELLINGTON",
                Fill_DB_Enable=TRUE)))
   ```
+
+  You are done!
 --------------
+Below is additional notes that you may find useful, but can skip as well.
+
+For our use case, jobs were submitted for execution to [Condor](https://en.wikipedia.org/wiki/HTCondor).  We make our submit scripts available
+  in the [condor_submit_script](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/condor_submit_script) directory.  
+
 
 If you want to build your own database, please follow the instruction below.
 
