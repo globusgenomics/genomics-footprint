@@ -26,7 +26,7 @@ The workflow consists of one master workflow which manages the sub-workflows. Th
 
 We provide a MINID for the Urinary bladder tissue type. Although this tissue type is small, footprint search and generation process may take several hours. The MINID for urinary bladder is: ark:/57799/b9ft3h
 
-![Screenshot](bdds_minid_urinary_bladder.png)
+![Screenshot](urinary_bladder_new.png)
 
 ## Process steps
 
