@@ -13,6 +13,9 @@ print(date())
 data.path <- "/scratch/shared/footprints/urinary_bladder_wellington_16"
 output_path=paste(data.path,"/TFBS_OUTPUT",sep="")
 dir.create(output_path, showWarnings = FALSE)
+
+bdbag.path<-"/scratch/shared/footprints/urinary_bladder_16"
+dir.create(bdbag.path, showWarnings = FALSE)
 #-------------------------------------------------------------------------------
 # establish database connections:
 
