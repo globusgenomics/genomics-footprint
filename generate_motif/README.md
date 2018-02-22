@@ -1,8 +1,8 @@
 # Generate the transcription factor binding motif catalog
 
-**This process takes a very long time that we highly encourage you to use our FIMO database and skip to generate_db.**
+**This process takes a long time to complete on a workstation or a desktop PC. We highly encourage you to reuse the FIMO database we generated and host on Amazon Web Services.**
 
-**If you decide to build your own, please use the pre-genereated version of fimo database dump available here:**
+**If you decide reuse, please use the pre-genereated version of fimo database dump available here:**
 
     `s3cmd get s3://bdds-public/index_dbs/2017_07_27_fimo . `
 ---------
