@@ -76,7 +76,7 @@ your local directory or optionally put in a database.
 
   Note: The script is set to use 4 workers (cpus).  You can adjust this by modifying the "-w" parameter.
   
-  You can also try to test quickly by setting setting the "-e" flag. 
+  You can also try to test quickly by setting the "-e" flag. 
   This will capture the first 10 lines in the footprint input file and then intersect with FIMO.
 
 - The output is a BDBag that contains compressed TFBS files for hint and wellington.
