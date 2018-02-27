@@ -24,34 +24,37 @@ your local directory or optionally put in a database.
 - Now you are ready to run the [tfbs.R](https://github.com/globusgenomics/genomics-footprint/blob/master/generate_db/src/tfbs.R) script. You can get the help menu for the script by:
 
   ```
-  $ Rscript ./tfbs.R --help
+  $ Rscript ./tfbs.R
   Usage: ./tfbs.R [options]
 
-
   Options:
-        -i INPUT, --input=INPUT
-                Input directory path to your footprint files
+	-i INPUT, --input=INPUT
+		Input directory path to your footprint files. You can supply this option or the bag option but not both.
 
-        -o OUTPUT, --output=OUTPUT
-                Output directory to your TFBS files
+	-b BAG, --bag=BAG
+		BDBag path of your footprint files. You can supplythis option or the input option but not both.
 
-        -t TISSUE, --tissue=TISSUE
-                Tissue type of the footprints
+	-o OUTPUT, --output=OUTPUT
+		Output directory to your TFBS files
 
-        -m METHOD, --method=METHOD
-                Method used to generate footprints - Options include wellington or hint.
+	-t TISSUE, --tissue=TISSUE
+		Tissue type of the footprints
 
-        -s SEED, --seed=SEED
-                Footprints seed - Options include 16, or 20
+	-m METHOD, --method=METHOD
+		Method used to generate footprints - Options include wellington or hint.
 
-        -w WORKERS, --workers=WORKERS
-                Number of worker threads to use
+	-s SEED, --seed=SEED
+		Footprints seed - Options include 16, or 20
 
-        -e, --eval
-                Run evaluation for only the first 10 lines in your footprints files.
+	-w WORKERS, --workers=WORKERS
+		Number of worker threads to use
 
-        -h, --help
-                Show this help message and exit
+	-e, --eval
+		Run evaluation for only the first 10 lines in your footprints files.
+
+	-h, --help
+		Show this help message and exit
+
 
   ```
 
