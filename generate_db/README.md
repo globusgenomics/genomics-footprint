@@ -13,68 +13,65 @@ your local directory or optionally put in a database.
     - If you run into issues installing this library you might be missing libpq-dev C library and will need to install it.
 
 
-- To intersect footprints with TFBS motifs, you need to update: (1) the footprint data path; (2) bdbag path; (3) library paths in the the master scripts. For example, update accordingly the lines 12 and 14 and 28-31 to your own directory paths in the wellington.R or hint.R scripts in [master/skin_20](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/master/skin_20):  
+- To intersect footprints with TFBS motifs, you will first need to download, unpack, resolve the data and organize the Wellington and Hint files in separate directories. For the Urinary bladder, seed 16 BDbag (i.e. minid ark:/57799/b9wd55):
 
   ```
-  line 12:  data.path <- "/scratch/shared/footprints/skin_wellington_20"
-
-  line 14:  bdbag.path<-"/scratch/shared/footprints/skin_20"
-
-  line 28:  source("/scratch/galaxy/test/generate_db/src/dependencies.R")
-  line 29:  source("/scratch/galaxy/test/generate_db/src/dbFunctions.R")
-  line 30:  source("/scratch/galaxy/test/generate_db/src/tableParsing.R")
-  line 31:  source("/scratch/galaxy/test/generate_db/src/main_Bioc.R")
+  wget https://s3.amazonaws.com/bdds-public/bags/footprints_bags/urinary_bladder.seed16.tissue.bag.zip
+  unzip ./urinary_bladder.seed16.tissue.bag.zip
+  bdbag --bag-path ./urinary_bladder.seed16.tissue.bag --resolve-fetch all
   ```
 
-- Once the paths are correctly updated, then you are ready to run the master script.
+- Now you are ready to run the [tfbs.R](https://github.com/globusgenomics/genomics-footprint/blob/master/generate_db/src/tfbs.R) script. You can get the help menu for the script by:
 
   ```
-  Rscript hint.R
-  Rscript wellington.R
+  $ Rscript ./tfbs.R --help
+Usage: ./tfbs.R [options]
+
+
+Options:
+        -i INPUT, --input=INPUT
+                Input directory path to your footprint files
+
+        -o OUTPUT, --output=OUTPUT
+                Output directory to your TFBS files
+
+        -t TISSUE, --tissue=TISSUE
+                Tissue type of the footprints
+
+        -m METHOD, --method=METHOD
+                Method used to generate footprints - Options include wellington or hint.
+
+        -s SEED, --seed=SEED
+                Footprints seed - Options include 16, or 20
+
+        -w WORKERS, --workers=WORKERS
+                Number of worker threads to use
+
+        -e, --eval
+                Run evaluation for only the first 10 lines in your footprints files.
+
+        -h, --help
+                Show this help message and exit
+
   ```
 
-  Note that the master scripts are set to use 25 workers (cpus).  You might want to adjust if this will be too much for your computing resources. To do that, please update the the following lines accordingly (i.e, workers = 25 --> workers = 4).
+- To generate the TFBS for the urinary bladder (seed16) BDBag previously downloaded, you can run:
 
-  `line 38:  register(MulticoreParam(workers = 25, stop.on.error = FALSE, log = TRUE), default = TRUE)`
+```
+$ Rscript ./tfbs.R -b ./urinary_bladder.seed16.tissue.bag -o ./output -s 16 -t "urinary bladder" -m Hint
 
-  Optionally, you can try to test quickly by setting (isTest = FALSE --> isTest = TRUE):
+```
 
-  ```
-  result <- bptry(bplapply(chromosomes,fillAllSamplesByChromosome,
-           dbConnection = db.wellington,
-           fimo = db.fimo,
-           minid = "urinary_bladder_hint_16.minid",
-           dbUser = "trena",
-           dbTable = "urinary_bladder_hint_16",
-           sourcePath = data.path,
-           isTest = FALSE,
-           method = "HINT",
-           Fill_DB_Enable=FALSE))
-  ```
 
+  Note: The script is set to use 4 workers (cpus).  You can adjust this by modifying the "-w" parameter.
+  
+  You can also try to test quickly by setting setting the "-e" flag. 
   This will capture the first 10 lines in the footprint input file and then intersect with FIMO.
 
 - The output is a BDBag that contains compressed TFBS files for hint and wellington.
 
   For example, the [urinary_bladder_16 bdbag](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/bdbag_output/urinary_bladder_16) contains the urinary_bladder_hint_16.tar.gz and urinary_bladder_wellington_16.tar.gz files.
 
-  Note that, by default, a BDBag of TFBSs are generated whereas filling up a database table is optional. To enable it,
-  please change the parameter in the [master R script](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/master) as follows:
-
-  `Fill_DB_Enable=FALSE --> Fill_DB_Enable=TRUE`  in this function:
-
-  ```
-      result <- bptry(bplapply(chromosomes, fillAllSamplesByChromosome,
-               dbConnection = db.wellington,
-               fimo = db.fimo,
-               minid = "urinary_bladder_wellington_20.minid",
-               dbUser = "trena",
-               dbTable = "urinary_bladder_wellington_20",
-               sourcePath = data.path,
-               isTest = FALSE,
-               method = "WELLINGTON",
-               Fill_DB_Enable=TRUE)))
-  ```
 
   You are done!
 --------------
