@@ -24,7 +24,7 @@ your local directory or optionally put in a database.
   - Now you are ready to run the [tfbs.R](https://github.com/globusgenomics/genomics-footprint/blob/master/generate_db/src/tfbs.R) script. You can get the help menu for the script by:
 
   ```
-  $ Rscript ./tfbs.R
+  $ Rscript ./tfbs.R --help
   Usage: ./tfbs.R [options]
 
   Options:
