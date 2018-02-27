@@ -21,7 +21,7 @@ your local directory or optionally put in a database.
   bdbag --bag-path ./urinary_bladder.seed16.tissue.bag --resolve-fetch all
   ```
 
-- Now you are ready to run the [tfbs.R](https://github.com/globusgenomics/genomics-footprint/blob/master/generate_db/src/tfbs.R) script. You can get the help menu for the script by:
+  - Now you are ready to run the [tfbs.R](https://github.com/globusgenomics/genomics-footprint/blob/master/generate_db/src/tfbs.R) script. You can get the help menu for the script by:
 
   ```
   $ Rscript ./tfbs.R
@@ -58,21 +58,21 @@ your local directory or optionally put in a database.
 
   ```
 
-- You can use the BDBag as input to generate the TFBS for the urinary bladder (seed16) BDBag by running:
+  - You can use the BDBag as input to generate the TFBS for the urinary bladder (seed16) BDBag by running:
 
   ```
   $ Rscript ./tfbs.R -b ./urinary_bladder.seed16.tissue.bag -o ./output -s 16 -t "urinary bladder" -m Hint
 
   ```
 
-- If you have placed your footprints BED files in a separate directory (not in the BDBag), then you can use this instead:
+  - If you have placed your footprints BED files in a separate directory (not in the BDBag), then you can use this instead:
 
   ```
   $ Rscript ./tfbs.R -i ./footprint_bed_files -o ./output -s 16 -t "urinary bladder" -m Hint
 
   ```
 
-  - The BDBag method will assume that you have downloaded the BDBag directly from its location and have not modified the contents of the bag. If you have modified the contents, then it's best to use the "-i" parameter to indicate location of the input footprint files.
+    - The BDBag method will assume that you have downloaded the BDBag directly from its location and have not modified the contents of the bag. If you have modified the contents, then it's best to use the "-i" parameter to indicate location of the input footprint files.
 
   Note: The script is set to use 4 workers (cpus).  You can adjust this by modifying the "-w" parameter.
   
