@@ -362,7 +362,8 @@ fillAllSamplesByChromosome <- function(chromosome,
 
 # THIS EXAMPLE USES THE BRAIN HINT OUTPUT MADE BY RUNNING make hint at /scratch/data/footprints
 option_list = list(
-  make_option(c("-i", "--input"),  type="character", help="Input directory path to your footprint files"),
+  make_option(c("-i", "--input"),  type="character", help="Input directory path to your footprint files. You can supply this option or the bag option but not both."),
+  make_option(c("-b", "--bag"),  type="character", help="BDBag path of your footprint files. You can supplythis option or the input option but not both."),
   make_option(c("-o", "--output"),  type="character", help="Output directory to your TFBS files"),
   make_option(c("-t", "--tissue"),  type="character", help="Tissue type of the footprints"),
   make_option(c("-m", "--method"),  type="character", help="Method used to generate footprints - Options include wellington or hint."),
@@ -373,17 +374,17 @@ option_list = list(
 opt_parser = OptionParser(option_list=option_list);
 opt = parse_args(OptionParser(option_list=option_list))
 
-if ( is.null(opt$i) ) {
-    print_help(opt_parser)
-    stop("Missing input path!\n")
-}
-
+tmp_dir = NA
 if ( is.null(opt$o) ) {
     print_help(opt_parser)
     stop("Missing output path!\n")
 } else {
+    tmp_dir = paste(opt$o, "/tmp", sep="")
     if (!dir.exists(opt$o)) {
         dir.create(opt$o)
+        dir.create(tmp_dir)
+    } else {
+        dir.create(tmp_dir)
     }
 }
 
@@ -420,10 +421,22 @@ if ( is.null(opt$s) ) {
     }
 }
 
+if ( is.null(opt$i) & is.null(opt$b)) {
+    print_help(opt_parser)
+    stop("Missing input or BDBag path!\n")
+} else {
+    if (! is.null(opt$i)) {  ## input directory path
+        file.copy(list.files(opt$i), tmp_dir)
+    } else {   ## BDBag path
+        databag_path = paste(opt$b,"data", sep="/")
+        file.copy(list.files(databag_path, patter=method), tmp_dir)
+    }
+}
+
 print(date())
 #-------------------------------------------------------------------------------
 # set path to hint output
-data.path <- opt$i
+data.path <- tmp_dir
 output_path=paste(opt$o,"/TFBS_OUTPUT",sep="")
 dir.create(output_path, showWarnings = FALSE)
 
@@ -462,6 +475,7 @@ if(!interactive()){
 cmd=paste("tar -zcvf ", output_path, "/", db,".tar.gz ", sep="")
 system(cmd, intern = TRUE)
 unlink(output_path,recursive=TRUE)
+unlink(tmp_dir, recursive=TRUE)
 #print(bpok(result))
 #print("Database fill complete")
 #print(date())
