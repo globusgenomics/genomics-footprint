@@ -13,7 +13,7 @@ your local directory or optionally put in a database.
     - If you run into issues installing this library you might be missing libpq-dev C library and will need to install it.
 
 
-- To intersect footprints with TFBS motifs, you will first need to download, unpackand resolve the data. For the Urinary bladder, seed 16 BDbag (i.e. minid ark:/57799/b9wd55):
+- To intersect footprints with TFBS motifs, you will first need to download, unpack and resolve the data. For the Urinary bladder, seed 16 BDbag (i.e. minid ark:/57799/b9wd55):
 
   ```
   wget https://s3.amazonaws.com/bdds-public/bags/footprints_bags/urinary_bladder.seed16.tissue.bag.zip
