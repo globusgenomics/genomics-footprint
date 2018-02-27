@@ -25,10 +25,10 @@ your local directory or optionally put in a database.
 
   ```
   $ Rscript ./tfbs.R --help
-Usage: ./tfbs.R [options]
+  Usage: ./tfbs.R [options]
 
 
-Options:
+  Options:
         -i INPUT, --input=INPUT
                 Input directory path to your footprint files
 
@@ -57,10 +57,10 @@ Options:
 
 - To generate the TFBS for the urinary bladder (seed16) BDBag previously downloaded, you can run:
 
-```
-$ Rscript ./tfbs.R -b ./urinary_bladder.seed16.tissue.bag -o ./output -s 16 -t "urinary bladder" -m Hint
+  ```
+  $ Rscript ./tfbs.R -b ./urinary_bladder.seed16.tissue.bag -o ./output -s 16 -t "urinary bladder" -m Hint
 
-```
+  ```
 
 
   Note: The script is set to use 4 workers (cpus).  You can adjust this by modifying the "-w" parameter.
