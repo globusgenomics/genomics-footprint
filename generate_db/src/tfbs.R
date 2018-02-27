@@ -295,6 +295,7 @@ fillAllSamplesByChromosome <- function(chromosome,
                                        dbUser = "ben",
                                        dbTable = "testwellington",
                                        sourcePath = wellington.path,
+                                       outputPath = wellington.path,
                                        isTest = FALSE,
                                        method = "DEFAULT",
                                        Fill_DB_Enable=FALSE)
@@ -328,7 +329,7 @@ fillAllSamplesByChromosome <- function(chromosome,
     dbDisconnect(fimo.con)
 
     library(data.table)
-    dir_path=paste(sourcePath,"/TFBS_OUTPUT",sep="")
+    dir_path=paste(outputPath,"/TFBS_OUTPUT",sep="")
     fname=paste(dir_path,"/",dbTable,".",sampleID,".",chromosome,".csv",sep="")
     fwrite(tbl,fname, sep=",")
 
@@ -429,7 +430,7 @@ if ( is.null(opt$i) & is.null(opt$b)) {
         file.copy(list.files(opt$i), tmp_dir)
     } else {   ## BDBag path
         databag_path = paste(opt$b,"data", sep="/")
-        file.copy(list.files(databag_path, patter=method), tmp_dir)
+        file.copy(list.files(databag_path, pattern=method), tmp_dir)
     }
 }
 
@@ -467,6 +468,7 @@ if(!interactive()){
              dbUser = "trena",
              dbTable = db,
              sourcePath = data.path,
+             outputPath = output_path,
              isTest = opt$e,
              method = toupper(method),
              Fill_DB_Enable=FALSE))
