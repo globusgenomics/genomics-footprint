@@ -32,7 +32,7 @@ your local directory or optionally put in a database.
 		Input directory path to your footprint files. You can supply this option or the bag option but not both.
 
 	-b BAG, --bag=BAG
-		BDBag path of your footprint files. You can supplythis option or the input option but not both.
+		BDBag path of your footprint files. You can supply this option or the input option but not both.
 
 	-o OUTPUT, --output=OUTPUT
 		Output directory to your TFBS files
