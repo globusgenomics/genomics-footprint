@@ -1,4 +1,6 @@
 #!/usr/bin/env Rscript
+# users can either step through this file, or call this file with
+# r -f example.R
 
 # THIS ASSUMES THAT THE TESTHINT DATABASE EXISTS. The recipe for building that
 # database is in ../dbInitialization/createHintTest.sql
@@ -293,7 +295,7 @@ fillAllSamplesByChromosome <- function(chromosome,
                                        dbUser = "ben",
                                        dbTable = "testwellington",
                                        sourcePath = wellington.path,
-                                       isTest = True,
+                                       isTest = FALSE,
                                        method = "DEFAULT",
                                        Fill_DB_Enable=FALSE)
 {
@@ -365,7 +367,8 @@ option_list = list(
   make_option(c("-t", "--tissue"),  type="character", help="Tissue type of the footprints"),
   make_option(c("-m", "--method"),  type="character", help="Method used to generate footprints - Options include wellington or hint."),
   make_option(c("-s", "--seed"),  type="character", help="Footprints seed - Options include 16, or 20"),
-  make_option(c("-w", "--workers"), type="integer", help="Number of worker threads to use", default=4 )
+  make_option(c("-w", "--workers"), type="integer", help="Number of worker threads to use", default=4 ),
+  make_option(c("-e", "--eval"), action="store_true", default=FALSE, help="Run evaluation for only the first 10 lines in your footprints files." )
 )
 opt_parser = OptionParser(option_list=option_list);
 opt = parse_args(OptionParser(option_list=option_list))
@@ -451,12 +454,12 @@ if(!interactive()){
              dbUser = "trena",
              dbTable = db,
              sourcePath = data.path,
-             isTest = TRUE,
+             isTest = opt$e,
              method = toupper(method),
              Fill_DB_Enable=FALSE))
 }
 
-cmd=paste("tar -zcvf ", data.path, "/", db,".tar.gz ", output_path, sep="")
+cmd=paste("tar -zcvf ", output_path, "/", db,".tar.gz ", sep="")
 system(cmd, intern = TRUE)
 unlink(output_path,recursive=TRUE)
 #print(bpok(result))
