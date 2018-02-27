@@ -329,8 +329,7 @@ fillAllSamplesByChromosome <- function(chromosome,
     dbDisconnect(fimo.con)
 
     library(data.table)
-    dir_path=paste(outputPath,"/TFBS_OUTPUT",sep="")
-    fname=paste(dir_path,"/",dbTable,".",sampleID,".",chromosome,".csv",sep="")
+    fname=paste(outputPath,"/",dbTable,".",sampleID,".",chromosome,".csv",sep="")
     fwrite(tbl,fname, sep=",")
 
 
