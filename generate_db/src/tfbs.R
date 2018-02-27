@@ -364,7 +364,8 @@ option_list = list(
   make_option(c("-o", "--output"),  type="character", help="Output directory to your TFBS files"),
   make_option(c("-t", "--tissue"),  type="character", help="Tissue type of the footprints"),
   make_option(c("-m", "--method"),  type="character", help="Method used to generate footprints - Options include wellington or hint."),
-  make_option(c("-s", "--seed"),  type="character", help="Footprints seed - Options include 16, or 20")
+  make_option(c("-s", "--seed"),  type="character", help="Footprints seed - Options include 16, or 20"),
+  make_option(c("-w", "--workers"), type="integer", help="Number of worker threads to use", default=4 )
 )
 opt_parser = OptionParser(option_list=option_list);
 opt = parse_args(OptionParser(option_list=option_list))
@@ -439,7 +440,7 @@ if(!interactive()){
     chromosomes <- paste0("chr",c(1:22,"X","Y","MT"))
 
     # Create parallel structure here
-    register(MulticoreParam(workers = 4, stop.on.error = FALSE, log = TRUE), default = TRUE)
+    register(MulticoreParam(workers = opt$w, stop.on.error = FALSE, log = TRUE), default = TRUE)
 
     minid <- paste(tissue, method, seed, ".minid", sep="_")
     # Run on all 24 possible chromosomes at once
@@ -455,7 +456,7 @@ if(!interactive()){
              Fill_DB_Enable=FALSE))
 }
 
-cmd=paste("tar -zcvf ", bdbag.path, "/", db,".tar.gz ", output_path, sep="")
+cmd=paste("tar -zcvf ", data.path, "/", db,".tar.gz ", output_path, sep="")
 system(cmd, intern = TRUE)
 unlink(output_path,recursive=TRUE)
 #print(bpok(result))
