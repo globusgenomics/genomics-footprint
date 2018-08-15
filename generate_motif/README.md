@@ -4,7 +4,8 @@
 
 **If you decide reuse, please use the pre-genereated version of fimo database dump available here:**
 You can download the fimo database using a simple wget command by doing the following:
-wget http://bdds-public.s3.amazonaws.com/index_dbs/2017_07_27_fimo
+
+`wget http://bdds-public.s3.amazonaws.com/index_dbs/2017_07_27_fimo`
 
 Optionally, you can also use s3cmd utilitly to download. 
 
