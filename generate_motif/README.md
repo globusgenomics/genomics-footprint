@@ -4,7 +4,10 @@
 
 **If you decide reuse, please use the pre-genereated version of fimo database dump available here:**
 
+Please follow these instructions to install s3cmd: https://s3tools.org/s3cmd-howto
+
     `s3cmd get s3://bdds-public/index_dbs/2017_07_27_fimo . `
+
 ---------
 
 **Optionally, you can generate your own fimo following the instruction below, but again this process will take a long time, so plan accordingly.**
