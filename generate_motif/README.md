@@ -1,13 +1,22 @@
-# Generate the transcription factor binding motif catalog
+# Transcription factor binding motif catalog
 
-**This process takes a long time to complete on a workstation or a desktop PC. We highly encourage you to reuse the FIMO database we generated and host on Amazon Web Services.**
+**Generating the catalog from scratch takes a long time to complete on a workstation or a desktop PC. We highly encourage you to reuse the FIMO database we generated and host on Amazon Web Services.**
 
-**If you decide reuse, please use the pre-genereated version of fimo database dump available here:**
+**If you decide to reuse, please use the pre-genereated version of fimo database.The FIMO database is 31GB.**
 
-    `s3cmd get s3://bdds-public/index_dbs/2017_07_27_fimo . `
+**You can download the fimo database using a simple wget command by doing the following:**
+
+`wget http://bdds-public.s3.amazonaws.com/index_dbs/2017_07_27_fimo .`
+
+Optionally, you can also use s3cmd utilitly to download. 
+
+Instructions to install s3cmd: https://s3tools.org/s3cmd-howto
+
+    s3cmd get s3://bdds-public/index_dbs/2017_07_27_fimo .
+
 ---------
 
-**Optionally, you can generate your own fimo following the instruction below, but again this process will take a long time, so plan accordingly.**
+**Optional step: Please find instructions below to generate the fimo database from scratch. Please note that this process will take a long time, so plan accordingly.**
 
 Generating the fimo output files and uploading to a database can be done by running the R script [create_fimo_db.R](https://github.com/globusgenomics/genomics-footprint/blob/master/generate_motif/script/create_fimo_db.R):
 
