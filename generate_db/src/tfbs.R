@@ -426,10 +426,11 @@ if ( is.null(opt$i) & is.null(opt$b)) {
     stop("Missing input or BDBag path!\n")
 } else {
     if (! is.null(opt$i)) {  ## input directory path
-        file.copy(list.files(opt$i), tmp_dir)
+        print(list.files(opt$i))
+        file.copy(paste(opt$i,"/",list.files(opt$i),sep=""), tmp_dir)
     } else {   ## BDBag path
         databag_path = paste(opt$b,"data", sep="/")
-        file.copy(list.files(databag_path, pattern=method), tmp_dir)
+        file.copy(paste(databag_path,"/",list.files(databag_path, pattern=method),sep=""), tmp_dir)
     }
 }
 
