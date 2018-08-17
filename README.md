@@ -1,9 +1,6 @@
 # Transcription factor binding site atlas: A case study in reproducible big data science
 
-
-
-- **Following are the supplementary information that these directories contain workflows and scripts used to generate DNase footprints, TF binding motifs, and databases. Step numbers and dataset numbers follow the conventions used in the paper.**
-
+**Following are the supplementary information that these directories contain workflows and scripts used to generate DNase footprints, TF binding motifs, and databases. Step numbers and dataset numbers follow the conventions used in the paper.**
 
    - Please follow these instructions to reproduce Steps 1-3 that generates datasets D1-3
      - [generate_footprints](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_footprints) - This generate_footprints provides instructions on running the DNAse footprinting workflow and includes a sample analysis.
