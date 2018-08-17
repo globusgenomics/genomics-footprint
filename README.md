@@ -3,7 +3,7 @@
    - Please follow these instructions to reproduce Steps 1-3 that generate datasets D1-3
      - [generate_footprints](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_footprints) - Instructions on running the DNAse footprinting workflow on Globus Genomics.
 
-   - Documentaion for generating D5 (transcription factor motif file that is used for annotating the footprints)
+   - Documentation for generating D5 (transcription factor motif file that is used for annotating the footprints)
      - [generate_motif](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_motif) 
 
    - Documentation for Step 5 generating D6. These instructions show a step-by-step procedure, along with the code to intersect hint or wellington footprints output with the FIMO database and save the output in a local directory. 
