@@ -10,3 +10,5 @@
      - [generate_db](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db)
      
 - [getting_started](https://github.com/globusgenomics/genomics-footprint/tree/master/getting_started) - This is a R notebook that  shows how to access and query the footprint database.
+
+Link to survey: https://goo.gl/forms/Ag35eRlgiXithlx43
