@@ -1,8 +1,6 @@
 # Transcription factor binding motif catalog
 
-**Generating the catalog from scratch takes a long time to complete on a workstation or a desktop PC. We highly encourage you to reuse the FIMO database we generated and host on Amazon Web Services.**
-
-**If you decide to reuse, please use the pre-genereated version of fimo database.The FIMO database is 31GB.**
+**Generating the catalog from scratch takes a long time to complete on a workstation or a desktop PC. We highly encourage you to reuse the FIMO database we generated and host on Amazon Web Services.The FIMO database is 31GB.**
 
 **You can download the fimo database using a simple wget command by doing the following:**
 
