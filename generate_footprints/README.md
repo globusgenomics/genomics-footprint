@@ -34,7 +34,7 @@ Follow along each step to launch the footprint generation master workflow.
 
 ### Log on to BDDS Globus Genomics
 
-Users will need to log on to https://bdds.globusgenomics.org. Only users with access to the instance will be allowed to submit jobs. Please click on Register to create a login to the service.
+Users will need to log on to https://bdds.globusgenomics.org. Globus Genomics using Globus for authentication and Authorization. If you don't have a Globus account, you can create one from www.globus.org or log into Globus using your institutional account. We created a Globus Group that controls access to the BDDS Globus Genomics service. Users can become members of the group by clicking here: https://www.globus.org/app/groups/6f9dd64a-a22c-11e8-95d8-0efa7862ab5c. Please note that only users with access to the instance will be allowed to submit and run workflows. 
 
 ### Generate API Key
 
