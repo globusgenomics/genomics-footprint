@@ -1,7 +1,5 @@
-**Following steps contain links to workflows and scripts that were used to generate DNase footprints, TF binding motifs, and databases. Step numbers and dataset numbers follow the conventions used in the paper.**
 
-   - Please follow these instructions to reproduce Steps 1-3 that generate datasets D1-3
-    
+Our goal is to provide a set of instructions that enable a reader to evaluate the FAIRness (Findability, Accessibility, Interoperability and Reusabiblity of the data and analysis presented in the manuscript titled "Reproducible big data science: A case study in continuous FAIRness" (https://www.biorxiv.org/content/early/2018/06/20/268755) using a representative sample data.
 
 # Generate Footprints
 
