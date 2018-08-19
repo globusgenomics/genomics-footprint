@@ -3,7 +3,7 @@ Our goal is to provide a set of instructions that enable a reader to evaluate th
 
 # Generate Footprints
 
-This readme explains how to generate footprints for a tissue using as input the MINID for the desired tissue type.
+Here we describeb how one can generate footprints for a tissue using a MINID as input for the desired tissue type.
 Generating footprints requires running a workflow via https://bdds.globusgenomics.org which integrates a number of sub-workflows as shown in figure below to generate alignment files for all replicates in patients; then merging replicate alignment files for a patient to a single alignment file; finally, calling the footprint algorithms for each patient (i.e. Wellington, Hint).
 
 Each step of the process will be laid out such that any user logged on to the system should be able to re-generate the footprints for a tissue type. Due to the high amount of computation used, we will supply a test MINID as input.
