@@ -126,4 +126,4 @@ The output for the master workflow is a BDbag for the tissue type used as input.
 [Here](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db)
      
 # Survey
-After going through the instructions, please provide your feedback through the survey here: https://goo.gl/forms/Ag35eRlgiXithlx43
+After going through the instructions, please provide your feedback through the survey [here](https://goo.gl/forms/Ag35eRlgiXithlx43)
