@@ -1,6 +1,8 @@
 
 Our goal is to provide a set of instructions that enable a reader to evaluate the FAIRness (Findability, Accessibility, Interoperability and Reusabiblity) of the data and analysis presented in the manuscript titled ["Reproducible big data science: A case study in continuous FAIRness"](https://www.biorxiv.org/content/early/2018/06/20/268755) using a representative data sample of urinary bladder from the [ENCODE[(www.encodeproject.org) project. 
 
+After going through the instructions, please provide your feedback through the survey [here](https://goo.gl/forms/Ag35eRlgiXithlx43)
+
 # Evaluation of FAIRness 
 We leveraged technologies like the BDBag to define all the datasets and their contents by enumerating its elements, regardless of their location (enumeration, fixity, and distribution); the Research Object (RO) to characterize a dataset and its contents with arbitrary levels of detail, regardless of their location (description); and the Minid to uniquely identify a dataset and, if desired, its constituent elements, regardless of their location (identify, fixity). We provided a list of all the minids created and used in the generation of the Atlas for Transcription Factor Binding Sites (TFBS) in Tables 2 and 3 of the manuscript. 
 
