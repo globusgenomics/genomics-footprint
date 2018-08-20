@@ -8,7 +8,7 @@ We leveraged technologies like the BDBag to define a dataset and its contents by
 
 By clicking on the link under Locations, one can download the BDBag of urinary bladder data. Using BDBag tools, a user can download the raw BAM files. These are the same tools we have used in the following steps to download the raw data to Globus Genomics, perform analysis and generate results. 
 
-The results of generating footprints using two algorithms, hint and wellington are describbed in the subsequent steps. These steps take several hours to complete. The results of the analysis of footprints from urinary bladder input data is accessible from [ark:/57799/b9h38s](http://minid.bd2k.org/minid/landingpage/ark:/57799/b9h38s). 
+The results of generating footprints using two algorithms, hint and wellington are describbed in the subsequent steps. These steps take several hours to complete. The results of the analysis of footprints from urinary bladder input data is accessible from [ark:/57799/b9h38s](http://minid.bd2k.org/minid/landingpage/ark:/57799/b9h38s). In the subsequent section, we demonstrate using a R notebook how the results we generated in this paper can be reused, thus demonstrating the four attributes of digital objects that are often viewed as fundamental to data-driven discovery.
 
 
 # Generate Footprints
