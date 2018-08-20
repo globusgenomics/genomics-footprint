@@ -8,8 +8,9 @@ We leveraged technologies like the BDBag to define a dataset and its contents by
 
 By clicking on the link under Locations, one can download the BDBag of urinary bladder data. Using BDBag tools, a user can download the raw BAM files. These are the same tools we have used in the following steps to download the raw data to Globus Genomics, perform analysis and generate results. 
 
-The results of generating footprints using two algorithms, hint and wellington are describbed in the subsequent steps. These steps take several hours to complete. The results of the analysis of footprints from urinary bladder input data is accessible from [ark:/57799/b9h38s](http://minid.bd2k.org/minid/landingpage/ark:/57799/b9h38s). In the subsequent section, we demonstrate using a R notebook how the results we generated in this paper can be reused, thus demonstrating the four attributes of digital objects that are often viewed as fundamental to data-driven discovery.
+The results of generating footprints using two algorithms, hint and wellington are describbed in the subsequent steps. These steps take several hours to complete. The results of the analysis of footprints from urinary bladder input data is accessible from [ark:/57799/b9h38s](http://minid.bd2k.org/minid/landingpage/ark:/57799/b9h38s). The [R notebook](http://footprints.bdds.globusgenomics.org) demonstrates how the generated atlas of TFBS can be reused, thus demonstrating the four attributes of digital objects that are often viewed as fundamental to data-driven discovery.
 
+In the subsequent sections, the reader can use the urinary bladder identifier to run the footprints workflows in Globus Genomics to generate footprints from Hint and Wellington algorithms.
 
 # Generate Footprints
 
@@ -116,12 +117,10 @@ The output for the master workflow is a BDbag for the tissue type used as input.
 
 ![Screenshot](generate_footprints/bdds_minid_urinary_bladder_footprints.png)
 
-   - Documentation for generating D5 (transcription factor motif file that is used for annotating the footprints)
+## Documentation for generating D5 (transcription factor motif file that is used for annotating the footprints)
      - [generate_motif](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_motif) 
 
-   - Documentation for Step 5 generating D6. These instructions show a step-by-step procedure, along with the code to intersect hint or wellington footprints output with the FIMO database and save the output in a local directory. 
+## Documentation for Step 5 generating D6. These instructions show a step-by-step procedure, along with the code to intersect hint or wellington footprints output with the FIMO database and save the output in a local directory. 
      - [generate_db](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db)
      
-- [getting_started](https://github.com/globusgenomics/genomics-footprint/tree/master/getting_started) - This is a R notebook that  shows how to access and query the footprint database.
-
-Link to survey: https://goo.gl/forms/Ag35eRlgiXithlx43
+After going through the instructions, please provide your feedback through the survey here: https://goo.gl/forms/Ag35eRlgiXithlx43
