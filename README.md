@@ -117,10 +117,10 @@ The output for the master workflow is a BDbag for the tissue type used as input.
 
 ![Screenshot](generate_footprints/bdds_minid_urinary_bladder_footprints.png)
 
-## Documentation for generating D5 (transcription factor motif file that is used for annotating the footprints)
-     - [generate_motif](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_motif) 
+## Generating D5 (transcription factor motif file that is used for annotating the footprints 
+[Instructions](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_motif) 
 
-## Documentation for Step 5 generating D6. These instructions show a step-by-step procedure, along with the code to intersect hint or wellington footprints output with the FIMO database and save the output in a local directory. 
-     - [generate_db](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db)
+## Instructions to intersect hint or wellington footprints output with the FIMO database
+[Here](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db)
      
 After going through the instructions, please provide your feedback through the survey here: https://goo.gl/forms/Ag35eRlgiXithlx43
