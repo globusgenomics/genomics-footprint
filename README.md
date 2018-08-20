@@ -1,9 +1,19 @@
 
-Our goal is to provide a set of instructions that enable a reader to evaluate the FAIRness (Findability, Accessibility, Interoperability and Reusabiblity of the data and analysis presented in the manuscript titled "Reproducible big data science: A case study in continuous FAIRness" (https://www.biorxiv.org/content/early/2018/06/20/268755) using a representative sample data.
+Our goal is to provide a set of instructions that enable a reader to evaluate the FAIRness (Findability, Accessibility, Interoperability and Reusabiblity of the data and analysis presented in the manuscript titled ["Reproducible big data science: A case study in continuous FAIRness"](https://www.biorxiv.org/content/early/2018/06/20/268755) using a representative data from the Urinary bladder tissue. 
+
+# Evaluation of FAIRness 
+We leveraged technologies like the BDBag to define a dataset and its contents by enumerating its elements, regardless of their location (enumeration, fixity, and distribution); the Research Object (RO) to characterize a dataset and its contents with arbitrary levels of detail, regardless of their location (description); and the Minid to uniquely identify a dataset and, if desired, its constituent elements, regardless of their location (identify, fixity). Table 2 and Table 3 from the manuscript provide a list of all minids created and used for generation of Atlas of Transcription Factor Binding Sites (TFBS). As an example, we provide the minid of the urinary bladder tissue here: [ark:/57799/b9ft3h](http://minid.bd2k.org/minid/landingpage/ark:/57799/b9ft3h). When you click on the link, it will take you to the landing page of the urinary bladder tissue data as shown in the screenshot below:
+
+![Screenshot](generate_footprints/urinary_bladder_new.png)
+
+By clicking on the link under Locations, one can download the BDBag of urinary bladder data. Using BDBag tools, a user can download the raw BAM files. These are the same tools we have used in the following steps to download the raw data to Globus Genomics, perform analysis and generate results. 
+
+The results of generating footprints using two algorithms, hint and wellington are describbed in the subsequent steps. These steps take several hours to complete. The results of the analysis of footprints from urinary bladder input data is accessible from [ark:/57799/b9h38s](http://minid.bd2k.org/minid/landingpage/ark:/57799/b9h38s). 
+
 
 # Generate Footprints
 
-Here we describeb how one can generate footprints for a tissue using a MINID as input for the desired tissue type.
+Here we describe how one can generate footprints for a tissue using a MINID as input for the desired tissue type.
 Generating footprints requires running a workflow via https://bdds.globusgenomics.org which integrates a number of sub-workflows as shown in figure below to generate alignment files for all replicates in patients; then merging replicate alignment files for a patient to a single alignment file; finally, calling the footprint algorithms for each patient (i.e. Wellington, Hint).
 
 Each step of the process will be laid out such that any user logged on to the system should be able to re-generate the footprints for a tissue type. Due to the high amount of computation used, we will supply a test MINID as input.
