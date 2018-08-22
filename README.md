@@ -8,7 +8,7 @@
 - [FAIRness](#1-Evaluation-of-FAIRness)
 - [Reproducibility](#2-Evaluation-of-Reproducibility)
     - [Screenshot of Workflow](#screenshot-of-workflow)
-    - [Input dataset](#test-MINID)
+    - [Input biosample](#Selecting-an-inpu-biosample)
     - [Process steps](#process-steps)
         - [Log on to BDDS Globus Genomics](#log-on-to-bdds-globus-genomics)
         - [Generate API Key](#generate-api-key)
@@ -120,15 +120,15 @@ We provide a minid for the Urinary bladder tissue type. Although this tissue typ
 
 ## Process steps
 
-Follow along each step to launch the footprint generation master workflow.
+We're now ready to run the anlysis workflow. The steps below will show you how to import and execute the footprint generation master workflow.
 
 ### Log on to BDDS Globus Genomics
 
-Users will need to log on to [https://bdds.globusgenomics.org]. Globus Genomics using Globus for authentication and Authorization. If you don't have a Globus account, you can create one from www.globus.org or log into Globus using your institutional account. We created a Globus Group that controls access to the BDDS Globus Genomics service. Users can become members of the group by clicking here: https://www.globus.org/app/groups/6f9dd64a-a22c-11e8-95d8-0efa7862ab5c. Please note that only users with access to the instance will be allowed to submit and run workflows. 
+Users will need to log on to [https://bdds.globusgenomics.org]. Please ensure that you have followed the [prerequisites](#Prerequisites) to gain access to Globus Genomics. Only users with access to the instance will be allowed to submit and run workflows. 
 
 ### Generate API Key
 
-Once logged in, if this is the first time you are logging in or submitting the Footprints workflow and have not generated an API key before, you will need to create one now. If you already have an API key for the https://bdds.globusgenomics.org, then you can skip this step.
+Once logged in, you will first need to generate an API key to allow for high performance, batch execution of your workflows.  If you already have an API key for [https://bdds.globusgenomics.org], then you can skip this step.
 
  1) Click on the "User" menu item in the top of the page:
 
@@ -142,7 +142,7 @@ Once logged in, if this is the first time you are logging in or submitting the F
 
  ![Screenshot](generate_footprints/manage_api_key.png)
 
- 4) If you do not have an API key, "None" will be shown in your landing page. You can click the "Create new key" button and one will be generated and shown to you in the screen.
+ 4) If you do not have an API key, "None" will be shown on the page. Click the "Create new key" button and one will be generated.
 
  ![Screenshot](generate_footprints/generate_api_key.png)
 
@@ -152,7 +152,7 @@ Once logged in, if this is the first time you are logging in or submitting the F
 
 Next you will need to import all needed workflows into your environment. If you have previously imported these workflows, you do not need to import them again.
 
-NOTE - If you modify any of the workflows or rename the workflows you import, there is a strong possibility that your submission will not work. If you would like to modify a workflow and generate a new set of workflows with different tools or parameters, please contact us at support@globus.org.
+NOTE - If you modify any of the workflows or rename the workflows you import, it is likely that your analysis will not work. If you would like to modify a workflow and generate a new set of workflows with different tools or parameters, please contact us at support@globus.org.
 
 You will need import each of the following workflows:
 
@@ -170,18 +170,19 @@ For each workflow in the list above, follow these steps to import to your enviro
 
 ### Execute analysis
 
-If you have completed the above required steps, you should be able to execute the analysis. The analysis can take a few hours to download the data for the MINID, perform alignment and generate footprints for each of the patients and its replicates of the tissue type.
+Now you have imported the workflows and configured the API key for execution you are now ready to execute the analysis. Note: the analysis can take a few hours to download the data, perform alignment, and generate footprints for each of the biosamples and its replicates of the tissue type.
 
  1) Go to your [workflow environment page](https://bdds.globusgenomics.org/workflow)
- 2) You should see at least 4 workflows which you have imported:
+ 
+ 2) You should see the 4 workflows you just imported:
 
  ![Screenshot](generate_footprints/list_of_workflows.png)
 
- 3) Select "Run" option for the workflow "imported: Footprints MASTER Workflow"
+ 3) Select the "Run" option for the master workflow "imported: Footprints MASTER Workflow"
 
  ![Screenshot](generate_footprints/master_workflow_run_option.png)
 
- 4) Click on the "Run workflow" option. The MINID has been entered for you.
+ 4) Click on the "Run workflow" option. The minid has been entered for you.
 
  ![Screenshot](generate_footprints/master_workflow_execute.png)
 
@@ -189,7 +190,7 @@ That is all you need to do. You should now see a series of jobs appear in your h
 
 ### Results
 
-The output for the master workflow is a BDbag for the tissue type used as input. The output contains the footprints generated in the workflow. The BDbag and MINID for the sample submitted in this README file can be located at: [ark:/57799/b9wd55](http://minid.bd2k.org/minid/landingpage/ark:/57799/b9wd55)
+The output for the master workflow is a BDBag for the biosample used as input. The output contains the footprints generated in the workflow. The BDbag and minid for the sample submitted in this tutorial can be located at: [ark:/57799/b9wd55](http://n2t.net/ark:/57799/b9wd55)
 
 ## Generating D5 (transcription factor motif file that is used for annotating the footprints 
 [Instructions](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_motif) 
