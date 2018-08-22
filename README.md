@@ -47,7 +47,7 @@ madduri@anlextwls025-079:~/paper_test/bdb% bdbag --validate fast ce6417d1-6ff7-4
 2018-08-22 14:59:50,181 - INFO - Bag /Users/madduri/paper_test/bdb/ce6417d1-6ff7-4eb4-9412-b74743af2ff8 is valid
 ```
 
-The results of generating footprints using two algorithms, hint and wellington are describbed in the subsequent steps. These steps take several hours to complete. The [R notebook](http://footprints.bdds.globusgenomics.org) demonstrates how the generated atlas of TFBS can be reused, thus demonstrating the four attributes of digital objects that are often viewed as fundamental to data-driven discovery.
+The results of generating footprints using two algorithms, hint and wellington are describbed in the subsequent steps. These steps take several hours to complete. The results for urinary bladder are available at [ark:/57799/b9wd55](http://minid.bd2k.org/minid/landingpage/ark:/57799/b9wd55) The [R notebook](http://footprints.bdds.globusgenomics.org) demonstrates how the generated atlas of TFBS can be reused, thus demonstrating the four attributes of digital objects that are often viewed as fundamental to data-driven discovery.
 
 In the subsequent sections, the reader can use the urinary bladder identifier to run the footprints workflows in Globus Genomics to generate footprints from Hint and Wellington algorithms.
 
@@ -154,7 +154,7 @@ That is all you need to do. You should now see a series of jobs appear in your h
 
 ### Results
 
-The output for the master workflow is a BDbag for the tissue type used as input. The output contains the footprints generated in the workflow. The BDbag and MINID for the sample submitted in this README file can be located at: [ark:/57799/b9zt35](http://minid.bd2k.org/minid/landingpage/ark:/57799/b9zt35) 
+The output for the master workflow is a BDbag for the tissue type used as input. The output contains the footprints generated in the workflow. The BDbag and MINID for the sample submitted in this README file can be located at: [ark:/57799/b9wd55](http://minid.bd2k.org/minid/landingpage/ark:/57799/b9wd55)
 
 ## Generating D5 (transcription factor motif file that is used for annotating the footprints 
 [Instructions](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_motif) 
