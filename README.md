@@ -21,6 +21,7 @@ By clicking on the link under Locations, one can download the BDBag of urinary b
 3. One can install BDBag tools using command 
 
 ```pip install bdbag```
+
 4. Download the contents of the bag and validate using bdbag tools as shown below
 
 ```unzip ce6417d1-6ff7-4eb4-9412-b74743af2ff8.zip```
