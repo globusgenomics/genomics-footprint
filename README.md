@@ -16,7 +16,9 @@ The results of generating footprints using two algorithms, hint and wellington a
 
 In the subsequent sections, the reader can use the urinary bladder identifier to run the footprints workflows in Globus Genomics to generate footprints from Hint and Wellington algorithms.
 
-# Generating Footprints
+# Evaluation of Reproducibility
+
+## Generating Footprints
 
 Here we describe how one can generate footprints for a tissue using a MINID as input for the desired tissue type.
 Generating footprints requires running a workflow via https://bdds.globusgenomics.org which integrates a number of sub-workflows as shown in figure below to generate alignment files for all replicates in patients; then merging replicate alignment files for a patient to a single alignment file; finally, calling the footprint algorithms for each patient (i.e. Wellington, Hint).
