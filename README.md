@@ -29,7 +29,7 @@ After going through the instructions, please provide your feedback through the s
 - BDBag: A data packaging and exchange format based on the BagIT specification. BDBags allow for the exchange of collections of files and metadata by enumerating their elements, regardless of their location.
 - Minid: A lightweight identifier for unambiguous naming of data products. Minds can be associated with files (or BDBags), resolved using a resolution service (e.g., [name-to-thing](http://n2t.net)).
 - Research Object (RO): A way of representing a dataset and its contents with arbitrary levels of detail, regardless of their location (description).
-- Globus: A hosted service that provides a collection of capabilities for managing, transfering, sharing, publishing, and discovering research data. Find out more [here](www.globus.org).
+- Globus: A hosted service that provides a collection of capabilities for managing, transfering, sharing, publishing, and discovering research data. Find out more [here](https://www.globus.org/).
 - Globus Genomics:  A hosted instance of Galaxy on the cloud that features integrated integrated Globus authentication and data management, automated elasticity on Amazon Web Services (AWS), and a collection of best practices analysis pipelines. 
 
 # Prerequisites
@@ -192,7 +192,7 @@ That is all you need to do. You should now see a series of jobs appear in your h
 
 The output for the master workflow is a BDBag for the biosample used as input. The output contains the footprints generated in the workflow. The BDbag and minid for the sample submitted in this tutorial can be located at: [ark:/57799/b9wd55](http://n2t.net/ark:/57799/b9wd55)
 
-## Generating D5 (transcription factor motif file that is used for annotating the footprints 
+## Generating D5 (transcription factor motif file that is used for annotating the footprints) 
 [Instructions](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_motif) 
 
 ## Instructions to intersect hint or wellington footprints output with the FIMO database
