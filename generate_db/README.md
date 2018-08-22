@@ -61,14 +61,14 @@ your local directory or optionally put in a database.
   - You can use the BDBag as input to generate the TFBS for the urinary bladder (seed16) BDBag by running:
 
   ```
-  $ Rscript ./tfbs.R -b ./urinary_bladder.seed16.tissue.bag -o ./output -s 16 -t "urinary bladder" -m Hint
+  $ Rscript ./tfbs.R -b ./urinary_bladder.seed16.tissue.bag -o ./output -s 16 -t "urinary bladder" -m Hint -e
 
   ```
 
   - If you have placed your footprints BED files in a separate directory (not in the BDBag), then you can use this instead:
 
   ```
-  $ Rscript ./tfbs.R -i ./footprint_bed_files -o ./output -s 16 -t "urinary bladder" -m Hint
+  $ Rscript ./tfbs.R -i ./footprint_bed_files -o ./output -s 16 -t "urinary bladder" -m Hint -e
 
   ```
 
@@ -101,8 +101,8 @@ To compare the output, we have a simple [R script](https://github.com/globusgeno
   ```
   Rscript overlap_check.R urinary_bladder_hint_16_ENCSR813CKU_chr1.csv urinary_bladder_wellington_16_chr1.csv
 
-  [1] "file1: 739525 lines and file2: 249732 lines that have 3271 exact matches in footprints"
-  [1] "file1: 739525 lines and file2: 249732 lines that have 349340 exact matches in motifs"
+  [1] "file1: 97 lines and file2: 95 lines that have 0 exact matches in footprints"
+  [1] "file1: 97 lines and file2: 95 lines that have 140 exact matches in motifs"
   ```
 
 ### Submit to Condor
