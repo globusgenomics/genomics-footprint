@@ -3,52 +3,71 @@
 # Table of Contents
 
 - [Introduction](#introduction)
-- [Screenshot of Workflow](#screenshot-of-workflow)
-- [Test MINID](#test-MINID)
-- [Process steps](#process-steps)
-    - [Log on to BDDS Globus Genomics](#log-on-to-bdds-globus-genomics)
-    - [Generate API Key](#generate-api-key)
-    - [Import published workflows](#import-published-workflows)
-    - [Execute analysis](#execute-analysis)
-    - [Results](#results)
+- [Glossary](#Glossary)
+- [Prerequisites](#Prerequisites)
+- [FAIRness](#1-Evaluation-of-FAIRness)
+- [Reproducibility](#2-Evaluation-of-Reproducibility)
+    - [Screenshot of Workflow](#screenshot-of-workflow)
+    - [Input dataset](#test-MINID)
+    - [Process steps](#process-steps)
+        - [Log on to BDDS Globus Genomics](#log-on-to-bdds-globus-genomics)
+        - [Generate API Key](#generate-api-key)
+        - [Import published workflows](#import-published-workflows)
+        - [Execute analysis](#execute-analysis)
+        - [Results](#results)
     
 # Introduction
 
-In this tutorial we will demonstrate how to reproduce a biomedical analysis using a set of tools. Our goal is to provide a set of instructions that enable a reader to evaluate the FAIRness (Findability, Accessibility, Interoperability and Reusabiblity) of the data and analysis presented in the manuscript titled ["Reproducible big data science: A case study in continuous FAIRness"](https://www.biorxiv.org/content/early/2018/06/20/268755) using a representative data sample of urinary bladder from the [ENCODE](www.encodeproject.org) project. 
+In this tutorial we will demonstrate how to reproduce a biomedical analysis using a set of tools developed by the [Big Data to Discovery Science](http://bd2k.ini.usc.edu/) BD2K center. Our goal here is to provide a set of instructions that enable a reader to evaluate the FAIRness (Findability, Accessibility, Interoperability and Reusabiblity) of the data and analysis presented in the manuscript titled ["Reproducible big data science: A case study in continuous FAIRness"](https://www.biorxiv.org/content/early/2018/06/20/268755) using a representative data sample of urinary bladder from the [ENCODE](www.encodeproject.org) project. 
 
-After going through the instructions, please provide your feedback through the survey [here](https://goo.gl/forms/Ag35eRlgiXithlx43)
+Specifically we show a multi-step analysis that creates an atlas of putative transcription factor binding sites from terabytes of ENCODE DNase I hypersensitive sites sequencing data. 
+
+After going through the instructions, please provide your feedback through the survey [here](https://goo.gl/forms/Ag35eRlgiXithlx43).
 
 # Glossary
 
-- BDBag: A data packaging and exchange format based on the BagIT specification. BDBags allow for the exchange of collections of files and metadata specified in a manifest format 
-- Minid: A lightweight identifier for unambiguous naming of data products. Minds can be associated with files (or BDBags), resolved using a resolution service (e.g., [name-to-thing](http://n2t.net))
+- BDBag: A data packaging and exchange format based on the BagIT specification. BDBags allow for the exchange of collections of files and metadata by enumerating their elements, regardless of their location.
+- Minid: A lightweight identifier for unambiguous naming of data products. Minds can be associated with files (or BDBags), resolved using a resolution service (e.g., [name-to-thing](http://n2t.net)).
+- Research Object (RO): A way of representing a dataset and its contents with arbitrary levels of detail, regardless of their location (description).
 - Globus: A hosted service that provides a collection of capabilities for managing, transfering, sharing, publishing, and discovering research data. Find out more [here](www.globus.org).
 - Globus Genomics:  A hosted instance of Galaxy on the cloud that features integrated integrated Globus authentication and data management, automated elasticity on Amazon Web Services (AWS), and a collection of best practices analysis pipelines. 
 
-# Evaluation of FAIRness 
-We leveraged technologies like the BDBag to define all the datasets and their contents by enumerating its elements, regardless of their location (enumeration, fixity, and distribution); the Research Object (RO) to characterize a dataset and its contents with arbitrary levels of detail, regardless of their location (description); and the Minid to uniquely identify a dataset and, if desired, its constituent elements, regardless of their location (identify, fixity). We provided a list of all the minids created and used in the generation of the Atlas for Transcription Factor Binding Sites (TFBS) in Tables 2 and 3 of the manuscript. 
+# Prerequisites
 
-Here, as an example, we provide the minid of the urinary bladder tissue here: [ark:/57799/b9ft3h](http://minid.bd2k.org/minid/landingpage/ark:/57799/b9ft3h). When you click on the link, it will take you to the landing page of the urinary bladder tissue data as shown in the screenshot below:
+- Install the BDBag tooling
+    ```pip install bdbag```
+- A [Globus](www.globus.org) account (you can either login using your institutional identity or create a Globus ID online) 
+- Membership in a Globus group to access analysis services. Please join the group [here](https://www.globus.org/app/groups/6f9dd64a-a22c-11e8-95d8-0efa7862ab5c)
+
+# 1 Evaluation of FAIRness 
+We first demonstrate how the tools used in this tutorial enable FAIR access to data. 
+
+In the corresponding manuscript (Tables 2 and 3) we provided a list of all the minids created and used in the analysis. These minids allow readers to locate (via a public resolver) the BDBags for each sample used in the study.  The BDBags contain all input data needed for analysis along with metadata describing each sample. 
+
+Here, as an example, we provide the minid of the urinary bladder tissue: [ark:/57799/b9ft3h](http://minid.bd2k.org/minid/landingpage/ark:/57799/b9ft3h). When you click on the link, it will take you to the landing page of the urinary bladder tissue data as shown in the screenshot below:
 
 ![Screenshot](generate_footprints/urinary_bladder_new.png)
 
-By clicking on the link under Locations, one can download the BDBag of urinary bladder data. Using BDBag tools, a user can download the raw BAM files. These are the same tools we have used in the following steps to download the raw data to Globus Genomics, perform analysis and generate results. 
+The landing page provides basic metadata about the object, including when it was created and by whom, a checksum for the contents, and a set of locations where the object is available. 
 
-1. Download the BDBag for urinary bladder which is a zip filled called ce6417d1-6ff7-4eb4-9412-b74743af2ff8.zip
+By clicking on the link under Locations, one can download the BDBag of urinary bladder data.
 
-2. Run checksum to verify the integrity of the data.
+The following instructions show you how to download the BDBag, download its contents, and validate its contents. These are the same tools we have used in the following steps to download the raw data to Globus Genomics, perform analysis and generate results. 
+
+1. Download the BDBag for urinary bladder (a zip filled called ce6417d1-6ff7-4eb4-9412-b74743af2ff8.zip):
+
+```wget https://s3.amazonaws.com/bdds-public/bags/input_tissues_bags/ce6417d1-6ff7-4eb4-9412-b74743af2ff8.zip```
+
+2. Run checksum to verify the integrity of the data (compare this against the checksum listed for the minid):
+
 ```sha256sum ce6417d1-6ff7-4eb4-9412-b74743af2ff8.zip
 39689dfa3eb438e1ebc4bbb0bbad391169b0f7e0990a798ed8512e4c051b6c2f  ce6417d1-6ff7-4eb4-9412-b74743af2ff8.zip
 ```
-3. One can install BDBag tools using command 
 
-```pip install bdbag```
-
-4. Download the contents of the bag and validate using bdbag tools as shown below
+3. Use the BDBag tools to download and validate the contents of the BDBag (note this will download ~3.5GB of data): 
 
 ```unzip ce6417d1-6ff7-4eb4-9412-b74743af2ff8.zip```
-```bdbag --resolve-fetch all ce6417d1-6ff7-4eb4-9412-b74743af2ff8```
-```madduri@anlextwls025-079:~/paper_test/bdb% bdbag --resolve-fetch all ce6417d1-6ff7-4eb4-9412-b74743af2ff8
+```bdbag --resolve-fetch all ce6417d1-6ff7-4eb4-9412-b74743af2ff8
 
 2018-08-22 14:37:20,253 - INFO - Attempting to resolve remote file references from fetch.txt.
 2018-08-22 14:37:20,258 - INFO - Attempting GET from URL: https://www.encodeproject.org/files/ENCFF002DZB/@@download/ENCFF002DZB.fastq.gz
@@ -61,38 +80,41 @@ By clicking on the link under Locations, one can download the BDBag of urinary b
 2018-08-22 14:48:52,752 - INFO - Attempting GET from URL: https://www.encodeproject.org/files/ENCFF002DZF/@@download/ENCFF002DZF.fastq.gz
 2018-08-22 14:54:26,946 - INFO - File [/Users/madduri/paper_test/bdb/ce6417d1-6ff7-4eb4-9412-b74743af2ff8/data/ENCFF002DZF.fastq.gz] transfer successful. 1095.671 MB transferred at 3.28 MB/second. Elapsed time: 0:05:33.683174.
 2018-08-22 14:54:26,950 - INFO - Fetch complete. Elapsed time: 0:17:06.690463
+```
 
-madduri@anlextwls025-079:~/paper_test/bdb%
-madduri@anlextwls025-079:~/paper_test/bdb% bdbag --validate fast ce6417d1-6ff7-4eb4-9412-b74743af2ff8
+```
+bdbag --validate fast ce6417d1-6ff7-4eb4-9412-b74743af2ff8
 
 2018-08-22 14:59:50,176 - INFO - Validating bag: /Users/madduri/paper_test/bdb/ce6417d1-6ff7-4eb4-9412-b74743af2ff8
 2018-08-22 14:59:50,181 - INFO - Bag /Users/madduri/paper_test/bdb/ce6417d1-6ff7-4eb4-9412-b74743af2ff8 is valid
 ```
+You have now discovered, downloaded, and validated the contents of one of the input files used in the subsequent analysis. These steps aim to demonstrate that access to the data is FAIR. 
 
-The results of generating footprints using two algorithms, hint and wellington are describbed in the subsequent steps. These steps take several hours to complete. The results for urinary bladder are available at [ark:/57799/b9wd55](http://minid.bd2k.org/minid/landingpage/ark:/57799/b9wd55) The [R notebook](http://footprints.bdds.globusgenomics.org) demonstrates how the generated atlas of TFBS can be reused, thus demonstrating the four attributes of digital objects that are often viewed as fundamental to data-driven discovery.
+In the subsequent sections, the reader can use this input data to run the footprints workflows in Globus Genomics to generate footprints from Hint and Wellington algorithms.
 
-In the subsequent sections, the reader can use the urinary bladder identifier to run the footprints workflows in Globus Genomics to generate footprints from Hint and Wellington algorithms.
+# 2 Evaluation of Reproducibility
 
-# Evaluation of Reproducibility
+In this section we describe how to generate footprints using two algorithms: hint and wellington. The workflow is designed such that it can process any input biosample for which a minid/BDBag are available. 
+
+Note: these steps take several hours to complete. 
+
+The results for analyzing the urinary bladder dataset are available at [ark:/57799/b9wd55](http://n2t.net/ark:/57799/b9wd55). For interested readers we also provide an [R notebook](http://footprints.bdds.globusgenomics.org) that demonstrates how the generated atlas of TFBS can be reused, thus demonstrating the four attributes of digital objects that are often viewed as fundamental to data-driven discovery.
 
 ## Generating Footprints
 
-Here we describe how one can generate footprints for a tissue using a MINID as input for the desired tissue type.
-Generating footprints requires running a workflow via https://bdds.globusgenomics.org which integrates a number of sub-workflows as shown in figure below to generate alignment files for all replicates in patients; then merging replicate alignment files for a patient to a single alignment file; finally, calling the footprint algorithms for each patient (i.e. Wellington, Hint).
+To generate footprints we use a high performance workflow available in Globus Genomics: [https://bdds.globusgenomics.org]. The workflow integrates a number of sub-workflows as shown in figure below to generate alignment files for all replicates in biosample; then merge replicate alignment files for a patient to a single alignment file; and finally, to call the footprint algorithms for each biosample. 
 
-Each step of the process will be laid out such that any user logged on to the system should be able to re-generate the footprints for a tissue type. Due to the high amount of computation used, we will provide instructions on generating footprints using data from urinary bladder as input.
-
-
+Each step of the process will be described such that any user logged on to Globus Genomics should be able to re-generate the footprints for a tissue type. Due to the high amount of computation used, we will provide instructions on generating footprints using data from urinary bladder as input.
 
 ## Screenshot of Workflow
 
-The workflow consists of one master workflow which manages the sub-workflows. The input to the master workflow is the MINID for the tissue type you wish to generate footprints for. The MINIDs represent a BDbag for the tissue type which contains the DNAse data from the ENCODE database. These MINIDs and BDbags have been previously generated. The red box in the master workflow submits in parallel the alignment sub-workflow for each patient in the tissue type. Each patient may contain 1 to many replicates, thus, each replicate must be individually aligned and sorted (gray box). Once the replicates for a patient are aligned, they are merged to a single alignment file representing a patient. When all merged patient alignemnt files are completed (red box) an alignemnts BDbag is generated and used as input to generate the footprints (green box).
+The workflow consists of one master workflow which manages the sub-workflows. The input to the master workflow is the mind for the tissue type you wish to generate footprints for. As described above, the minids represent a BDbag for the tissue type which contains the DNAse data from the ENCODE database. These minids and BDbags have been previously generated. The red box in the master workflow submits (in parallel) the alignment sub-workflow for each biosample in the tissue type. Each biosample may contain 1 to many replicates, thus, each replicate must be individually aligned and sorted (gray box). Once the replicates for a biosample are aligned, they are merged to a single alignment file representing a biosample. When all merged biosample alignment files are completed (red box) an alignments BDbag is generated and used as input to generate the footprints (green box).
 
 ![Screenshot](generate_footprints/Figure5c.png)
 
-## Test MIND
+## Selecting an input biosample
 
-We provide a MINID for the Urinary bladder tissue type. Although this tissue type is small, footprint search and generation process may take several hours. The MINID for urinary bladder is: ark:/57799/b9ft3h
+We provide a minid for the Urinary bladder tissue type. Although this tissue type is small, the footprint search and generation process may take several hours. The minid for urinary bladder is: [ark:/57799/b9ft3h](http://n2t.net/ark:/57799/b9ft3h).
 
 ![Screenshot](generate_footprints/urinary_bladder_new.png)
 
@@ -102,7 +124,7 @@ Follow along each step to launch the footprint generation master workflow.
 
 ### Log on to BDDS Globus Genomics
 
-Users will need to log on to https://bdds.globusgenomics.org. Globus Genomics using Globus for authentication and Authorization. If you don't have a Globus account, you can create one from www.globus.org or log into Globus using your institutional account. We created a Globus Group that controls access to the BDDS Globus Genomics service. Users can become members of the group by clicking here: https://www.globus.org/app/groups/6f9dd64a-a22c-11e8-95d8-0efa7862ab5c. Please note that only users with access to the instance will be allowed to submit and run workflows. 
+Users will need to log on to [https://bdds.globusgenomics.org]. Globus Genomics using Globus for authentication and Authorization. If you don't have a Globus account, you can create one from www.globus.org or log into Globus using your institutional account. We created a Globus Group that controls access to the BDDS Globus Genomics service. Users can become members of the group by clicking here: https://www.globus.org/app/groups/6f9dd64a-a22c-11e8-95d8-0efa7862ab5c. Please note that only users with access to the instance will be allowed to submit and run workflows. 
 
 ### Generate API Key
 
