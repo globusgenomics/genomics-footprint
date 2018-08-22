@@ -1,7 +1,29 @@
+# Reproducible big data science: A case study in continuous FAIRness
 
-Our goal is to provide a set of instructions that enable a reader to evaluate the FAIRness (Findability, Accessibility, Interoperability and Reusabiblity) of the data and analysis presented in the manuscript titled ["Reproducible big data science: A case study in continuous FAIRness"](https://www.biorxiv.org/content/early/2018/06/20/268755) using a representative data sample of urinary bladder from the [ENCODE[(www.encodeproject.org) project. 
+# Table of Contents
+
+- [Introduction](#introduction)
+- [Screenshot of Workflow](#screenshot-of-workflow)
+- [Test MINID](#test-MINID)
+- [Process steps](#process-steps)
+    - [Log on to BDDS Globus Genomics](#log-on-to-bdds-globus-genomics)
+    - [Generate API Key](#generate-api-key)
+    - [Import published workflows](#import-published-workflows)
+    - [Execute analysis](#execute-analysis)
+    - [Results](#results)
+    
+# Introduction
+
+In this tutorial we will demonstrate how to reproduce a biomedical analysis using a set of tools. Our goal is to provide a set of instructions that enable a reader to evaluate the FAIRness (Findability, Accessibility, Interoperability and Reusabiblity) of the data and analysis presented in the manuscript titled ["Reproducible big data science: A case study in continuous FAIRness"](https://www.biorxiv.org/content/early/2018/06/20/268755) using a representative data sample of urinary bladder from the [ENCODE](www.encodeproject.org) project. 
 
 After going through the instructions, please provide your feedback through the survey [here](https://goo.gl/forms/Ag35eRlgiXithlx43)
+
+# Glossary
+
+- BDBag: A data packaging and exchange format based on the BagIT specification. BDBags allow for the exchange of collections of files and metadata specified in a manifest format 
+- Minid: A lightweight identifier for unambiguous naming of data products. Minds can be associated with files (or BDBags), resolved using a resolution service (e.g., [name-to-thing](http://n2t.net))
+- Globus: A hosted service that provides a collection of capabilities for managing, transfering, sharing, publishing, and discovering research data. Find out more [here](www.globus.org).
+- Globus Genomics:  A hosted instance of Galaxy on the cloud that features integrated integrated Globus authentication and data management, automated elasticity on Amazon Web Services (AWS), and a collection of best practices analysis pipelines. 
 
 # Evaluation of FAIRness 
 We leveraged technologies like the BDBag to define all the datasets and their contents by enumerating its elements, regardless of their location (enumeration, fixity, and distribution); the Research Object (RO) to characterize a dataset and its contents with arbitrary levels of detail, regardless of their location (description); and the Minid to uniquely identify a dataset and, if desired, its constituent elements, regardless of their location (identify, fixity). We provided a list of all the minids created and used in the generation of the Atlas for Transcription Factor Binding Sites (TFBS) in Tables 2 and 3 of the manuscript. 
@@ -60,16 +82,7 @@ Generating footprints requires running a workflow via https://bdds.globusgenomic
 
 Each step of the process will be laid out such that any user logged on to the system should be able to re-generate the footprints for a tissue type. Due to the high amount of computation used, we will provide instructions on generating footprints using data from urinary bladder as input.
 
-## Table of Contents
 
-- [Screenshot of Workflow](#screenshot-of-workflow)
-- [Test MINID](#test-MINID)
-- [Process steps](#process-steps)
-    - [Log on to BDDS Globus Genomics](#log-on-to-bdds-globus-genomics)
-    - [Generate API Key](#generate-api-key)
-    - [Import published workflows](#import-published-workflows)
-    - [Execute analysis](#execute-analysis)
-    - [Results](#results)
 
 ## Screenshot of Workflow
 
