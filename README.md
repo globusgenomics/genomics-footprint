@@ -36,7 +36,7 @@ After going through the instructions, please provide your feedback through the s
 
 - Install the BDBag tooling
     ```pip install bdbag```
-- A [Globus](www.globus.org) account (you can either login using your institutional identity or create a Globus ID online) 
+- A [Globus](https://www.globus.org) account (you can either login using your institutional identity or create a Globus ID online) 
 - Membership in a Globus group to access analysis services. Please join the group [here](https://www.globus.org/app/groups/6f9dd64a-a22c-11e8-95d8-0efa7862ab5c)
 
 # 1 Evaluation of FAIRness 
@@ -104,7 +104,7 @@ The results for analyzing the urinary bladder dataset are available at [ark:/577
 
 ## Generating Footprints
 
-To generate footprints we use a high performance workflow available in Globus Genomics: [https://bdds.globusgenomics.org]. The workflow integrates a number of sub-workflows as shown in figure below to generate alignment files for all replicates in biosample; then merge replicate alignment files for a patient to a single alignment file; and finally, to call the footprint algorithms for each biosample. 
+To generate footprints we use a high performance workflow available in Globus Genomics: [https://bdds.globusgenomics.org](https://bdds.globusgenomics.org). The workflow integrates a number of sub-workflows as shown in figure below to generate alignment files for all replicates in biosample; then merge replicate alignment files for a patient to a single alignment file; and finally, to call the footprint algorithms for each biosample. 
 
 Each step of the process will be described such that any user logged on to Globus Genomics should be able to re-generate the footprints for a tissue type. Due to the high amount of computation used, we will provide instructions on generating footprints using data from urinary bladder as input.
 
@@ -126,11 +126,11 @@ We're now ready to run the anlysis workflow. The steps below will show you how t
 
 ### Log on to BDDS Globus Genomics
 
-Users will need to log on to [https://bdds.globusgenomics.org]. Please ensure that you have followed the [prerequisites](#Prerequisites) to gain access to Globus Genomics. Only users with access to the instance will be allowed to submit and run workflows. 
+Users will need to log on to [https://bdds.globusgenomics.org](https://bdds.globusgenomics.org). Please ensure that you have followed the [prerequisites](#Prerequisites) to gain access to Globus Genomics. Only users with access to the instance will be allowed to submit and run workflows. 
 
 ### Generate API Key
 
-Once logged in, you will first need to generate an API key to allow for high performance, batch execution of your workflows.  If you already have an API key for [https://bdds.globusgenomics.org], then you can skip this step.
+Once logged in, you will first need to generate an API key to allow for high performance, batch execution of your workflows.  If you already have an API key for [https://bdds.globusgenomics.org](https://bdds.globusgenomics.org), then you can skip this step.
 
  1) Click on the "User" menu item in the top of the page:
 
