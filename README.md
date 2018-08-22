@@ -12,7 +12,41 @@ Here, as an example, we provide the minid of the urinary bladder tissue here: [a
 
 By clicking on the link under Locations, one can download the BDBag of urinary bladder data. Using BDBag tools, a user can download the raw BAM files. These are the same tools we have used in the following steps to download the raw data to Globus Genomics, perform analysis and generate results. 
 
-The results of generating footprints using two algorithms, hint and wellington are describbed in the subsequent steps. These steps take several hours to complete. The results of the analysis of footprints from urinary bladder input data is accessible from [ark:/57799/b9h38s](http://minid.bd2k.org/minid/landingpage/ark:/57799/b9h38s). The [R notebook](http://footprints.bdds.globusgenomics.org) demonstrates how the generated atlas of TFBS can be reused, thus demonstrating the four attributes of digital objects that are often viewed as fundamental to data-driven discovery.
+1. Download the BDBag for urinary bladder which is a zip filled called ce6417d1-6ff7-4eb4-9412-b74743af2ff8.zip
+
+2. Run checksum to verify the integrity of the data.
+```sha256sum ce6417d1-6ff7-4eb4-9412-b74743af2ff8.zip
+39689dfa3eb438e1ebc4bbb0bbad391169b0f7e0990a798ed8512e4c051b6c2f  ce6417d1-6ff7-4eb4-9412-b74743af2ff8.zip
+```
+3. One can install BDBag tools using command 
+
+```pip install bdbag```
+4. Download the contents of the bag and validate using bdbag tools as shown below
+
+```unzip ce6417d1-6ff7-4eb4-9412-b74743af2ff8.zip```
+```bdbag --resolve-fetch all ce6417d1-6ff7-4eb4-9412-b74743af2ff8```
+```madduri@anlextwls025-079:~/paper_test/bdb% bdbag --resolve-fetch all ce6417d1-6ff7-4eb4-9412-b74743af2ff8
+
+2018-08-22 14:37:20,253 - INFO - Attempting to resolve remote file references from fetch.txt.
+2018-08-22 14:37:20,258 - INFO - Attempting GET from URL: https://www.encodeproject.org/files/ENCFF002DZB/@@download/ENCFF002DZB.fastq.gz
+2018-08-22 14:40:29,715 - INFO - File [/Users/madduri/paper_test/bdb/ce6417d1-6ff7-4eb4-9412-b74743af2ff8/data/ENCFF002DZB.fastq.gz] transfer successful. 726.847 MB transferred at 3.85 MB/second. Elapsed time: 0:03:08.590712.
+2018-08-22 14:40:29,716 - INFO - Attempting GET from URL: https://www.encodeproject.org/files/ENCFF002DZD/@@download/ENCFF002DZD.fastq.gz
+
+2018-08-22 14:43:42,683 - INFO - File [/Users/madduri/paper_test/bdb/ce6417d1-6ff7-4eb4-9412-b74743af2ff8/data/ENCFF002DZD.fastq.gz] transfer successful. 732.293 MB transferred at 3.81 MB/second. Elapsed time: 0:03:12.300711.
+2018-08-22 14:43:42,686 - INFO - Attempting GET from URL: https://www.encodeproject.org/files/ENCFF002DZE/@@download/ENCFF002DZE.fastq.gz
+2018-08-22 14:48:52,751 - INFO - File [/Users/madduri/paper_test/bdb/ce6417d1-6ff7-4eb4-9412-b74743af2ff8/data/ENCFF002DZE.fastq.gz] transfer successful. 1076.481 MB transferred at 3.48 MB/second. Elapsed time: 0:05:09.459530.
+2018-08-22 14:48:52,752 - INFO - Attempting GET from URL: https://www.encodeproject.org/files/ENCFF002DZF/@@download/ENCFF002DZF.fastq.gz
+2018-08-22 14:54:26,946 - INFO - File [/Users/madduri/paper_test/bdb/ce6417d1-6ff7-4eb4-9412-b74743af2ff8/data/ENCFF002DZF.fastq.gz] transfer successful. 1095.671 MB transferred at 3.28 MB/second. Elapsed time: 0:05:33.683174.
+2018-08-22 14:54:26,950 - INFO - Fetch complete. Elapsed time: 0:17:06.690463
+
+madduri@anlextwls025-079:~/paper_test/bdb%
+madduri@anlextwls025-079:~/paper_test/bdb% bdbag --validate fast ce6417d1-6ff7-4eb4-9412-b74743af2ff8
+
+2018-08-22 14:59:50,176 - INFO - Validating bag: /Users/madduri/paper_test/bdb/ce6417d1-6ff7-4eb4-9412-b74743af2ff8
+2018-08-22 14:59:50,181 - INFO - Bag /Users/madduri/paper_test/bdb/ce6417d1-6ff7-4eb4-9412-b74743af2ff8 is valid
+```
+
+The results of generating footprints using two algorithms, hint and wellington are describbed in the subsequent steps. These steps take several hours to complete. The [R notebook](http://footprints.bdds.globusgenomics.org) demonstrates how the generated atlas of TFBS can be reused, thus demonstrating the four attributes of digital objects that are often viewed as fundamental to data-driven discovery.
 
 In the subsequent sections, the reader can use the urinary bladder identifier to run the footprints workflows in Globus Genomics to generate footprints from Hint and Wellington algorithms.
 
@@ -119,9 +153,7 @@ That is all you need to do. You should now see a series of jobs appear in your h
 
 ### Results
 
-The output for the master workflow is a BDbag for the tissue type used as input. The output contains the footprints generated in the workflow. The BDbag and MINID for the sample submitted in this README file can be located at: ark:/57799/b9h38s
-
-![Screenshot](generate_footprints/bdds_minid_urinary_bladder_footprints.png)
+The output for the master workflow is a BDbag for the tissue type used as input. The output contains the footprints generated in the workflow. The BDbag and MINID for the sample submitted in this README file can be located at: [ark:/57799/b9zt35](http://minid.bd2k.org/minid/landingpage/ark:/57799/b9zt35) 
 
 ## Generating D5 (transcription factor motif file that is used for annotating the footprints 
 [Instructions](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_motif) 
