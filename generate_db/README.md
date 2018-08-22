@@ -83,17 +83,6 @@ your local directory or optionally put in a database.
 
   For example, the [urinary_bladder_16 bdbag](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/bdbag_output/urinary_bladder_16) contains the urinary_bladder_hint_16.tar.gz and urinary_bladder_wellington_16.tar.gz files.
 
-
-  You are done!
---------------
-**Below is additional notes that you may find useful, but can skip as well.**
-
-- [Output validation](#output-validation)
-- [Submit to Condor](#submit-to-condor)
-- [Build your own database](#build-your-own-database)
-- [Check database](#check-database)
-
-
 ### Output validation
 
 To compare the output, we have a simple [R script](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/validation/overlap_check.R) in [validation](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/validation) that compares two input files based on the genomic loation (chr, start, stop).
@@ -104,6 +93,16 @@ To compare the output, we have a simple [R script](https://github.com/globusgeno
   [1] "file1: 97 lines and file2: 95 lines that have 0 exact matches in footprints"
   [1] "file1: 97 lines and file2: 95 lines that have 140 exact matches in motifs"
   ```
+
+  You are done!
+--------------
+**Below is additional notes that you may find useful, but can skip as well.**
+
+- [Submit to Condor](#submit-to-condor)
+- [Build your own database](#build-your-own-database)
+- [Check database](#check-database)
+
+
 
 ### Submit to Condor
 
