@@ -101,4 +101,4 @@ That is all you need to do. You should now see a series of jobs appear in your h
 
 The output for the master workflow is a BDbag for the tissue type used as input. The output contains the footprints generated in the workflow. The BDbag and MINID for the sample submitted in this README file can be located at: ark:/57799/b9wd55
 
-![Screenshot](bdds_minid_urinary_bladder_footprints.png)
+![Screenshot](bdds_minid_urinary_bladder_footprints2.png)
