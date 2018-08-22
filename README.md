@@ -66,8 +66,8 @@ The following instructions show you how to download the BDBag, download its cont
 
 3. Use the BDBag tools to download and validate the contents of the BDBag (note this will download ~3.5GB of data): 
 
-```unzip ce6417d1-6ff7-4eb4-9412-b74743af2ff8.zip```
-```bdbag --resolve-fetch all ce6417d1-6ff7-4eb4-9412-b74743af2ff8
+```unzip ce6417d1-6ff7-4eb4-9412-b74743af2ff8.zip
+bdbag --resolve-fetch all ce6417d1-6ff7-4eb4-9412-b74743af2ff8
 
 2018-08-22 14:37:20,253 - INFO - Attempting to resolve remote file references from fetch.txt.
 2018-08-22 14:37:20,258 - INFO - Attempting GET from URL: https://www.encodeproject.org/files/ENCFF002DZB/@@download/ENCFF002DZB.fastq.gz
