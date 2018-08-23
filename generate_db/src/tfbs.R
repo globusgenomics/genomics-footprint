@@ -474,10 +474,10 @@ if(!interactive()){
              Fill_DB_Enable=FALSE))
 }
 
-cmd=paste("tar -zcvf ", output_path, "/", db,".tar.gz ", sep="")
-system(cmd, intern = TRUE)
-unlink(output_path,recursive=TRUE)
-unlink(tmp_dir, recursive=TRUE)
+#cmd=paste("tar -zcvf ", output_path, "/", db,".tar.gz ", sep="")
+#system(cmd, intern = TRUE)
+#unlink(output_path,recursive=TRUE)
+#unlink(tmp_dir, recursive=TRUE)
 #print(bpok(result))
 #print("Database fill complete")
 #print(date())
