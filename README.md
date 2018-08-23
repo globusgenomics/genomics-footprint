@@ -196,6 +196,9 @@ The output for the master workflow is a BDBag for the biosample used as input. T
 
 Please download the footprints generated from the workflows by clicking on the "Monitor for batch submission data 6" and downloading the files under hint_sorted and wellington_sorted columns. These are two bed files called ENCSR813CKU.hint_sorted.galaxy.datatypes.interval-3.Bed and ENCSR813CKU.wellington_sorted.galaxy.datatypes.interval-3.Bed respectively. You can use these files to reproduce the results by following instructions in Output validation section below. 
 
+![Screenshot](Hist1.png)
+
+
 ## Generating D5 (transcription factor motif file that is used for annotating the footprints) 
 [Instructions](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_motif) 
 
@@ -295,7 +298,19 @@ To compare the output, we have a simple [R script](https://github.com/globusgeno
   [1] "file1: 97 lines and file2: 95 lines that have 140 exact matches in motifs"
   ```
 
-  You are done!
+To compare the outputs generating from running the Globus Genomics workflows, you can run the steps above on the data downloaded (ENCSR813CKU.wellington_sorted.galaxy.datatypes.interval.Bed and ENCSR813CKU.hint_sorted.galaxy.datatypes.interval.Bed) in previous steps by following the instructions below
+
+```
+Rscript src/tfbs.R -i <directory where hint bed file is located>  -o ./output_hint -s 16 -t "urinary bladder" -m Hint -e
+
+Rscript src/tfbs.R -i <directory where wellington bed file is located>  -o ./output_wellington -s 16 -t "urinary bladder" -m Wellington -e
+
+Rscript validation/overlap_check.R ./output_hint/TFBS_OUTPUT/urinary_bladder_hint_16.ENCSR813CKU.chr1.csv ./output_wellington/TFBS_OUTPUT/urinary_bladder_wellington_16.ENCSR813CKU.chr1.csv
+
+[1] "file1: 97 lines and file2: 95 lines that have 0 exact matches in footprints"
+[1] "file1: 97 lines and file2: 95 lines that have 140 exact matches in motifs"
+```
+This shows that you were able to reproduce the results. 
      
 # Survey
 After going through the instructions, please provide your feedback through the survey [here](https://goo.gl/forms/Ag35eRlgiXithlx43)
