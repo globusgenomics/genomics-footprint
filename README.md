@@ -192,7 +192,9 @@ That is all you need to do. You should now see a series of jobs appear in your h
 
 ### Results
 
-The output for the master workflow is a BDBag for the biosample used as input. The output contains the footprints generated in the workflow. The BDbag and minid for the sample submitted in this tutorial can be located at: [ark:/57799/b9wd55](http://n2t.net/ark:/57799/b9wd55)
+The output for the master workflow is a BDBag for the biosample used as input. The output contains the footprints generated in the workflow. The BDbag and minid for the sample submitted in this tutorial can be located at: [ark:/57799/b9wd55](http://n2t.net/ark:/57799/b9wd55). 
+
+Please download the footprints generated from the workflows by clicking on the "Monitor for batch submission data 6" and downloading the files under hint_sorted and wellington_sorted columns. These are two bed files called ENCSR813CKU.hint_sorted.galaxy.datatypes.interval-3.Bed and ENCSR813CKU.wellington_sorted.galaxy.datatypes.interval-3.Bed respectively. You can use these files to reproduce the results by following instructions in Output validation section below. 
 
 ## Generating D5 (transcription factor motif file that is used for annotating the footprints) 
 [Instructions](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_motif) 
