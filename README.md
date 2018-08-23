@@ -198,7 +198,6 @@ The output for the master workflow is a BDBag for the biosample used as input. T
 [Instructions](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_motif) 
 
 ## Instructions to intersect hint or wellington footprints output with the FIMO database
-# Generate Database
 
 This directory includes the processing code to intersect [hint](http://www.regulatory-genomics.org/hint/introduction/) or [wellington](https://github.com/jpiper/pyDNase) footprints output with the FIMO database and save the results in
 your local directory or optionally put in a database.
@@ -283,7 +282,7 @@ your local directory or optionally put in a database.
 
   For example, the [urinary_bladder_16 bdbag](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/bdbag_output/urinary_bladder_16) contains the urinary_bladder_hint_16.tar.gz and urinary_bladder_wellington_16.tar.gz files.
 
-### Output validation
+# Output validation
 
 To compare the output, we have a simple [R script](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/validation/overlap_check.R) in [validation](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/validation) that compares two input files based on the genomic loation (chr, start, stop).
 
