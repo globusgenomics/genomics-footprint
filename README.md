@@ -204,7 +204,7 @@ Please download the footprints generated from the workflows by clicking on the "
 
 ## Instructions to intersect hint or wellington footprints output with the FIMO database
 
-This directory includes the processing code to intersect [hint](http://www.regulatory-genomics.org/hint/introduction/) or [wellington](https://github.com/jpiper/pyDNase) footprints output with the FIMO database and save the results in
+This [repo] (https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db) includes the processing code to intersect [hint](http://www.regulatory-genomics.org/hint/introduction/) or [wellington](https://github.com/jpiper/pyDNase) footprints output with the FIMO database and save the results in
 your local directory or optionally put in a database.
 
 - R library dependencies - The script which generates the TFBS will attempt to download the R libraries listed. However, depending on your resource, you may encounter issues in installing the library. Within the list are possible issues you may run into and how to fix them:
