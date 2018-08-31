@@ -199,9 +199,6 @@ Please download the footprints generated from the workflows by clicking on the "
 ![Screenshot](Hist1.png)
 
 
-## Generating D5 (transcription factor motif file that is used for annotating the footprints) - This section is optional
-[Instructions](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_motif) 
-
 ## Instructions to intersect hint or wellington footprints output with the FIMO database
 
 This [repo] (https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db) includes the processing code to intersect [hint](http://www.regulatory-genomics.org/hint/introduction/) or [wellington](https://github.com/jpiper/pyDNase) footprints output with the FIMO database and save the results in
