@@ -217,16 +217,16 @@ your local directory or optionally put in a database.
 - To intersect footprints with TFBS motifs, you will first need to download, unpack and resolve the data. For the Urinary bladder, seed 16 BDbag (i.e. minid ark:/57799/b9wd55):
 
   ```
-    wget https://s3.amazonaws.com/bdds-public/bags/footprints_bags/urinary_bladder.seed16.tissue.bag.zip
-    unzip ./urinary_bladder.seed16.tissue.bag.zip
-    bdbag ./urinary_bladder.seed16.tissue.bag --resolve-fetch all
+  wget https://s3.amazonaws.com/bdds-public/bags/footprints_bags/urinary_bladder.seed16.tissue.bag.zip
+  unzip ./urinary_bladder.seed16.tissue.bag.zip
+  bdbag ./urinary_bladder.seed16.tissue.bag --resolve-fetch all
 
   ```
 
 - Now you are ready to run the [tfbs.R](https://github.com/globusgenomics/genomics-footprint/blob/master/generate_db/src/tfbs.R) script available to download at:
 
   ```
-    wget https://raw.githubusercontent.com/globusgenomics/genomics-footprint/master/generate_db/src/tfbs.R
+  wget https://raw.githubusercontent.com/globusgenomics/genomics-footprint/master/generate_db/src/tfbs.R
 
   ```
 
