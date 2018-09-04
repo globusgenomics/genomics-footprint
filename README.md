@@ -15,12 +15,12 @@
         - [Import published workflows](#import-published-workflows)
         - [Execute analysis](#execute-analysis)
         - [Results](#results)
-    
+
 # Introduction
 
-In this tutorial we will demonstrate how to reproduce a biomedical analysis using a set of tools developed by the [Big Data to Discovery Science](http://bd2k.ini.usc.edu/) BD2K center. Our goal here is to provide a set of instructions that enable a reader to evaluate the FAIRness (Findability, Accessibility, Interoperability and Reusabiblity) of the data and analysis presented in the manuscript titled ["Reproducible big data science: A case study in continuous FAIRness"](https://www.biorxiv.org/content/early/2018/06/20/268755) using a representative data sample of urinary bladder from the [ENCODE](www.encodeproject.org) project. 
+In this tutorial we will demonstrate how to reproduce a biomedical analysis using a set of tools developed by the [Big Data to Discovery Science](http://bd2k.ini.usc.edu/) BD2K center. Our goal here is to provide a set of instructions that enable a reader to evaluate the FAIRness (Findability, Accessibility, Interoperability and Reusabiblity) of the data and analysis presented in the manuscript titled ["Reproducible big data science: A case study in continuous FAIRness"](https://www.biorxiv.org/content/early/2018/06/20/268755) using a representative data sample of urinary bladder from the [ENCODE](www.encodeproject.org) project.
 
-Specifically we show a multi-step analysis that creates an atlas of putative transcription factor binding sites from terabytes of ENCODE DNase I hypersensitive sites sequencing data. 
+Specifically we show a multi-step analysis that creates an atlas of putative transcription factor binding sites from terabytes of ENCODE DNase I hypersensitive sites sequencing data.
 
 After going through the instructions, please provide your feedback through the survey [here](https://goo.gl/forms/Ag35eRlgiXithlx43).
 
@@ -30,29 +30,29 @@ After going through the instructions, please provide your feedback through the s
 - Minid: A lightweight identifier for unambiguous naming of data products. Minds can be associated with files (or BDBags), resolved using a resolution service (e.g., [name-to-thing](http://n2t.net)).
 - Research Object (RO): A way of representing a dataset and its contents with arbitrary levels of detail, regardless of their location (description).
 - Globus: A hosted service that provides a collection of capabilities for managing, transfering, sharing, publishing, and discovering research data. Find out more [here](https://www.globus.org/).
-- Globus Genomics:  A hosted instance of Galaxy on the cloud that features integrated integrated Globus authentication and data management, automated elasticity on Amazon Web Services (AWS), and a collection of best practices analysis pipelines. 
+- Globus Genomics:  A hosted instance of Galaxy on the cloud that features integrated integrated Globus authentication and data management, automated elasticity on Amazon Web Services (AWS), and a collection of best practices analysis pipelines.
 
 # Prerequisites
 
 - Install the BDBag tooling
     ```pip install bdbag```
-- A [Globus](https://www.globus.org) account (you can either login using your institutional identity or create a Globus ID online) 
+- A [Globus](https://www.globus.org) account (you can either login using your institutional identity or create a Globus ID online)
 - Membership in a Globus group to access analysis services. Please join the group [here](https://www.globus.org/app/groups/6f9dd64a-a22c-11e8-95d8-0efa7862ab5c)
 
-# 1 Evaluation of FAIRness 
-We first demonstrate how the tools used in this tutorial enable FAIR access to data. 
+# 1 Evaluation of FAIRness
+We first demonstrate how the tools used in this tutorial enable FAIR access to data.
 
-In the corresponding manuscript (Tables 2 and 3) we provided a list of all the minids created and used in the analysis. These minids allow readers to locate (via a public resolver) the BDBags for each sample used in the study.  The BDBags contain all input data needed for analysis along with metadata describing each sample. 
+In the corresponding manuscript (Tables 2 and 3) we provided a list of all the minids created and used in the analysis. These minids allow readers to locate (via a public resolver) the BDBags for each sample used in the study.  The BDBags contain all input data needed for analysis along with metadata describing each sample.
 
 Here, as an example, we provide the minid of the urinary bladder tissue: [ark:/57799/b9ft3h](http://minid.bd2k.org/minid/landingpage/ark:/57799/b9ft3h). When you click on the link, it will take you to the landing page of the urinary bladder tissue data as shown in the screenshot below:
 
 ![Screenshot](generate_footprints/urinary_bladder_new.png)
 
-The landing page provides basic metadata about the object, including when it was created and by whom, a checksum for the contents, and a set of locations where the object is available. 
+The landing page provides basic metadata about the object, including when it was created and by whom, a checksum for the contents, and a set of locations where the object is available.
 
 By clicking on the link under Locations, one can download the BDBag of urinary bladder data.
 
-The following instructions show you how to download the BDBag, download its contents, and validate its contents. These are the same tools we have used in the following steps to download the raw data to Globus Genomics, perform analysis and generate results. 
+The following instructions show you how to download the BDBag, download its contents, and validate its contents. These are the same tools we have used in the following steps to download the raw data to Globus Genomics, perform analysis and generate results.
 
 1. Download the BDBag for urinary bladder (a zip filled called ce6417d1-6ff7-4eb4-9412-b74743af2ff8.zip):
 
@@ -65,7 +65,7 @@ sha256sum ce6417d1-6ff7-4eb4-9412-b74743af2ff8.zip
 39689dfa3eb438e1ebc4bbb0bbad391169b0f7e0990a798ed8512e4c051b6c2f  ce6417d1-6ff7-4eb4-9412-b74743af2ff8.zip
 ```
 
-3. Use the BDBag tools to download and validate the contents of the BDBag (note this will download ~3.5GB of data): 
+3. Use the BDBag tools to download and validate the contents of the BDBag (note this will download ~3.5GB of data):
 
 ```
 unzip ce6417d1-6ff7-4eb4-9412-b74743af2ff8.zip
@@ -90,21 +90,21 @@ bdbag --validate fast ce6417d1-6ff7-4eb4-9412-b74743af2ff8
 2018-08-22 14:59:50,176 - INFO - Validating bag: /Users/madduri/paper_test/bdb/ce6417d1-6ff7-4eb4-9412-b74743af2ff8
 2018-08-22 14:59:50,181 - INFO - Bag /Users/madduri/paper_test/bdb/ce6417d1-6ff7-4eb4-9412-b74743af2ff8 is valid
 ```
-You have now discovered, downloaded, and validated the contents of one of the input files used in the subsequent analysis. These steps aim to demonstrate that access to the data is FAIR. 
+You have now discovered, downloaded, and validated the contents of one of the input files used in the subsequent analysis. These steps aim to demonstrate that access to the data is FAIR.
 
 In the subsequent sections, the reader can use this input data to run the footprints workflows in Globus Genomics to generate footprints from Hint and Wellington algorithms.
 
 # 2 Evaluation of Reproducibility
 
-In this section we describe how to generate footprints using two algorithms: hint and wellington. The workflow is designed such that it can process any input biosample for which a minid/BDBag are available. 
+In this section we describe how to generate footprints using two algorithms: hint and wellington. The workflow is designed such that it can process any input biosample for which a minid/BDBag are available.
 
-Note: these steps take several hours to complete. 
+Note: these steps take several hours to complete.
 
 The results for analyzing the urinary bladder dataset are available at [ark:/57799/b9wd55](http://n2t.net/ark:/57799/b9wd55). For interested readers we also provide an [R notebook](http://footprints.bdds.globusgenomics.org) that demonstrates how the generated atlas of TFBS can be reused, thus demonstrating the four attributes of digital objects that are often viewed as fundamental to data-driven discovery.
 
 ## Generating Footprints
 
-To generate footprints we use a high performance workflow available in Globus Genomics: [https://bdds.globusgenomics.org](https://bdds.globusgenomics.org). The workflow integrates a number of sub-workflows as shown in figure below to generate alignment files for all replicates in biosample; then merge replicate alignment files for a patient to a single alignment file; and finally, to call the footprint algorithms for each biosample. 
+To generate footprints we use a high performance workflow available in Globus Genomics: [https://bdds.globusgenomics.org](https://bdds.globusgenomics.org). The workflow integrates a number of sub-workflows as shown in figure below to generate alignment files for all replicates in biosample; then merge replicate alignment files for a patient to a single alignment file; and finally, to call the footprint algorithms for each biosample.
 
 Each step of the process will be described such that any user logged on to Globus Genomics should be able to re-generate the footprints for a tissue type. Due to the high amount of computation used, we will provide instructions on generating footprints using data from urinary bladder as input.
 
@@ -126,7 +126,7 @@ We're now ready to run the anlysis workflow. The steps below will show you how t
 
 ### Log on to BDDS Globus Genomics
 
-Users will need to log on to [https://bdds.globusgenomics.org](https://bdds.globusgenomics.org). Please ensure that you have followed the [prerequisites](#Prerequisites) to gain access to Globus Genomics. Only users with access to the instance will be allowed to submit and run workflows. 
+Users will need to log on to [https://bdds.globusgenomics.org](https://bdds.globusgenomics.org). Please ensure that you have followed the [prerequisites](#Prerequisites) to gain access to Globus Genomics. Only users with access to the instance will be allowed to submit and run workflows.
 
 ### Generate API Key
 
@@ -175,7 +175,7 @@ For each workflow in the list above, follow these steps to import to your enviro
 Now you have imported the workflows and configured the API key for execution you are now ready to execute the analysis. Note: the analysis can take a few hours to download the data, perform alignment, and generate footprints for each of the biosamples and its replicates of the tissue type.
 
  1) Go to your [workflow environment page](https://bdds.globusgenomics.org/workflow)
- 
+
  2) You should see the 4 workflows you just imported:
 
  ![Screenshot](generate_footprints/list_of_workflows.png)
@@ -192,9 +192,9 @@ That is all you need to do. You should now see a series of jobs appear in your h
 
 ### Results
 
-The output for the master workflow is a BDBag for the biosample used as input. The output contains the footprints generated in the workflow. The BDbag and minid for the sample submitted in this tutorial can be located at: [ark:/57799/b9wd55](http://n2t.net/ark:/57799/b9wd55). 
+The output for the master workflow is a BDBag for the biosample used as input. The output contains the footprints generated in the workflow. The BDbag and minid for the sample submitted in this tutorial can be located at: [ark:/57799/b9wd55](http://n2t.net/ark:/57799/b9wd55).
 
-Please download the footprints generated from the workflows by clicking on the "Monitor for batch submission data 6" and downloading the files under hint_sorted and wellington_sorted columns. These are two bed files called ENCSR813CKU.hint_sorted.galaxy.datatypes.interval-3.Bed and ENCSR813CKU.wellington_sorted.galaxy.datatypes.interval-3.Bed respectively. You can use these files to reproduce the results by following instructions in Output validation section below. 
+Please download the footprints generated from the workflows by clicking on the "Monitor for batch submission data 6" and downloading the files under hint_sorted and wellington_sorted columns. These are two bed files called ENCSR813CKU.hint_sorted.galaxy.datatypes.interval-3.Bed and ENCSR813CKU.wellington_sorted.galaxy.datatypes.interval-3.Bed respectively. You can use these files to reproduce the results by following instructions in Output validation section below.
 
 ![Screenshot](Hist1.png)
 
@@ -204,7 +204,7 @@ Please download the footprints generated from the workflows by clicking on the "
 This [repo] (https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db) includes the processing code to intersect [hint](http://www.regulatory-genomics.org/hint/introduction/) or [wellington](https://github.com/jpiper/pyDNase) footprints output with the FIMO database and save the results in
 your local directory or optionally put in a database.
 
-- R library dependencies - The script which generates the TFBS will attempt to download the R libraries listed. However, depending on your resource, you may encounter issues in installing the library. Within the list are possible issues you may run into and how to fix them:
+- R library dependencies - The [tfbs.R](https://github.com/globusgenomics/genomics-footprint/blob/master/generate_db/src/tfbs.R) script which generates the TFBS will attempt to download the R libraries listed if not installed. However, depending on your resource, you may encounter issues in installing the library. Within the list are possible issues you may run into and how to fix them:
   - GenomicRanges (https://bioconductor.org/packages/release/bioc/html/GenomicRanges.html)
   - BiocParallel (https://bioconductor.org/packages/release/bioc/html/BiocParallel.html)
   - RUnit (https://cran.r-project.org/web/packages/RUnit/README.html)
@@ -214,15 +214,23 @@ your local directory or optionally put in a database.
     - If you run into issues installing this library you might be missing libpq-dev C library and will need to install it.
 
 
-- To intersect footprints with TFBS motifs, you will first need to download, unpack and resolve the data. For the Urinary bladder, seed 16 BDbag (i.e. minid ark:/57799/b9wd55):
+    - To intersect footprints with TFBS motifs, you will first need to download, unpack and resolve the data. For the Urinary bladder, seed 16 BDbag (i.e. minid ark:/57799/b9wd55):
 
-  ```
-  wget https://s3.amazonaws.com/bdds-public/bags/footprints_bags/urinary_bladder.seed16.tissue.bag.zip
-  unzip ./urinary_bladder.seed16.tissue.bag.zip
-  bdbag ./urinary_bladder.seed16.tissue.bag --resolve-fetch all
-  ```
+      ```
+      wget https://s3.amazonaws.com/bdds-public/bags/footprints_bags/urinary_bladder.seed16.tissue.bag.zip
+      unzip ./urinary_bladder.seed16.tissue.bag.zip
+      bdbag ./urinary_bladder.seed16.tissue.bag --resolve-fetch all
 
-  - Now you are ready to run the [tfbs.R](https://github.com/globusgenomics/genomics-footprint/blob/master/generate_db/src/tfbs.R) script. You can get the help menu for the script by:
+      ```
+
+      - Now you are ready to run the [tfbs.R](https://github.com/globusgenomics/genomics-footprint/blob/master/generate_db/src/tfbs.R) script available to download at:
+
+      ```
+      wget https://raw.githubusercontent.com/globusgenomics/genomics-footprint/master/generate_db/src/tfbs.R
+
+      ```
+
+       You can get the help menu for the script by:
 
   ```
   $ Rscript ./tfbs.R --help
@@ -276,8 +284,8 @@ your local directory or optionally put in a database.
     - The BDBag method will assume that you have downloaded the BDBag directly from its location and have not modified the contents of the bag. If you have modified the contents, then it's best to use the "-i" parameter to indicate location of the input footprint files.
 
   Note: The script is set to use 4 workers (cpus).  You can adjust this by modifying the "-w" parameter.
-  
-  You can also try to test quickly by setting the "-e" flag. 
+
+  You can also try to test quickly by setting the "-e" flag.
   This will capture the first 10 lines in the footprint input file and then intersect with FIMO.
 
 - The output is a BDBag that contains compressed TFBS files for hint and wellington.
@@ -307,7 +315,7 @@ Rscript validation/overlap_check.R ./output_hint/TFBS_OUTPUT/urinary_bladder_hin
 [1] "file1: 97 lines and file2: 95 lines that have 0 exact matches in footprints"
 [1] "file1: 97 lines and file2: 95 lines that have 140 exact matches in motifs"
 ```
-This shows that you were able to reproduce the results. 
-     
+This shows that you were able to reproduce the results.
+
 # Survey
 After going through the instructions, please provide your feedback through the survey [here](https://goo.gl/forms/Ag35eRlgiXithlx43)

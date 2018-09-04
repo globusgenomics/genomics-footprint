@@ -3,7 +3,7 @@
 This directory includes the processing code to intersect [hint](http://www.regulatory-genomics.org/hint/introduction/) or [wellington](https://github.com/jpiper/pyDNase) footprints output with the FIMO database and save the results in
 your local directory or optionally put in a database.
 
-- R library dependencies - The script which generates the TFBS will attempt to download the R libraries listed. However, depending on your resource, you may encounter issues in installing the library. Within the list are possible issues you may run into and how to fix them:
+- R library dependencies - The [tfbs.R](https://github.com/globusgenomics/genomics-footprint/blob/master/generate_db/src/tfbs.R) script which generates the TFBS will attempt to download the R libraries listed if not installed. However, depending on your resource, you may encounter issues in installing the library. Within the list are possible issues you may run into and how to fix them:
   - GenomicRanges (https://bioconductor.org/packages/release/bioc/html/GenomicRanges.html)
   - BiocParallel (https://bioconductor.org/packages/release/bioc/html/BiocParallel.html)
   - RUnit (https://cran.r-project.org/web/packages/RUnit/README.html)
