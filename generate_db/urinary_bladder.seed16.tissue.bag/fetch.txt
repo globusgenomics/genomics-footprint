@@ -1,0 +1,2 @@
+https://s3.amazonaws.com/bdds-public/seed16_footprints/urinary_bladder/ENCSR813CKU/ENCSR813CKU.hint_sorted.galaxy.datatypes.interval.Bed	73398173	data/ENCSR813CKU.hint_sorted.galaxy.datatypes.interval.Bed
+https://s3.amazonaws.com/bdds-public/seed16_footprints/urinary_bladder/ENCSR813CKU/ENCSR813CKU.wellington_sorted.galaxy.datatypes.interval.Bed	18693243	data/ENCSR813CKU.wellington_sorted.galaxy.datatypes.interval.Bed

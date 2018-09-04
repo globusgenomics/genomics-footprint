@@ -6,10 +6,17 @@
 # database is in ../dbInitialization/createHintTest.sql
 
 # Source the libraries
-packages <- c("GenomicRanges", "RPostgreSQL", "RUnit", "BiocParallel", "data.table", "optparse")
-if (length(setdiff(packages, rownames(installed.packages()))) > 0) {
-  install.packages(setdiff(packages, rownames(installed.packages())))
+CRAN_packages <- c("RPostgreSQL", "RUnit", "data.table", "optparse")
+BIOC_packages <- c("GenomicRanges", "BiocParallel")
+if (length(setdiff(CRAN_packages, rownames(installed.packages()))) > 0) {
+  install.packages(setdiff(CRAN_packages, rownames(installed.packages())),
+                   repos = "https://cloud.r-project.org/")
 }
+if (length(setdiff(BIOC_packages, rownames(installed.packages()))) > 0) {
+  install.packages("BiocManager", repos = "https://cloud.r-project.org/")
+  BiocManager::install(setdiff(BIOC_packages, rownames(installed.packages())))
+}
+
 suppressPackageStartupMessages(library(GenomicRanges))
 suppressPackageStartupMessages(library(RPostgreSQL))
 suppressPackageStartupMessages(library(RUnit))
@@ -331,6 +338,7 @@ fillAllSamplesByChromosome <- function(chromosome,
     library(data.table)
     fname=paste(outputPath,"/",dbTable,".",sampleID,".",chromosome,".csv",sep="")
     fwrite(tbl,fname, sep=",")
+    printf("%s is generated", fname)
 
 
     #-----------------------------------------------------------------------------------------------
