@@ -1,2 +1,0 @@
-41fa190cb67ec905fd4201fe0fc447c0  data/ENCSR813CKU.hint_sorted.galaxy.datatypes.interval.Bed
-6bebb764e0947e753fb2d494c9813aba  data/ENCSR813CKU.wellington_sorted.galaxy.datatypes.interval.Bed

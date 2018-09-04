@@ -338,8 +338,6 @@ fillAllSamplesByChromosome <- function(chromosome,
     library(data.table)
     fname=paste(outputPath,"/",dbTable,".",sampleID,".",chromosome,".csv",sep="")
     fwrite(tbl,fname, sep=",")
-    printf("%s is generated", fname)
-
 
     #-----------------------------------------------------------------------------------------------
     # Below is to fill database with the data so please uncomment if that's what you want.
@@ -365,6 +363,7 @@ fillAllSamplesByChromosome <- function(chromosome,
         dbDisconnect(dbConnection.con)
     }
   } # for sampleID
+  message(chromosome, " in ", sampleID, " is completed")
 } # fill.all.samples.by.chromosome
 #-------------------------------------------------------------------------------
 

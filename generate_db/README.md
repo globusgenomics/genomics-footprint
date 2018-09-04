@@ -19,6 +19,9 @@ your local directory or optionally put in a database.
   wget https://s3.amazonaws.com/bdds-public/bags/footprints_bags/urinary_bladder.seed16.tissue.bag.zip
   unzip ./urinary_bladder.seed16.tissue.bag.zip
   bdbag ./urinary_bladder.seed16.tissue.bag --resolve-fetch all
+
+  or download pre-resolved one from:
+  wget https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/urinary_bladder.seed16.tissue.bag
   ```
 
   - Now you are ready to run the [tfbs.R](https://github.com/globusgenomics/genomics-footprint/blob/master/generate_db/src/tfbs.R) script. You can get the help menu for the script by:
@@ -75,8 +78,8 @@ your local directory or optionally put in a database.
     - The BDBag method will assume that you have downloaded the BDBag directly from its location and have not modified the contents of the bag. If you have modified the contents, then it's best to use the "-i" parameter to indicate location of the input footprint files.
 
   Note: The script is set to use 4 workers (cpus).  You can adjust this by modifying the "-w" parameter.
-  
-  You can also try to test quickly by setting the "-e" flag. 
+
+  You can also try to test quickly by setting the "-e" flag.
   This will capture the first 10 lines in the footprint input file and then intersect with FIMO.
 
 - The output is a BDBag that contains compressed TFBS files for hint and wellington.
