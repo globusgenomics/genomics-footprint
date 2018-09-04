@@ -363,7 +363,7 @@ fillAllSamplesByChromosome <- function(chromosome,
         dbDisconnect(dbConnection.con)
     }
   } # for sampleID
-  message(chromosome, " in ", sampleID, " is completed")
+  message(sampleID, " is completed")
 } # fill.all.samples.by.chromosome
 #-------------------------------------------------------------------------------
 
@@ -461,7 +461,8 @@ if(!exists("db.fimo"))
 #-------------------------------------------------------------------------------
 
 if(!interactive()){
-    chromosomes <- paste0("chr",c(1:22,"X","Y","MT"))
+    #chromosomes <- paste0("chr",c(1:22,"X","Y","MT"))
+    chromosomes <- paste0("chr",c(1:3))
 
     # Create parallel structure here
     register(MulticoreParam(workers = opt$w, stop.on.error = FALSE, log = TRUE), default = TRUE)
