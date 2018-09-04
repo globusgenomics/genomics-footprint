@@ -433,8 +433,7 @@ if ( is.null(opt$i) & is.null(opt$b)) {
     stop("Missing input or BDBag path!\n")
 } else {
     if (! is.null(opt$i)) {  ## input directory path
-        print(list.files(opt$i))
-        file.copy(paste(opt$i,"/",list.files(opt$i),sep=""), tmp_dir)
+        file.copy(paste(opt$i,"/",list.files(opt$i, pattern=method),sep=""), tmp_dir)
     } else {   ## BDBag path
         databag_path = paste(opt$b,"data", sep="/")
         file.copy(paste(databag_path,"/",list.files(databag_path, pattern=method),sep=""), tmp_dir)
@@ -461,8 +460,7 @@ if(!exists("db.fimo"))
 #-------------------------------------------------------------------------------
 
 if(!interactive()){
-    #chromosomes <- paste0("chr",c(1:22,"X","Y","MT"))
-    chromosomes <- paste0("chr",c(1:3))
+    chromosomes <- paste0("chr",c(1:22,"X","Y","MT"))
 
     # Create parallel structure here
     register(MulticoreParam(workers = opt$w, stop.on.error = FALSE, log = TRUE), default = TRUE)
