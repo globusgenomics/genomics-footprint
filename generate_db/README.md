@@ -22,11 +22,11 @@ your local directory or optionally put in a database.
 
   ```
 
-  - Now you are ready to run the [tfbs.R](https://github.com/globusgenomics/genomics-footprint/blob/master/generate_db/src/tfbs.R) script available to download:
+  - Now you are ready to run the [tfbs.R](https://github.com/globusgenomics/genomics-footprint/blob/master/generate_db/src/tfbs.R) script available to download at:
 
    ```
-   wget https://raw.githubusercontent.com/globusgenomics/genomics-footprint/master/generate_db/src/tfbs.R.
-   
+   wget https://raw.githubusercontent.com/globusgenomics/genomics-footprint/master/generate_db/src/tfbs.R
+
    ```
 
   You can get the help menu for the script by:
