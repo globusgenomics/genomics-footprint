@@ -21,7 +21,7 @@ your local directory or optionally put in a database.
   bdbag ./urinary_bladder.seed16.tissue.bag --resolve-fetch all
 
   or download pre-resolved one from:
-  wget https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/urinary_bladder.seed16.tissue.bag
+  wget https://github.com/globusgenomics/genomics-footprint/blob/master/generate_db/urinary_bladder.seed16.tissue.bag.zip
   ```
 
   - Now you are ready to run the [tfbs.R](https://github.com/globusgenomics/genomics-footprint/blob/master/generate_db/src/tfbs.R) script. You can get the help menu for the script by:
