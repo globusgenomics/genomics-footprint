@@ -201,8 +201,9 @@ mergeFimoWithFootprints <- function(tbl.fp, sampleID, dbConnection = db.fimo, me
         tbl.fp$fp.end <- NA
 
         tbl.regions <- tbl.fp
+        invisible(tbl.regions)
 
-        } else{
+    } else{
             # this may be unneccessary, but it also may slightly reduce the size of
             #each run by taking the min and max location of each footprint on the chromosome,
             #effectively cutting off the ends
@@ -246,11 +247,12 @@ mergeFimoWithFootprints <- function(tbl.fp, sampleID, dbConnection = db.fimo, me
                                       wellington.score=tbl.fp[tbl.overlaps$subjectHits, "score"],
                                       fp.start=tbl.fp[tbl.overlaps$subjectHits, "start"],
                                       fp.end=tbl.fp[tbl.overlaps$subjectHits, "end"])
-                  }
+                  invisible(tbl.regions)
+                }
             }
         }
 
-  invisible(tbl.regions)
+  #invisible(tbl.regions)
 
 } # mergeFimoWithFootprints
 #-------------------------------------------------------------------------------
