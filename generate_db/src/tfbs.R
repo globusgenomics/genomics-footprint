@@ -246,7 +246,7 @@ mergeFimoWithFootprints <- function(tbl.fp, sampleID, dbConnection = db.fimo, me
                                       wellington.score=tbl.fp[tbl.overlaps$subjectHits, "score"],
                                       fp.start=tbl.fp[tbl.overlaps$subjectHits, "start"],
                                       fp.end=tbl.fp[tbl.overlaps$subjectHits, "end"])
-                                      }
+                  }
             }
         }
 
