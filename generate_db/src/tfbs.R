@@ -464,7 +464,7 @@ if(!exists("db.fimo"))
 #-------------------------------------------------------------------------------
 
 if(!interactive()){
-    chromosomes <- paste0("chr",c(1:22,"X","Y","MT"))
+    chromosomes <- paste0("chr",c(1:22,"X","Y"))
 
     # Create parallel structure here
     register(MulticoreParam(workers = opt$w, stop.on.error = FALSE, log = TRUE), default = TRUE)
@@ -483,11 +483,3 @@ if(!interactive()){
              method = toupper(method),
              Fill_DB_Enable=FALSE))
 }
-
-#cmd=paste("tar -zcvf ", output_path, "/", db,".tar.gz ", sep="")
-#system(cmd, intern = TRUE)
-#unlink(output_path,recursive=TRUE)
-#unlink(tmp_dir, recursive=TRUE)
-#print(bpok(result))
-#print("Database fill complete")
-#print(date())
