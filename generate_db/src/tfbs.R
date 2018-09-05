@@ -241,10 +241,12 @@ mergeFimoWithFootprints <- function(tbl.fp, sampleID, dbConnection = db.fimo, me
                 tbl.fimo$sample_id <- sampleID
 
                 tbl.regions <- tbl.fimo[tbl.overlaps$queryHits,]
-                tbl.regions <- cbind(tbl.regions,
-                                     wellington.score=tbl.fp[tbl.overlaps$subjectHits, "score"],
-                                     fp.start=tbl.fp[tbl.overlaps$subjectHits, "start"],
-                                     fp.end=tbl.fp[tbl.overlaps$subjectHits, "end"])
+                if(exists("tbl.regions")==TRUE){
+                  tbl.regions <- cbind(tbl.regions,
+                                      wellington.score=tbl.fp[tbl.overlaps$subjectHits, "score"],
+                                      fp.start=tbl.fp[tbl.overlaps$subjectHits, "start"],
+                                      fp.end=tbl.fp[tbl.overlaps$subjectHits, "end"])
+                                      }
             }
         }
 
@@ -363,7 +365,7 @@ fillAllSamplesByChromosome <- function(chromosome,
         dbDisconnect(dbConnection.con)
     }
   } # for sampleID
-  message(sampleID, " is completed")
+  message(sampleID, " ", chromosome, " is completed")
 } # fill.all.samples.by.chromosome
 #-------------------------------------------------------------------------------
 
