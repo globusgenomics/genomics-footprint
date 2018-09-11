@@ -483,3 +483,8 @@ if(!interactive()){
              method = toupper(method),
              Fill_DB_Enable=FALSE))
 }
+
+cmd=paste("tar zcvf ",  opt$o, "/", db,".tar.gz ",output_path, "/", db,"*", sep="")
+system(cmd, intern = TRUE)
+unlink(output_path,recursive=TRUE)
+unlink(tmp_dir, recursive=TRUE)
