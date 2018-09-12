@@ -275,7 +275,7 @@ To compare the output between two methods, please download this simple [R script
    ```
    wget https://raw.githubusercontent.com/globusgenomics/genomics-footprint/master/generate_db/validation/overlap_check.R
 
-   Rscript overlap_check.R urinary_bladder_hint_16.ENCSR813CKU.chr1.csv urinary_bladder_wellington_16.ENCSR813CKU.chr1.csv
+   Rscript overlap_check.R hint_output/TFBS_OUTPUT/urinary_bladder_hint_16.ENCSR813CKU.chr1.csv wellington_output/TFBS_OUTPUT/urinary_bladder_wellington_16.ENCSR813CKU.chr1.csv
 
   [1] "file1: 97 lines and file2: 95 lines that have 0 exact matches in footprints"
   [1] "file1: 97 lines and file2: 95 lines that have 140 exact matches in motifs"
@@ -284,9 +284,9 @@ To compare the output between two methods, please download this simple [R script
 To compare your own footprint output generated from the Globus Genomics workflow, you can follow the instructions below:
 
 ```
-Rscript ./tfbs.R -i <directory where hint bed file is located>  -o ./output_hint -s 16 -t "urinary bladder" -m Hint -e
+Rscript ./tfbs.R -i <directory where hint bed file is located>  -o ./hint_output -s 16 -t "urinary bladder" -m Hint -e
 
-Rscript ./tfbs.R -i <directory where wellington bed file is located>  -o ./output_wellington -s 16 -t "urinary bladder" -m Wellington -e
+Rscript ./tfbs.R -i <directory where wellington bed file is located>  -o ./wellington_output -s 16 -t "urinary bladder" -m Wellington -e
 
 Rscript overlap_check.R hint_output/TFBS_OUTPUT/urinary_bladder_hint_16.ENCSR813CKU.chr1.csv wellington_output/TFBS_OUTPUT/urinary_bladder_wellington_16.ENCSR813CKU.chr1.csv
 
