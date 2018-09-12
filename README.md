@@ -251,13 +251,13 @@ Before you begin, make sure postgresql and R (3.4 or higher) are installed on yo
   - Repeat the step with Wellington by:
 
   ```
-  $ Rscript ./tfbs.R -b ./urinary_bladder.seed16.tissue.bag -o ./hint_output -s 16 -t "urinary bladder" -m Wellington -e -w 1
+  $ Rscript ./tfbs.R -b ./urinary_bladder.seed16.tissue.bag -o ./wellington_output -s 16 -t "urinary bladder" -m Wellington -e -w 1
   ```
 
   or
 
   ```
-  $ Rscript ./tfbs.R -i ./footprint_bed_files -o ./hint_output -s 16 -t "urinary bladder" -m Wellington -e -w 1
+  $ Rscript ./tfbs.R -i ./footprint_bed_files -o ./wellington_output -s 16 -t "urinary bladder" -m Wellington -e -w 1
   ```
 
     - The BDBag method will assume that you have downloaded the BDBag directly from its location and have not modified the contents of the bag. If you have modified the contents, then it's best to use the "-i" parameter to indicate location of the input footprint files.
