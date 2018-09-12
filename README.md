@@ -8,7 +8,7 @@
 - [FAIRness](#1-evaluation-of-fairness)
 - [Reproducibility](#2-evaluation-of-reproducibility)
     - [Screenshot of Workflow](#screenshot-of-workflow)
-    - [Input biosample](#selecting-an-inpu-biosample)
+    - [Input biosample](#selecting-an-input-biosample)
     - [Process steps](#process-steps)
         - [Log on to BDDS Globus Genomics](#log-on-to-bdds-globus-genomics)
         - [Generate API Key](#generate-api-key)
