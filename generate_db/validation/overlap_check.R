@@ -3,8 +3,29 @@
 #  This will print two lines for how many footprints and motifs are matched beween the input files.
 #---------------------------------------------------------------------------------------------------
 
-library(data.table)
-library(GenomicRanges)
+# Source the libraries
+CRAN_packages <- "data.table"
+BIOC_packages <- "GenomicRanges"
+
+if (length(setdiff(CRAN_packages, rownames(installed.packages()))) > 0) {
+  install.packages(setdiff(CRAN_packages, rownames(installed.packages())),
+                   repos = "https://cloud.r-project.org/")
+}
+
+if (as.numeric(R.version$minor) >= 5){
+        if (length(setdiff(BIOC_packages, rownames(installed.packages()))) > 0) {
+          install.packages("BiocManager", repos = "https://cloud.r-project.org/")
+          BiocManager::install(setdiff(BIOC_packages, rownames(installed.packages())))
+        }
+}else{
+        if (length(setdiff(BIOC_packages, rownames(installed.packages()))) > 0) {
+                source("https://bioconductor.org/biocLite.R")
+                biocLite(setdiff(BIOC_packages, rownames(installed.packages())))
+        }
+}
+
+suppressPackageStartupMessages(library(data.table))
+suppressPackageStartupMessages(library(GenomicRanges))
 
 args = commandArgs(trailingOnly=TRUE)
 
