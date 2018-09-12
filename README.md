@@ -272,7 +272,6 @@ Rscript ./overlap_check.R ./output_hint/TFBS_OUTPUT/urinary_bladder_hint_16.ENCS
 [1] "file1: 97 lines and file2: 95 lines that have 0 exact matches in footprints"
 [1] "file1: 97 lines and file2: 95 lines that have 140 exact matches in motifs"
 ```
-This shows that you were able to reproduce the results.
 
 # Survey
 After going through the instructions, please provide your feedback through the survey [here](https://goo.gl/forms/Ag35eRlgiXithlx43)
