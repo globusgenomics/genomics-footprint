@@ -16,7 +16,7 @@
         - [Execute analysis](#execute-analysis)
         - [Results](#results)
     - [Intersect footprints with FIMO](#instructions-to-intersect-hint-or-wellington-footprints-output-with-the-fimo-database)
-    - [Output validation](#output-validation)
+    - [Output comparison](#output-comparison)
 - [Survey](#survey)
 
 # Introduction
@@ -218,50 +218,59 @@ Before you begin, make sure postgresql and R (3.4 or higher) are installed on yo
       ```
 
 
-- To intersect footprints with TFBS motifs, you will first need to download, unpack and resolve the data. Here, we provide an example of the urinary bladder, seed 16 BDbag (i.e. minid ark:/57799/b9wd55):
+- To intersect footprints with TFBS motifs, you will first need to download, unpack and resolve the footprints data. Here, we provide an example of the urinary bladder, seed 16 BDbag (i.e. minid ark:/57799/b9wd55):
 
   ```
   wget https://s3.amazonaws.com/bdds-public/bags/footprints_bags/urinary_bladder.seed16.tissue.bag.zip
   unzip ./urinary_bladder.seed16.tissue.bag.zip
   bdbag ./urinary_bladder.seed16.tissue.bag --resolve-fetch all
-
   ```
 
-- Now you need to download the [tfbs.R](https://github.com/globusgenomics/genomics-footprint/blob/master/generate_db/src/tfbs.R) script:
+- Then, download the [tfbs.R](https://github.com/globusgenomics/genomics-footprint/blob/master/generate_db/src/tfbs.R) script by:
 
   ```
   wget https://raw.githubusercontent.com/globusgenomics/genomics-footprint/master/generate_db/src/tfbs.R
-
   ```
 
-  - You can use the BDBag as input to generate the TFBS for the urinary bladder (seed16, hint) BDBag by running the following.
-    (to speed up, you may assign more cpus (i.e., -w 4) depending on the resource availability)
+  - Using the BDBag as input, run the command below to generate the TFBS for the urinary bladder (seed16, hint) BDBag.
+
+    (To speed up, you may assign more cpus (i.e., -w 4) depending on the resource availability)
 
   ```
   $ Rscript ./tfbs.R -b ./urinary_bladder.seed16.tissue.bag -o ./hint_output -s 16 -t "urinary bladder" -m Hint -e -w 1
-
   ```
 
-  - If you have placed your footprints BED files in a separate directory (not in the BDBag), then you can use this instead.
+  - Alternatively, you can place your footprints BED files in a separate directory (not in the BDBag) and do this instead.
+
     (to speed up, you may assign more cpus (i.e., -w 4) depending on the resource availability)
 
   ```
   $ Rscript ./tfbs.R -i ./footprint_bed_files -o ./hint_output -s 16 -t "urinary bladder" -m Hint -e -w 1
+  ```
 
+  - Repeat the step with Wellington by:
+
+  ```
+  $ Rscript ./tfbs.R -b ./urinary_bladder.seed16.tissue.bag -o ./hint_output -s 16 -t "urinary bladder" -m Wellington -e -w 1
+  ```
+
+  or
+
+  ```
+  $ Rscript ./tfbs.R -i ./footprint_bed_files -o ./hint_output -s 16 -t "urinary bladder" -m Wellington -e -w 1
   ```
 
     - The BDBag method will assume that you have downloaded the BDBag directly from its location and have not modified the contents of the bag. If you have modified the contents, then it's best to use the "-i" parameter to indicate location of the input footprint files.
 
-  You can also try to test quickly by setting the "-e" flag.
-  This will capture the first 10 lines in the footprint input file and then intersect with FIMO.
+    - By setting the "-e" flag (test mode), this will capture the first 10 lines in the footprints file to intersect with FIMO.
 
-- The output is a BDBag that contains compressed TFBS files for hint and wellington.
+- The output is a BDBag that contains compressed TFBS files for hint or wellington.
 
   For example, the [urinary_bladder_16 bdbag](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/bdbag_output/urinary_bladder_16) contains the urinary_bladder_hint_16.tar.gz and urinary_bladder_wellington_16.tar.gz files.
 
-## Output validation
+## Output comparison
 
-To compare the output, please download this simple [R script](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/validation/overlap_check.R) and then run:
+To compare the output between two methods, please download this simple [R script](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/validation/overlap_check.R) and then run:
 
    ```
    wget https://raw.githubusercontent.com/globusgenomics/genomics-footprint/master/generate_db/validation/overlap_check.R
