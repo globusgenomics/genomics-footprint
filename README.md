@@ -17,7 +17,7 @@
         - [Results](#results)
     - [Intersect footprints with FIMO](#instructions-to-intersect-hint-or-wellington-footprints-output-with-the-fimo-database)
     - [Output validation](#output-validation)
-    - [Survey](#survey)
+- [Survey](#survey)
 
 # Introduction
 
@@ -204,20 +204,9 @@ Please download the footprints generated from the workflows by clicking on the "
 
 ## Instructions to intersect hint or wellington footprints output with the FIMO database
 
-This [repo](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db) includes the processing code to intersect [hint](http://www.regulatory-genomics.org/hint/introduction/) or [wellington](https://github.com/jpiper/pyDNase) footprints output with the FIMO database and save the results in
-your local directory or optionally put in a database.
+This [repo](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db) includes the processing code to intersect [hint](http://www.regulatory-genomics.org/hint/introduction/) or [wellington](https://github.com/jpiper/pyDNase) footprints output with the FIMO database and save the results in your local directory or optionally put in a database.
 
-- R library dependencies - The [tfbs.R](https://github.com/globusgenomics/genomics-footprint/blob/master/generate_db/src/tfbs.R) script which generates the TFBS will attempt to download the R libraries listed if not installed. However, depending on your resource, you may encounter issues in installing the library. Within the list are possible issues you may run into and how to fix them:
-  - GenomicRanges (https://bioconductor.org/packages/release/bioc/html/GenomicRanges.html)
-  - BiocParallel (https://bioconductor.org/packages/release/bioc/html/BiocParallel.html)
-  - RUnit (https://cran.r-project.org/web/packages/RUnit/README.html)
-    - To install run in R shell: install.packages("RUnit")
-  - RPostgreSQL (https://cran.r-project.org/web/packages/RPostgreSQL/index.html)
-    - To install run in R shell: install.packages("RPostgreSQL")
-    - If you run into issues installing this library you might be missing libpq-dev C library and will need to install it.
-
-
-- To intersect footprints with TFBS motifs, you will first need to download, unpack and resolve the data. For the Urinary bladder, seed 16 BDbag (i.e. minid ark:/57799/b9wd55):
+- To intersect footprints with TFBS motifs, you will first need to download, unpack and resolve the data. Here, we provide an example of the urinary bladder, seed 16 BDbag (i.e. minid ark:/57799/b9wd55):
 
   ```
   wget https://s3.amazonaws.com/bdds-public/bags/footprints_bags/urinary_bladder.seed16.tissue.bag.zip
@@ -226,47 +215,10 @@ your local directory or optionally put in a database.
 
   ```
 
-- Now you are ready to run the [tfbs.R](https://github.com/globusgenomics/genomics-footprint/blob/master/generate_db/src/tfbs.R) script available to download at:
+- Now you need to download and run the [tfbs.R](https://github.com/globusgenomics/genomics-footprint/blob/master/generate_db/src/tfbs.R) script:
 
   ```
   wget https://raw.githubusercontent.com/globusgenomics/genomics-footprint/master/generate_db/src/tfbs.R
-
-  ```
-
-  You can get the help menu for the script by:
-
-  ```
-  $ Rscript ./tfbs.R --help
-  Usage: ./tfbs.R [options]
-
-  Options:
-	-i INPUT, --input=INPUT
-		Input directory path to your footprint files. You can supply this option or the bag option but not both.
-
-	-b BAG, --bag=BAG
-		BDBag path of your footprint files. You can supply this option or the input option but not both.
-
-	-o OUTPUT, --output=OUTPUT
-		Output directory to your TFBS files
-
-	-t TISSUE, --tissue=TISSUE
-		Tissue type of the footprints
-
-	-m METHOD, --method=METHOD
-		Method used to generate footprints - Options include wellington or hint.
-
-	-s SEED, --seed=SEED
-		Footprints seed - Options include 16, or 20
-
-	-w WORKERS, --workers=WORKERS
-		Number of worker threads to use
-
-	-e, --eval
-		Run evaluation for only the first 10 lines in your footprints files.
-
-	-h, --help
-		Show this help message and exit
-
 
   ```
 
@@ -295,25 +247,27 @@ your local directory or optionally put in a database.
 
   For example, the [urinary_bladder_16 bdbag](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/bdbag_output/urinary_bladder_16) contains the urinary_bladder_hint_16.tar.gz and urinary_bladder_wellington_16.tar.gz files.
 
-# Output validation
+## Output validation
 
-To compare the output, we have a simple [R script](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/validation/overlap_check.R) in [validation](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/validation) that compares two input files based on the genomic loation (chr, start, stop).
+To compare the output, please download this simple [R script](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db/validation/overlap_check.R) and then run:
 
-  ```
-  Rscript overlap_check.R urinary_bladder_hint_16_ENCSR813CKU_chr1.csv urinary_bladder_wellington_16_chr1.csv
+   ```
+   wget https://raw.githubusercontent.com/globusgenomics/genomics-footprint/master/generate_db/validation/overlap_check.R
+
+   Rscript overlap_check.R urinary_bladder_hint_16_ENCSR813CKU_chr1.csv urinary_bladder_wellington_16_chr1.csv
 
   [1] "file1: 97 lines and file2: 95 lines that have 0 exact matches in footprints"
   [1] "file1: 97 lines and file2: 95 lines that have 140 exact matches in motifs"
   ```
 
-To compare the outputs generating from running the Globus Genomics workflows, you can run the steps above on the data downloaded (ENCSR813CKU.wellington_sorted.galaxy.datatypes.interval.Bed and ENCSR813CKU.hint_sorted.galaxy.datatypes.interval.Bed) in previous steps by following the instructions below
+To compare your own footprint output generated from the Globus Genomics workflow, you can follow the instructions below:
 
 ```
-Rscript src/tfbs.R -i <directory where hint bed file is located>  -o ./output_hint -s 16 -t "urinary bladder" -m Hint -e
+Rscript ./tfbs.R -i <directory where hint bed file is located>  -o ./output_hint -s 16 -t "urinary bladder" -m Hint -e
 
-Rscript src/tfbs.R -i <directory where wellington bed file is located>  -o ./output_wellington -s 16 -t "urinary bladder" -m Wellington -e
+Rscript ./tfbs.R -i <directory where wellington bed file is located>  -o ./output_wellington -s 16 -t "urinary bladder" -m Wellington -e
 
-Rscript validation/overlap_check.R ./output_hint/TFBS_OUTPUT/urinary_bladder_hint_16.ENCSR813CKU.chr1.csv ./output_wellington/TFBS_OUTPUT/urinary_bladder_wellington_16.ENCSR813CKU.chr1.csv
+Rscript ./overlap_check.R ./output_hint/TFBS_OUTPUT/urinary_bladder_hint_16.ENCSR813CKU.chr1.csv ./output_wellington/TFBS_OUTPUT/urinary_bladder_wellington_16.ENCSR813CKU.chr1.csv
 
 [1] "file1: 97 lines and file2: 95 lines that have 0 exact matches in footprints"
 [1] "file1: 97 lines and file2: 95 lines that have 140 exact matches in motifs"
