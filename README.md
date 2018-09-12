@@ -215,7 +215,7 @@ This [repo](https://github.com/globusgenomics/genomics-footprint/tree/master/gen
 
   ```
 
-- Now you need to download and run the [tfbs.R](https://github.com/globusgenomics/genomics-footprint/blob/master/generate_db/src/tfbs.R) script:
+- Now you need to download the [tfbs.R](https://github.com/globusgenomics/genomics-footprint/blob/master/generate_db/src/tfbs.R) script:
 
   ```
   wget https://raw.githubusercontent.com/globusgenomics/genomics-footprint/master/generate_db/src/tfbs.R
