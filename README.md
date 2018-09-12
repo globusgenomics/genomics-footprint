@@ -3,12 +3,12 @@
 # Table of Contents
 
 - [Introduction](#introduction)
-- [Glossary](#Glossary)
-- [Prerequisites](#Prerequisites)
-- [FAIRness](#1-Evaluation-of-FAIRness)
-- [Reproducibility](#2-Evaluation-of-Reproducibility)
+- [Glossary](#glossary)
+- [Prerequisites](#prerequisites)
+- [FAIRness](#1-evaluation-of-fairness)
+- [Reproducibility](#2-evaluation-of-reproducibility)
     - [Screenshot of Workflow](#screenshot-of-workflow)
-    - [Input biosample](#Selecting-an-inpu-biosample)
+    - [Input biosample](#selecting-an-inpu-biosample)
     - [Process steps](#process-steps)
         - [Log on to BDDS Globus Genomics](#log-on-to-bdds-globus-genomics)
         - [Generate API Key](#generate-api-key)
