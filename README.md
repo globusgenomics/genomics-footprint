@@ -17,7 +17,7 @@
         - [Results](#results)
     - [Intersect footprints with FIMO](#instructions-to-intersect-hint-or-wellington-footprints-output-with-the-fimo-database)
     - [Output validation](#output-validation)
-    - [Output validation](#survey)
+    - [Survey](#survey)
 
 # Introduction
 
