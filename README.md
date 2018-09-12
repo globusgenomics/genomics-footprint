@@ -15,6 +15,9 @@
         - [Import published workflows](#import-published-workflows)
         - [Execute analysis](#execute-analysis)
         - [Results](#results)
+    - [Intersect footprints with FIMO](#instructions-to-intersect-hint-or-wellington-footprints-output-with-the-fimo-database)
+    - [Output validation](#output-validation)
+    - [Output validation](#survey)
 
 # Introduction
 
