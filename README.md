@@ -206,11 +206,11 @@ Please download the footprints generated from the workflows by clicking on the "
 
 This [repo](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db) includes the processing code to intersect [hint](http://www.regulatory-genomics.org/hint/introduction/) or [wellington](https://github.com/jpiper/pyDNase) footprints output with the FIMO database and save the results in your local directory or optionally put in a database.
 
-- Important - make sure you have postgresql installed on your machine. If not please install by:
+- Important - make sure you have postgresql and R (3.4 or higher) installed on your machine. If not please install by:
 
   - For linux,
       ```
-      sudo apt-get install postgresql postgresql-contrib libpq-dev libcurl4-openssl-dev
+      sudo apt-get install postgresql postgresql-contrib libpq-dev libcurl4-openssl-dev unzip
       ```
    - For Mac,
       ```
@@ -234,17 +234,19 @@ This [repo](https://github.com/globusgenomics/genomics-footprint/tree/master/gen
 
   ```
 
-  - You can use the BDBag as input to generate the TFBS for the urinary bladder (seed16) BDBag by running:
+  - You can use the BDBag as input to generate the TFBS for the urinary bladder (seed16, hint) BDBag by running the following.
+    (to speed up, you may assign more cpus (i.e., -w 4) depending on the resource availability)
 
   ```
-  $ Rscript ./tfbs.R -b ./urinary_bladder.seed16.tissue.bag -o ./output -s 16 -t "urinary bladder" -m Hint -e
+  $ Rscript ./tfbs.R -b ./urinary_bladder.seed16.tissue.bag -o ./hint_output -s 16 -t "urinary bladder" -m Hint -e -w 1
 
   ```
 
-  - If you have placed your footprints BED files in a separate directory (not in the BDBag), then you can use this instead:
+  - If you have placed your footprints BED files in a separate directory (not in the BDBag), then you can use this instead.
+    (to speed up, you may assign more cpus (i.e., -w 4) depending on the resource availability)
 
   ```
-  $ Rscript ./tfbs.R -i ./footprint_bed_files -o ./output -s 16 -t "urinary bladder" -m Hint -e
+  $ Rscript ./tfbs.R -i ./footprint_bed_files -o ./hint_output -s 16 -t "urinary bladder" -m Hint -e -w 1
 
   ```
 

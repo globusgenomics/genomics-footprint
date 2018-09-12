@@ -493,7 +493,10 @@ if(!interactive()){
              Fill_DB_Enable=FALSE))
 }
 
-cmd=paste("tar zcvf ",  opt$o, "/", db,".tar.gz ",output_path, "/", db,"*", sep="")
-system(cmd, intern = TRUE)
-unlink(output_path,recursive=TRUE)
-unlink(tmp_dir, recursive=TRUE)
+if (length(list.files(path=output_path, all.files = TRUE,no.. = TRUE)) !=0){
+        cmd=paste("tar zcvf ",  opt$o, "/", db,".tar.gz ",output_path, "/", db,"*", sep="")
+        system(cmd, intern = TRU)
+        unlink(tmp_dir, recursive=TRUE)
+}else{
+    print("no csv output found")
+}
