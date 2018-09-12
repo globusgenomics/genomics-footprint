@@ -206,7 +206,7 @@ Please download the footprints generated from the workflows by clicking on the "
 
 This [repo](https://github.com/globusgenomics/genomics-footprint/tree/master/generate_db) includes the processing code to intersect [hint](http://www.regulatory-genomics.org/hint/introduction/) or [wellington](https://github.com/jpiper/pyDNase) footprints output with the FIMO database and save the results in your local directory or optionally put in a database.
 
-- Important - make sure you have postgresql installed on your machine. If not please install.
+- Important - make sure you have postgresql installed on your machine. If not please install by:
 
   - For linux,
       ```
